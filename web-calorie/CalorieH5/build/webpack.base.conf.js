@@ -3,7 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
+const isProduction = process.env.NODE_ENV === 'production'
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -30,6 +30,10 @@ module.exports = {
     }
   },
   module: {
+    loaders: [{
+      test: /\.css$/,
+      loader: 'css-loader!autoprefixer-loader?browsers=last 2 versions'
+    }],
     rules: [
       {
         test: /\.vue$/,

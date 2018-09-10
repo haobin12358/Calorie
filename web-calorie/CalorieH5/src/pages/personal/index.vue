@@ -1,23 +1,26 @@
 <template>
-  <div>
-    个人personal
-  </div>
+    <div>
+      个人
+    </div>
+
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
-    name: "index",
-    data() {
-      return {
+
+    export default {
+      data() {
+        return {
+
+        }
+      },
+      components: {  },
+      methods: {},
+      created() {
 
       }
-    },
-    components: {},
-    methods: {},
-    created() {}
-  }
+    }
 </script>
-
-<style lang="less" rel="stylesheet/less">
+<style lang="less" rel="stylesheet/less" >
+  @import "../../common/css/index";
 
 </style>
