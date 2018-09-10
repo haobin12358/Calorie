@@ -6,23 +6,21 @@
 
 <script type="text/ecmascript-6">
   export default {
-    name: "mContenct",
     data() {
       return {
-
+        name: ''
       }
     },
     components: {},
     methods: {},
-    created() {}
+    created() {
+
+    }
   }
 </script>
-
 <style lang="less" rel="stylesheet/less">
-
-  .m-content{
-    /*padding: 10px 0;*/
-    margin-bottom: 120px;
-  }
+.m-content{
+  /*padding: 10px 0;*/
+  margin-bottom: 120px;
+}
 </style>
-

@@ -1,27 +1,30 @@
 <template>
-  <div>
-    布局layout
-    <m-content></m-content>
-    <m-footer></m-footer>
-  </div>
+    <div>
+      <!--<m-header></m-header>-->
+      <m-content></m-content>
+
+      <m-footer></m-footer>
+    </div>
+
 </template>
 
 <script type="text/ecmascript-6">
-  import mContent from './mContent'
-  import mFooter from '../../components/common/footer'
-  export default {
-    name: "index",
-    data() {
-      return {
+  import mHeader from '../../components/common/header';
+  import mFooter from '../../components/common/footer';
+  import mContent from './mContent';
+    export default {
+      data() {
+        return {
+          name: ''
+        }
+      },
+      components: { mHeader, mFooter, mContent },
+      methods: {},
+      created() {
 
       }
-    },
-    components: { mContent, mFooter },
-    methods: {},
-    created() {}
-  }
+    }
 </script>
-
-<style lang="less" rel="stylesheet/less">
+<style lang="less" rel="stylesheet/less" >
 
 </style>

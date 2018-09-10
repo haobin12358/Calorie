@@ -1,51 +1,51 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '../views/layout/index';
+import Layout from '../pages/layout/index';
 
 Vue.use(Router)
 
 
 export const constantRouterMap = [
-  { path: '/login', component: () => import('../views/login/login'), hidden: true },
-  { path: '/register', component: () => import('../views/login/register'),hidden: true },
+  { path: '/login', component: () => import('../pages/login/login'), hidden: true },
+  { path: '/register', component: () => import('../pages/login/register'),hidden: true },
   {
     path: '/',
     component: Layout,
     redirect: 'login',
-    children: [{ path: '/login', component: () => import('../views/login/login'), hidden: true }
+    children: [{ path: '/login', component: () => import('../pages/login/login'), hidden: true }
     ],
   },
   {
-    path: '/discover',
+    path: '/meal',
     component: Layout,
-    redirect: 'discover/index',
+    redirect: 'meal/index',
     children: [{
       path: 'index',
-      component: () => import('../views/discover/index'),
-      name: 'index',
-      meta: { title: 'index', icon: 'index', noCache: true }
+      component: () => import('../pages/meal/index'),
+      name: 'meal',
+      meta: { title: 'meal', icon: 'meal', noCache: true }
     }],
   },
   {
-    path: '/service',
+    path: '/diary',
     component: Layout,
-    redirect: 'service/index',
+    redirect: 'diary/index',
     children: [{
       path: 'index',
-      component: () => import('../views/service/index'),
-      name: 'service',
-      meta: { title: 'service', icon: 'service', noCache: true }
+      component: () => import('../pages/diary/index'),
+      name: 'diary',
+      meta: { title: 'diary', icon: 'meal', noCache: true }
     }],
   },
   {
-    path: '/shopping',
+    path: '/interaction',
     component: Layout,
-    redirect: 'shopping/index',
+    redirect: 'interaction/index',
     children: [{
       path: 'index',
-      component: () => import('../views/shopping/index'),
-      name: 'shopping',
-      meta: { title: 'shopping', icon: 'shopping', noCache: true }
+      component: () => import('../pages/interaction/index'),
+      name: 'interaction',
+      meta: { title: 'interaction', icon: 'interaction', noCache: true }
     }],
   },
   {
@@ -54,7 +54,7 @@ export const constantRouterMap = [
     redirect: 'personal/index',
     children: [{
       path: 'index',
-      component: () => import('../views/personal/index'),
+      component: () => import('../pages/personal/index'),
       name: 'personal',
       meta: { title: 'personal', icon: 'personal', noCache: true }
     }],
@@ -62,7 +62,7 @@ export const constantRouterMap = [
 
 //  我的
  /*账号设置*/
-  // { path: '/setUp', component: () => import('../views/personal/setUp/index'), hidden: true },
+  // { path: '/setUp', component: () => import('../pages/personal/setUp/index'), hidden: true },
 
 ];
 

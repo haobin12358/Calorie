@@ -16,23 +16,23 @@ let store= new Vuex.Store({
       url:'index'
     },*/
       {
-      name:'客服',
+      name:'日记',
       icon:'/static/images/product1.png',
-      url:'service'
+      url:'diary'
     },{
-      name:'发现',
+      name:'餐配',
       icon:'/static/images/product1.png',
-      url:'discover'
+      url:'meal'
     },{
-      name:'购物车',
+      name:'互动',
       icon:'/static/images/product1.png',
-      url:'shopping'
+      url:'interaction'
     },{
       name:'我的',
       icon:'/static/images/product1.png',
       url:'personal'
     }],
-    tabbar_select:'客服'
+    tabbar_select:'日记'
   },
   mutations: {
     add(state, route) {

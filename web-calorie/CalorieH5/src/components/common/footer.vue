@@ -30,14 +30,14 @@
           this.$store.state.tabbar_select = val;
           common.changeTitle(val);
           switch(val){
-            case '客服':
-              this.$router.push('/service');
+            case '日记':
+              this.$router.push('/diary');
               break;
-            case '发现':
-              this.$router.push('/discover');
+            case '餐配':
+              this.$router.push('/meal');
               break;
-            case '购物车':
-              this.$router.push('/shopping');
+            case '互动':
+              this.$router.push('/interaction');
               break;
             case '我的':
               this.$router.push('/personal');
