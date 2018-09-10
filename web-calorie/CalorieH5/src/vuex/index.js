@@ -9,38 +9,40 @@ let store= new Vuex.Store({
     route: null,
     now:null,
     token:'',
-    tabbar:[{
+    tabbar:[
+      /*{
       name:'首页',
       icon:'',
       url:'index'
-    },{
+    },*/
+      {
       name:'客服',
-      icon:'',
+      icon:'/static/images/product1.png',
       url:'service'
     },{
       name:'发现',
-      icon:'',
+      icon:'/static/images/product1.png',
       url:'discover'
     },{
       name:'购物车',
-      icon:'',
+      icon:'/static/images/product1.png',
       url:'shopping'
     },{
       name:'我的',
-      icon:'',
+      icon:'/static/images/product1.png',
       url:'personal'
     }],
-    tabbar_select:'首页'
+    tabbar_select:'客服'
   },
   mutations: {
-    add(state,route) {
-      state.now=route.name;
-      var len=Object.keys(state.route);
-      if (len.length<5||!!state.route[route.name]) {
-        state.route[route.name]=route.path;
+    add(state, route) {
+      state.now = route.name;
+      var len = Object.keys(state.route);
+      if (len.length < 5 || !!state.route[route.name]) {
+        state.route[route.name] = route.path;
       }else{
-        delete state.route[len[0]]
-        state.route[route.name]=route.path;
+        delete state.route[len[0]];
+        state.route[route.name] = route.path;
       }
     },
     remove(state,name){

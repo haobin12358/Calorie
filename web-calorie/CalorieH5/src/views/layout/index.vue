@@ -13,20 +13,16 @@
   import mFooter from '../../components/common/footer';
   import mContent from './mContent';
     export default {
-        data() {
-            return {
-                name: ''
-            }
-        },
-        components: {
-          'm-header':mHeader,
-          mFooter,
-          mContent
-        },
-        methods: {},
-        created() {
-
+      data() {
+        return {
+          name: ''
         }
+      },
+      components: { mHeader, mFooter, mContent },
+      methods: {},
+      created() {
+
+      }
     }
 </script>
 <style lang="less" rel="stylesheet/less" >
