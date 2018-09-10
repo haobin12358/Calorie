@@ -9,13 +9,13 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index',
-
-      'pages/information/index',
-      'pages/diary/index',
       'pages/meal/index',
+      'pages/diary/index',
+      'pages/information/index',
       'pages/interaction/index',
-      'pages/personal/index'
+      'pages/personal/index',
+
+      'pages/index'
     ],
     window: {
       backgroundTextStyle: 'light',
