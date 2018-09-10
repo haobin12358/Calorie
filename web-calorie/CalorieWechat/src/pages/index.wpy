@@ -1,5 +1,5 @@
 <style lang="less">
-  @import "../style/animate";
+  @import "../styles/animate";
 </style>
 <template>
   <view class="animated pulse infinite"
