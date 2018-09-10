@@ -10,11 +10,6 @@ let store= new Vuex.Store({
     now:null,
     token:'',
     tabbar:[
-      /*{
-      name:'首页',
-      icon:'',
-      url:'index'
-    },*/
       {
       name:'日记',
       icon:'/static/images/product1.png',
