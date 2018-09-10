@@ -6,17 +6,53 @@
 import wepy from 'wepy'
 import 'wepy-async-function'
 
-
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index',
+
+      'pages/information/index',
+      'pages/diary/index',
+      'pages/meal/index',
+      'pages/interaction/index',
+      'pages/personal/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#8614d9',
+      selectedColor: '#8614d9',
+      backgroundColor: '#ffffff',
+      list: [{
+        pagePath: "pages/information/index",
+        text: "资讯",
+        iconPath: "images/tabbar_person.png",
+        selectedIconPath: "images/tabbar_person_active.png"
+      },{
+        pagePath: "pages/diary/index",
+        text: "日记",
+        iconPath: "images/tabbar_person.png",
+        selectedIconPath: "images/tabbar_person_active.png"
+      },{
+        pagePath: "pages/meal/index",
+        text: "参配",
+        iconPath: "images/tabbar_person.png",
+        selectedIconPath: "images/tabbar_person_active.png"
+      },{
+        pagePath: "pages/interaction/index",
+        text: "互动",
+        iconPath: "images/tabbar_person.png",
+        selectedIconPath: "images/tabbar_person_active.png"
+      },{
+        pagePath: "pages/personal/index",
+        text: "个人",
+        iconPath: "images/tabbar_person.png",
+        selectedIconPath: "images/tabbar_person_active.png"
+      }]
     }
   }
 
