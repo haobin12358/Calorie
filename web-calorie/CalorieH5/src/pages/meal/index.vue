@@ -16,6 +16,25 @@
       <div class="row-left-text">在线点餐</div>
       <img class="row-right-img" src="/static/images/product1.png" alt="">
     </div>
+
+    <div class="online-order">
+      <div class="product-box">
+        <img class="product-img" src="/static/images/product1.png" alt="">
+        <span class="product-name">蒜泥娃娃菜</span>
+        <span class="product-price">￥8.0</span>
+      </div>
+      <div class="product-box">
+        <img class="product-img" src="/static/images/product1.png" alt="">
+        <span class="product-name">蒜泥娃娃菜</span>
+        <span class="product-price">￥8.0</span>
+      </div>
+      <div class="product-box">
+        <img class="product-img" src="/static/images/product1.png" alt="">
+        <span class="product-name">蒜泥娃娃菜</span>
+        <span class="product-price">￥8.0</span>
+      </div>
+    </div>
+
     <div class="text-row">
       <div class="row-left-text">健康配送</div>
       <img class="row-right-img" src="/static/images/product1.png" alt="">
@@ -95,6 +114,33 @@
       width: 30px;
       height: 30px;
       padding: 15px 30px;
+    }
+  }
+  .online-order {
+    width: 100%;
+    display: flex;
+    margin: 10px 0 30px 45px;
+    .product-box {
+      width: 231px;
+      height: 305px;
+      margin-right: 20px;
+      border-radius: 20px;
+      background-color: @white;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      .product-img {
+        width: 231px;
+        height: 231px;
+        padding-bottom: 15px;
+        border-radius: 20px 20px 0 0;
+      }
+      .product-name {
+        font-size: 24px;
+        color: @greyColor;
+      }
+      .product-price {
+        font-size: 24px;
+        color: @priceColor;
+      }
     }
   }
 </style>
