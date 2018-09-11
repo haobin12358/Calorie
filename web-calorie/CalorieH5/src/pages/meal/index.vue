@@ -78,10 +78,10 @@
           { url: 'http://img.zcool.cn/community/01a16c57fb3e1aa84a0d304fc108d5.jpg@2o.jpg' }
         ],
         menuList: [
-          { icon: "/static/images/purple/meal_order_online.png", name: "在线点餐" },
-          { icon: "/static/images/purple/meal_health_deliver.png", name: "健康配送" },
-          { icon: "/static/images/purple/meal_health_health_around.png", name: "健康周边" },
-          { icon: "/static/images/purple/meal_fitness card.png", name: "健康卡" }
+          { icon: "/static/images/purple/meal_order_online.png", url: "onlineOrder", name: "在线点餐" },
+          { icon: "/static/images/purple/meal_health_deliver.png", url: "healthDistribution", name: "健康配送" },
+          { icon: "/static/images/purple/meal_health_health_around.png", url: "healthSurrounding", name: "健康周边" },
+          { icon: "/static/images/purple/meal_fitness card.png", url: "meal", name: "健康卡" }
         ],
         onlineList: [
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "800.0" },
@@ -107,7 +107,7 @@
     methods: {
       // 顶部四个btn跳转
       toPage(item) {
-        console.log(item);
+        this.$router.push('/' + item.url);
       }
     },
     mounted() {
