@@ -16,19 +16,51 @@
       <div class="row-left-text">在线点餐</div>
       <img class="row-right-img" src="/static/images/product1.png" alt="">
     </div>
-
     <div class="online-order">
-      <ul class="product-list" id="product-list">
+      <ul class="product-list">
+        <li class="product-box" v-for="item in onlineList">
+          <img class="product-img" :src="item.src" alt="">
+          <div class="product-bottom">
+            <div class="product-name m-ft-24 m-grey-color tl">{{item.name}}</div>
+            <div class="product-price">￥{{item.price}}</div>
+          </div>
+        </li>
       </ul>
     </div>
-
     <div class="text-row">
       <div class="row-left-text">健康配送</div>
       <img class="row-right-img" src="/static/images/product1.png" alt="">
     </div>
+    <div class="online-order">
+      <ul class="product-list">
+        <li class="health-box" v-for="item in healthList">
+          <img class="health-img" :src="item.src" alt="">
+          <div class="health-name m-ft-24 m-grey-color tl">{{item.name}}</div>
+          <div class="health-bottom">
+            <div class="health-price m-ft-24 m-price tl">￥{{item.price}}</div>
+            <div class="bottom-btn">快捷下单</div>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="text-row">
       <div class="row-left-text">健康周边</div>
       <img class="row-right-img" src="/static/images/product1.png" alt="">
+    </div>
+    <div class="surrounding-health">
+      <ul class="surrounding-list">
+        <li class="surrounding-box" v-for="item in surroundingList">
+          <img class="surrounding-img" :src="item.src" alt="">
+          <div class="surrounding-bottom">
+            <div class="surrounding-name m-ft-24 m-grey-color tl">{{item.name}}</div>
+            <div class="surrounding-price m-ft-24 m-price tl">￥{{item.price}}</div>
+          </div>
+          <div class="surrounding-bottom">
+            <div class="surrounding-from m-ft-21 m-hex tl">{{item.from}}</div>
+            <div class="bottom-btn">快捷下单</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -56,42 +88,27 @@
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" },
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" },
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" }
+        ],
+        healthList: [
+          { src: "/static/images/product1.png", name: "鸡胸肉土豆泥沙拉", price: "800.0" },
+          { src: "/static/images/product1.png", name: "鸡胸肉土豆泥沙拉", price: "8.0" },
+          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" },
+          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" }
+        ],
+        surroundingList: [
+          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "800.0", from: "早安city" },
+          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" },
+          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" },
+          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" }
         ]
       }
     },
     components: { menuLabel },
     methods: {
-      // 获取数据
-      getData() {
 
-        // 往ul中添加li
-        for(let i = 0; i < this.onlineList.length; i ++) {
-          var elem_li = document.createElement('li'); // 生成一个 li元素
-          // 设置元素的内容
-          elem_li.innerHTML = "<img src=" + this.onlineList[i].src + " class='product-img'><div class='product-bottom'><div class='product-name'>" + this.onlineList[i].name + "</div>"
-            + "<div class='product-price'>￥" + this.onlineList[i].price + "</div></div>";
-          document.getElementById('product-list').appendChild(elem_li);
-        }
-        /*// 给每个li添加点击事件
-        let that = this;
-        // let oli = document.getElementsByTagName("li");
-        let oli = document.getElementsByClassName("product-img");
-        for(let i = 0; i < oli.length; i ++){
-          (function(j){
-            oli[j].onclick = function () {
-              that.toProduct(j);
-            };
-          })(i)
-        }*/
-      },
-      // 去产品详情页
-      toProduct(i) {
-        let prid = this.recommend.products[i].prid;
-        this.$router.push({path: "/productDetail", query: { prid }});
-      },
     },
     mounted() {
-      this.getData();
+
     }
   }
 </script>
@@ -140,46 +157,18 @@
       padding: 15px 30px;
     }
   }
-  /*.online-order {
-    width: 100%;
-    display: flex;
-    margin: 10px 0 30px 45px;
-    .product-box {
-      width: 231px;
-      height: 305px;
-      margin-right: 20px;
-      border-radius: 20px;
-      background-color: @white;
-      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-      .product-img {
-        width: 231px;
-        height: 231px;
-        padding-bottom: 15px;
-        border-radius: 20px 20px 0 0;
-      }
-      .product-name {
-        font-size: 24px;
-        color: @greyColor;
-      }
-      .product-price {
-        font-size: 24px;
-        color: @priceColor;
-      }
-    }
-  }*/
-
-  .online-order{
-    min-height: 305px;
+  .online-order {
     margin-left: 45px;
     .product-list {
       width: 100%;
-      display: inline;
+      display: inline-block;
       white-space: nowrap;
       overflow-x: scroll;
-      float: left;
       overflow-y: hidden;
+      float: left;
       padding: 10px 0 5px 0;
-      li {
+      margin-bottom: -10px;
+      .product-box {
         display: inline-block;
         width: 231px;
         height: 305px;
@@ -207,6 +196,79 @@
             font-size: 24px;
             color: @priceColor;
             margin-right: 11px;
+          }
+        }
+      }
+      .health-box {
+        display: inline-block;
+        height: 400px;
+        margin-right: 20px;
+        border-radius: 20px;
+        background-color: @white;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        .health-img {
+          width: 280px;
+          height: 289px;
+          border-radius: 20px 20px 0 0;
+        }
+        .health-name {
+          font-size: 24px;
+          margin-left: 11px;
+          color: @greyColor;
+          padding-bottom: 15px;
+        }
+        .health-bottom {
+          width: 100%;
+          display: flex;
+          .health-price {
+            flex: 1;
+            margin-left: 11px;
+            line-height: 47px;
+          }
+        }
+      }
+    }
+  }
+  .bottom-btn {
+    color: @white;
+    font-size: 21px;
+    padding: 6px 28px;
+    margin-right: 15px;
+    border-radius: 30px;
+    background-image: linear-gradient(to right, @mainLef, @mainRight);
+  }
+  .surrounding-health {
+    margin: 15px 0 0 40px;
+    .surrounding-list {
+      width: 750px;
+      display: flex;
+      flex-wrap: wrap;
+      .surrounding-box {
+        width: 325px;
+        height: 500px;
+        border-radius: 20px;
+        margin: 0 20px 20px 0;
+        background-color: #ffffff;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        .surrounding-img {
+          width: 325px;
+          height: 356px;
+          border-radius: 20px 20px 0 0;
+        }
+        .surrounding-bottom {
+          width: 100%;
+          display: flex;
+          .surrounding-name {
+            flex: 1;
+            padding: 15px 0 30px 20px;
+          }
+          .surrounding-price {
+            padding: 15px 15px 0 0;
+          }
+          .surrounding-from {
+            flex: 1;
+            margin-left: 20px;
+            line-height: 47px;
           }
         }
       }
