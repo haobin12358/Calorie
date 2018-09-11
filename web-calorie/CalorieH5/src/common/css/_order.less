@@ -5,14 +5,12 @@
 .mt-swipe-box {
   margin-bottom: 0;
   height: 300px;
-  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+  //box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
   .img {
     height: 300px;
   }
-  .mint-swipe-indicators {
-    top: 250px;
-  }
 }
+
 .cook-style {
   .cook-style-list {
     width: 100%;
@@ -22,7 +20,8 @@
     overflow-y: hidden;
     float: left;
     padding: 10px 0 5px 0;
-    margin-bottom: -10px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     .cook-style-box {
       display: inline-block;
       .cook-style-img {
@@ -30,7 +29,7 @@
         height: 70px;
         margin: 0 20px;
         border-radius: 50%;
-        border: solid 2px @borderColor;
+        border: solid 1px @borderColor;
         &.active{
           border: solid 4px @borderColor;
         }
@@ -38,12 +37,108 @@
       .cook-style-name {
         font-size: 21px;
         font-weight: 300;
-        color: @borderColor;
+        //color: @borderColor;
       }
     }
   }
 }
+
+.food-box {
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  .food-img {
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+  }
+  .food-box-right {
+    flex: 1;
+    .right-row {
+      //width: 100%;
+      display: flex;
+      padding: 12px 0 0 30px;
+      .food-name {
+        flex: 1;
+        text-align: left;
+        font-size: 24px;
+        color: @greyColor;
+      }
+      .food-price {
+        padding-right: 60px;
+        font-size: 24px;
+        color: @priceColor;
+      }
+      .food-rate {
+        flex: 1;
+        text-align: left;
+        color: @hex;
+        font-size: 20px;
+      }
+      .food-old-price {
+        padding-right: 60px;
+        color: @hex;
+        font-size: 20px;
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+.to-order {
+  width: 100%;
+  display: flex;
+  background-color: @white;
+  position: fixed;
+  bottom: 0;
+  .cart-product-box {
+    .cart-img {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: -25px;
+      left: 20px;
+    }
+    .cart-product-num {
+      position: absolute;
+      top: -30px;
+      left: 80px;
+      width: 10px;
+      height: 10px;
+      padding: 10px;
+      font-size: 18px;
+      line-height: 18px;
+      color: @white;
+      border-radius: 50%;
+      background-color: @priceColor;
+    }
+  }
+  .cart-text {
+    padding: 0 20px 0 130px;
+    font-size: 24px;
+    color: @hex;
+    line-height: 90px;
+  }
+  .cart-price {
+    flex: 1;
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    color: @priceColor;
+    line-height: 90px;
+  }
+  .to-order-btn {
+    height: 40px;
+    font-size: 30px;
+    color: @white;
+    white-space: normal;
+    padding: 25px 90px;
+    background-image: linear-gradient(to right, @mainLef, @mainRight);
+  }
+}
+
 /*滚动条样式*/
 ::-webkit-scrollbar {
-  margin-right: -40px;
+  height: 0;
 }
