@@ -60,9 +60,13 @@ export const constantRouterMap = [
     }],
   },
 
-//  我的
- /*账号设置*/
-  // { path: '/setUp', component: () => import('../pages/personal/setUp/index'), hidden: true },
+  /*餐配*/
+  // 在线点餐
+  { path: '/onlineOrder', component: () => import('../pages/meal/onlineOrder'), hidden: true },
+  // 健康配送
+  { path: '/healthDistribution', component: () => import('../pages/meal/healthDistribution'), hidden: true },
+  // 健康周边
+  { path: '/healthSurrounding', component: () => import('../pages/meal/healthSurrounding'), hidden: true },
 
 ];
 
