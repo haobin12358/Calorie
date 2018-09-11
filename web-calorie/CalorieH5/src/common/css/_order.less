@@ -1,0 +1,49 @@
+
+@import "./_variate";
+@import "./index";
+
+.mt-swipe-box {
+  margin-bottom: 0;
+  height: 300px;
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+  .img {
+    height: 300px;
+  }
+  .mint-swipe-indicators {
+    top: 250px;
+  }
+}
+.cook-style {
+  .cook-style-list {
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    float: left;
+    padding: 10px 0 5px 0;
+    margin-bottom: -10px;
+    .cook-style-box {
+      display: inline-block;
+      .cook-style-img {
+        width: 70px;
+        height: 70px;
+        margin: 0 20px;
+        border-radius: 50%;
+        border: solid 2px @borderColor;
+        &.active{
+          border: solid 4px @borderColor;
+        }
+      }
+      .cook-style-name {
+        font-size: 21px;
+        font-weight: 300;
+        color: @borderColor;
+      }
+    }
+  }
+}
+/*滚动条样式*/
+::-webkit-scrollbar {
+  margin-right: -40px;
+}

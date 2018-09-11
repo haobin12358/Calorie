@@ -82,7 +82,7 @@
           { icon: "/static/images/purple/meal_order_online.png", url: "onlineOrder", name: "在线点餐" },
           { icon: "/static/images/purple/meal_health_deliver.png", url: "healthDistribution", name: "健康配送" },
           { icon: "/static/images/purple/meal_health_health_around.png", url: "healthSurrounding", name: "健康周边" },
-          { icon: "/static/images/purple/meal_fitness card.png", url: "meal", name: "健康卡" }
+          { icon: "/static/images/purple/meal_fitness_card.png", url: "meal", name: "健康卡" }
         ],
         onlineList: [
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "800.0" },
@@ -164,7 +164,6 @@
     }
   }
   .online-order {
-    margin-left: 45px;
     .product-list {
       width: 100%;
       display: inline-block;
@@ -182,6 +181,9 @@
         border-radius: 20px;
         background-color: @white;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        &:first-child {
+          margin-left: 45px;
+        }
         .product-img {
           width: 231px;
           height: 231px;
@@ -212,6 +214,9 @@
         border-radius: 20px;
         background-color: @white;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        &:first-child {
+          margin-left: 45px;
+        }
         .health-img {
           width: 280px;
           height: 289px;
@@ -246,7 +251,6 @@
   .surrounding-health {
     margin: 15px 0 0 40px;
     .surrounding-list {
-      width: 750px;
       display: flex;
       flex-wrap: wrap;
       .surrounding-box {
