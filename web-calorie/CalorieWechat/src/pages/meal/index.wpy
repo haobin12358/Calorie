@@ -1,0 +1,389 @@
+<style scoped lang="less">
+  @import "../../styles/base";
+
+  .container-search-bar {
+    height: 50rpx;
+    background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+    padding-left: 43rpx;
+    box-sizing: border-box;
+
+    .search-bar-tip{
+      color: #ffffff;
+      line-height: 50rpx;
+
+      .fz21();
+    }
+  }
+
+  .container-hd {
+    position: relative;
+    margin-bottom: 134rpx;
+
+    .hd-position{
+      position: absolute;
+      top:  0;
+      left: 0;
+      width: 100%;
+      height: 50rpx;
+      opacity: 0.3;
+      z-index: 10;
+      padding-left: 43rpx;
+      box-sizing: border-box;
+
+      .hd-position-text{
+        color: #ffffff;
+        line-height: 50rpx;
+
+        .fz24();
+      }
+    }
+
+    .hd-swiper{
+      height: 330rpx;
+
+      swiper-item{
+        image{
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .hd-tab-bar{
+      position: absolute;
+      bottom:  -104rpx;
+      left: 45rpx;
+      width: 660rpx;
+      z-index: 10;
+      height: 130rpx;
+      display: flex;
+      justify-content: space-around;
+      background: #ffffff;
+      border-radius: 20rpx;
+      box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+      color: @mainFontColor;
+    }
+  }
+
+  .container-bd {
+    color: @mainFontColor;
+
+    .bd-meal{
+      padding-left: 45rpx;
+      box-sizing: border-box;
+
+      .meal-block{
+        margin-bottom: 40rpx;
+
+        .meal-block-title{
+          margin-bottom: 18rpx;
+          .fz30();
+
+          display: flex;
+          justify-content: space-between;
+
+          .title-text{}
+          .title-arrow{}
+
+        }
+      }
+
+      .meal-block.meal-block-order-online{
+        .meal-block-bd{
+          height: 310rpx;
+          white-space: nowrap;
+          width: 100%;
+
+          .meal-item{
+            border-radius: 20rpx;
+            width: 231rpx;
+            height: 305rpx;
+            display: inline-block;
+            margin-right: 20rpx;
+            background: #ffffff;
+            box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+            .item-hd{
+              height: 231rpx;
+
+              image{
+                border-top-right-radius: 20rpx;
+                border-top-left-radius: 20rpx;
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .item-bd{
+              display: flex;
+              justify-content: space-between;
+              padding-left: 11rpx;
+              padding-right: 16rpx;
+              margin-top: 20rpx;
+
+              .fz24();
+              .name{
+
+              }
+              .money{
+                color: @moneyColor;
+              }
+            }
+          }
+        }
+      }
+
+      .meal-block.meal-block-health-deliver{
+        .meal-block-bd{
+          height: 405rpx;
+          white-space: nowrap;
+          width: 100%;
+
+          .meal-item{
+            border-radius: 20rpx;
+            width: 280rpx;
+            height: 401rpx;
+            display: inline-block;
+            margin-right: 20rpx;
+            background: #ffffff;
+            box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+            .item-hd{
+              height: 280rpx;
+
+              image{
+                border-top-right-radius: 20rpx;
+                border-top-left-radius: 20rpx;
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .item-bd{
+              padding-left: 11rpx;
+              padding-right: 16rpx;
+              margin-top: 3rpx;
+
+              .fz24();
+              .line1{
+                margin-bottom: 25rpx;
+
+              }
+              .line2{
+                display: flex;
+                justify-content: space-between;
+
+                .money{
+                  color: @moneyColor;
+                }
+
+                .place-order{
+                  background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+                  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+                  padding: 6rpx 28rpx;
+                  color: #ffffff;
+                  border-radius: 30px;
+
+                  .fz21();
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .meal-block.meal-block-health-around{
+        .meal-block-bd{
+          display: flex;
+          flex-wrap: wrap;
+
+          .meal-item{
+            border-radius: 20rpx;
+            width: 325rpx;
+            height: 490rpx;
+            margin-right: 20rpx;
+            margin-bottom: 20rpx;
+            background: #ffffff;
+            box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+            .item-hd{
+              height: 354rpx;
+
+              image{
+                border-top-right-radius: 20rpx;
+                border-top-left-radius: 20rpx;
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+            .item-bd{
+              padding-left: 20rpx;
+              padding-right: 11rpx;
+
+              .line1{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 41rpx;
+                .fz24();
+
+                .money{
+                  color: @moneyColor;
+                }
+              }
+              .line2{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .source{
+                  .fz21();
+                }
+                .place-order{
+                  background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+                  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+                  padding: 6rpx 28rpx;
+                  color: #ffffff;
+                  border-radius: 30px;
+
+                  .fz21();
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+</style>
+
+<template>
+  <view class="container">
+    <view class="container-search-bar">
+      <view class="search-bar-tip">请输入商家/商品名称</view>
+    </view>
+    <view class="container-hd">
+      <view class="hd-position">
+        <view class="hd-position-text">
+          浙江工业大学（屏峰校区）
+        </view>
+      </view>
+      <swiper class="hd-swiper" autoplay="true" circle="true" indicator-dots="true">
+        <swiper-item>
+          <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+        </swiper-item>
+        <swiper-item>
+          <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+        </swiper-item>
+      </swiper>
+
+      <view class="hd-tab-bar">
+        <view class="tab-bar-item">在线点餐</view>
+        <view class="tab-bar-item">健康配送</view>
+        <view class="tab-bar-item">健康周边</view>
+        <view class="tab-bar-item">健康卡</view>
+      </view>
+    </view>
+    <view class="container-bd">
+      <view class="bd-meal">
+        <view class="meal-block meal-block-order-online">
+          <view class="meal-block-title">
+            <view class="title-text">
+              在线点餐
+            </view>
+            <view class="title-arrow">
+              箭头
+            </view>
+          </view>
+          <scroll-view scroll-x="true" class="meal-block-bd">
+            <view wx:for="123456" class="meal-item">
+              <view class="item-hd">
+                <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+              </view>
+              <view class="item-bd">
+                <view class="name">蒜泥娃娃菜</view>
+                <view class="money">￥8.0</view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+
+        <view class="meal-block meal-block-health-deliver">
+          <view class="meal-block-title">
+            <view class="title-text">
+              健康配送
+            </view>
+            <view class="title-arrow">
+              箭头
+            </view>
+          </view>
+          <scroll-view scroll-x class="meal-block-bd">
+            <view wx:for="123456" class="meal-item">
+              <view class="item-hd">
+                <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+              </view>
+              <view class="item-bd">
+                <view class="line1">蒜泥娃娃菜</view>
+                <view class="line2">
+                  <view class="money">￥8.0</view>
+                  <view class="place-order">快捷下单</view>
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+
+        <view class="meal-block meal-block-health-around">
+          <view class="meal-block-title">
+            <view class="title-text">
+              健康周边
+            </view>
+            <view class="title-arrow">
+              箭头
+            </view>
+          </view>
+          <view class="meal-block-bd">
+            <view wx:for="123456" class="meal-item">
+              <view class="item-hd">
+                <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+              </view>
+              <view class="item-bd">
+                <view class="line1">
+                  <view class="name">菠萝包</view>
+                  <view class="money">￥9.0</view>
+                </view>
+                <view class="line2">
+                  <view class="source">早安city</view>
+                  <view class="place-order">快捷下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class Index extends wepy.page {
+    config = {};
+
+    components = {};
+
+    data = {};
+    computed = {};
+
+    methods = {};
+
+    onLoad() {
+
+    }
+  }
+</script>
+
