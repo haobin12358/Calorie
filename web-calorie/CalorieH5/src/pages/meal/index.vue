@@ -172,7 +172,6 @@
       overflow-y: hidden;
       float: left;
       padding: 10px 0 5px 0;
-      margin-bottom: -10px;
       .product-box {
         display: inline-block;
         width: 231px;
@@ -286,6 +285,6 @@
   }
   /*滚动条样式*/
   ::-webkit-scrollbar {
-    margin-right: -40px;
+    height: 0;
   }
 </style>
