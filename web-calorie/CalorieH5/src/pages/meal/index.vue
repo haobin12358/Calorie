@@ -67,6 +67,7 @@
 
 <script type="text/ecmascript-6">
   import menuLabel from '../../components/common/menuLabel'
+  import common from '../../common/js/common';
 
   export default {
     name: "index",
@@ -108,6 +109,8 @@
       // 顶部四个btn跳转
       toPage(item) {
         this.$router.push('/' + item.url);
+        // 设置页面title
+        common.changeTitle(item.name);
       }
     },
     mounted() {
