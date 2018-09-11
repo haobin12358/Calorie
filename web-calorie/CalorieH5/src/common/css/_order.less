@@ -12,6 +12,12 @@
 }
 
 .cook-style {
+  &.active {
+    position:fixed;
+    background-color:#Fff;
+    top:0;
+    z-index:999;
+  }
   .cook-style-list {
     width: 100%;
     display: inline-block;
@@ -20,7 +26,6 @@
     overflow-y: hidden;
     float: left;
     padding: 10px 0 5px 0;
-    margin-bottom: 20px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     .cook-style-box {
       display: inline-block;
@@ -102,13 +107,13 @@
     }
     .cart-product-num {
       position: absolute;
-      top: -30px;
+      top: -35px;
       left: 80px;
-      width: 10px;
-      height: 10px;
+      width: 20px;
+      height: 18px;
       padding: 10px;
       font-size: 18px;
-      line-height: 18px;
+      line-height: 25px;
       color: @white;
       border-radius: 50%;
       background-color: @priceColor;

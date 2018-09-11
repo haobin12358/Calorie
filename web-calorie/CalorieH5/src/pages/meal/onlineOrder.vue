@@ -8,7 +8,7 @@
       </mt-swipe>
     </div>
 
-    <div class="cook-style">
+    <div class="cook-style"  id="cookStyle" :class="scroll == true? 'active':''">
       <ul class="cook-style-list">
         <li class="cook-style-box" v-for="(item, index) in cookStyleList" @click="styleChoose(item, index)">
           <img class="cook-style-img" :class="index == style_select?'active':''" :src="item.src" alt="">
@@ -34,16 +34,18 @@
     <div class="to-order">
       <div class="cart-product-box">
         <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
-        <div class="cart-product-num">3</div>
+        <div class="cart-product-num">22</div>
       </div>
       <div class="cart-text">合计</div>
       <div class="cart-price">￥18.0</div>
-      <div class="to-order-btn">去 下 单</div>
+      <div class="to-order-btn" @click="toOrder">去 下 单</div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import common from '../../common/js/common';
+
   export default {
     name: "onlineOrder",
     data() {
@@ -71,8 +73,16 @@
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" }
-        ]
+        ],
+        scroll: false
       }
     },
     components: {  },
@@ -82,10 +92,19 @@
         this.style_select = index;
         // console.log(item, index);
       },
+      // 滑动固定顶部
       handleScroll () {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        // console.log(scrollTop);
+        let scrollTop = common.getScrollTop();
+        if(scrollTop > 150) {
+          this.scroll = true;
+        }else {
+          this.scroll = false;
+        }
       },
+      // 去下单
+      toOrder() {
+
+      }
     },
     mounted() {
       window.addEventListener('scroll', this.handleScroll)
