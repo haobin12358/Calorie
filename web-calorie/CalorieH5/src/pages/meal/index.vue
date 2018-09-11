@@ -183,6 +183,9 @@
         &:first-child {
           margin-left: 45px;
         }
+        &:last-child {
+          margin-right: 45px;
+        }
         .product-img {
           width: 231px;
           height: 231px;
@@ -215,6 +218,9 @@
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         &:first-child {
           margin-left: 45px;
+        }
+        &:last-child {
+          margin-right: 45px;
         }
         .health-img {
           width: 280px;
