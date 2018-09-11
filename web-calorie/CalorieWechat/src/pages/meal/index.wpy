@@ -69,7 +69,7 @@
     color: @mainFontColor;
 
     .bd-meal{
-      padding-left: 45rpx;
+      /*padding-left: 45rpx;*/
       box-sizing: border-box;
 
       .meal-block{
@@ -77,13 +77,24 @@
 
         .meal-block-title{
           margin-bottom: 18rpx;
+          padding-left: 45rpx;
+          padding-right: 33rpx;
+
           .fz30();
 
           display: flex;
           justify-content: space-between;
 
           .title-text{}
-          .title-arrow{}
+          .title-arrow{
+            width: 25rpx;
+            height: 20rpx;
+
+            image{
+              width: 100%;
+              height: 100%;
+            }
+          }
 
         }
       }
@@ -102,6 +113,10 @@
             margin-right: 20rpx;
             background: #ffffff;
             box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+            &:first-child{
+              margin-left: 45rpx;
+            }
 
             .item-hd{
               height: 231rpx;
@@ -146,6 +161,7 @@
             margin-right: 20rpx;
             background: #ffffff;
             box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
 
             .item-hd{
               height: 280rpx;
@@ -292,7 +308,7 @@
               在线点餐
             </view>
             <view class="title-arrow">
-              箭头
+              <image src="../../images/arrow.png"></image>
             </view>
           </view>
           <scroll-view scroll-x="true" class="meal-block-bd">
@@ -314,7 +330,7 @@
               健康配送
             </view>
             <view class="title-arrow">
-              箭头
+              <image src="../../images/arrow.png"></image>
             </view>
           </view>
           <scroll-view scroll-x class="meal-block-bd">
@@ -339,7 +355,7 @@
               健康周边
             </view>
             <view class="title-arrow">
-              箭头
+              <image src="../../images/arrow.png"></image>
             </view>
           </view>
           <view class="meal-block-bd">
@@ -361,8 +377,6 @@
           </view>
         </view>
       </view>
-
-
     </view>
   </view>
 
@@ -370,13 +384,18 @@
 
 <script>
   import wepy from 'wepy';
+  import TwoPropsGoodsList from '@/components/twoPropsGoodsList'
 
   export default class Index extends wepy.page {
     config = {};
 
-    components = {};
+    components = {
+      'two-props-goods-list': TwoPropsGoodsList
+    };
 
-    data = {};
+    data = {
+      firstTitle: '在线点餐'
+    };
     computed = {};
 
     methods = {};

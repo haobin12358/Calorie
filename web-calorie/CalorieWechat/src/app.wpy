@@ -30,28 +30,28 @@ export default class extends wepy.app {
       list: [{
         pagePath: "pages/information/index",
         text: "资讯",
-        iconPath: "images/tabbar_person.png",
-        selectedIconPath: "images/tabbar_person_active.png"
+        iconPath: "images/purple/tabbar_information.png",
+        selectedIconPath: "images/purple/tabbar_information_active.png"
       },{
         pagePath: "pages/diary/index",
         text: "日记",
-        iconPath: "images/tabbar_person.png",
-        selectedIconPath: "images/tabbar_person_active.png"
+        iconPath: "images/purple/tabbar_diary.png",
+        selectedIconPath: "images/purple/tabbar_diary_active.png"
       },{
         pagePath: "pages/meal/index",
         text: "参配",
-        iconPath: "images/tabbar_person.png",
-        selectedIconPath: "images/tabbar_person_active.png"
+        iconPath: "images/purple/tabbar_meal.png",
+        selectedIconPath: "images/purple/tabbar_meal_active.png"
       },{
         pagePath: "pages/interaction/index",
         text: "互动",
-        iconPath: "images/tabbar_person.png",
-        selectedIconPath: "images/tabbar_person_active.png"
+        iconPath: "images/purple/tabbar_interaction.png",
+        selectedIconPath: "images/purple/tabbar_interaction_active.png"
       },{
         pagePath: "pages/personal/index",
         text: "个人",
-        iconPath: "images/tabbar_person.png",
-        selectedIconPath: "images/tabbar_person_active.png"
+        iconPath: "images/purple/tabbar_personal.png",
+        selectedIconPath: "images/purple/tabbar_personal_active.png"
       }]
     }
   }
