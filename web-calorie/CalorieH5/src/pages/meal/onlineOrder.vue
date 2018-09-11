@@ -81,10 +81,14 @@
       styleChoose(item, index) {
         this.style_select = index;
         // console.log(item, index);
-      }
+      },
+      handleScroll () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        // console.log(scrollTop);
+      },
     },
     mounted() {
-
+      window.addEventListener('scroll', this.handleScroll)
     }
   }
 </script>
