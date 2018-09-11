@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="menu-box">
-      <div class="menu-icon-text" v-for="item in menuList">
+      <div class="menu-icon-text" v-for="item in menuList" @click="toPage(item)">
         <img class="menu-icon" :src="item.icon" alt="">
         <div class="menu-text">{{item.name}}</div>
       </div>
@@ -21,7 +21,11 @@
       menuList: { type: Array, default: [] }
     },
     components: {},
-    methods: {},
+    methods: {
+      toPage(item) {
+        this.$emit('toPage', item);
+      }
+    },
     created() {}
   }
 </script>
@@ -46,7 +50,7 @@
         height: 65px;
       }
       .menu-text {
-        padding-top: 10px;
+        /*padding-top: 5px;*/
         font-size: 20px;
         color: @greyColor;
       }

@@ -10,11 +10,11 @@
       </mt-swipe>
     </div>
     <div class="menu-label">
-      <menu-label :menuList="menuList"></menu-label>
+      <menu-label :menuList="menuList" @toPage="toPage"></menu-label>
     </div>
     <div class="text-row">
       <div class="row-left-text">在线点餐</div>
-      <img class="row-right-img" src="/static/images/product1.png" alt="">
+      <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
       <ul class="product-list">
@@ -29,7 +29,7 @@
     </div>
     <div class="text-row">
       <div class="row-left-text">健康配送</div>
-      <img class="row-right-img" src="/static/images/product1.png" alt="">
+      <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
       <ul class="product-list">
@@ -45,7 +45,7 @@
     </div>
     <div class="text-row">
       <div class="row-left-text">健康周边</div>
-      <img class="row-right-img" src="/static/images/product1.png" alt="">
+      <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="surrounding-health">
       <ul class="surrounding-list">
@@ -78,10 +78,10 @@
           { url: 'http://img.zcool.cn/community/01a16c57fb3e1aa84a0d304fc108d5.jpg@2o.jpg' }
         ],
         menuList: [
-          { icon: "/static/images/product1.png", name: "在线点餐" },
-          { icon: "/static/images/product1.png", name: "健康配送" },
-          { icon: "/static/images/product1.png", name: "健康周边" },
-          { icon: "/static/images/product1.png", name: "健康卡" }
+          { icon: "/static/images/purple/meal_order_online.png", name: "在线点餐" },
+          { icon: "/static/images/purple/meal_health_deliver.png", name: "健康配送" },
+          { icon: "/static/images/purple/meal_health_health_around.png", name: "健康周边" },
+          { icon: "/static/images/purple/meal_fitness card.png", name: "健康卡" }
         ],
         onlineList: [
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "800.0" },
@@ -105,7 +105,10 @@
     },
     components: { menuLabel },
     methods: {
-
+      // 顶部四个btn跳转
+      toPage(item) {
+        console.log(item);
+      }
     },
     mounted() {
 
