@@ -63,10 +63,17 @@ export const constantRouterMap = [
   /*餐配*/
   // 在线点餐
   { path: '/onlineOrder', component: () => import('../pages/meal/onlineOrder'), hidden: true },
+  // 餐品详情
+  { path: '/foodDetail', component: () => import('../pages/meal/foodDetail'), hidden: true },
   // 健康配送
   { path: '/healthDistribution', component: () => import('../pages/meal/healthDistribution'), hidden: true },
   // 健康周边
   { path: '/healthSurrounding', component: () => import('../pages/meal/healthSurrounding'), hidden: true },
+
+  // 商品评价
+  { path: '/productEvaluation', component: () => import('../pages/meal/productEvaluation'), hidden: true },
+  // 商品订单
+  { path: '/productOrder', component: () => import('../pages/meal/productOrder'), hidden: true },
 
 ];
 

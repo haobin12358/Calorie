@@ -1,0 +1,168 @@
+
+@import "./_variate";
+@import "./index";
+
+.mt-swipe-box {
+  margin-bottom: 0;
+  height: 300px;
+  //box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+  .img {
+    height: 300px;
+  }
+}
+
+.cook-style {
+  &.active {
+    position: fixed;
+    background-color: #Fff;
+    top: 0;
+    z-index: 999;
+  }
+  .cook-style-list {
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    float: left;
+    padding: 10px 0 5px 0;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    .cook-style-box {
+      display: inline-block;
+      .cook-style-img {
+        width: 70px;
+        height: 70px;
+        margin: 0 20px;
+        border-radius: 50%;
+        border: solid 1px @borderColor;
+        &.active{
+          border: solid 4px @borderColor;
+        }
+      }
+      .cook-style-name {
+        font-size: 21px;
+        font-weight: 300;
+        //color: @borderColor;
+      }
+    }
+  }
+}
+
+.food-list {
+  .food-box {
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    &:first-child {
+      margin-top: 150px;
+    }
+    .food-img {
+      width: 120px;
+      height: 120px;
+      padding: 15px;
+    }
+    .food-box-right {
+      flex: 1;
+      .right-row {
+        display: flex;
+        padding: 12px 0 0 30px;
+        .food-name {
+          flex: 1;
+          text-align: left;
+          font-size: 24px;
+          color: @greyColor;
+        }
+        .food-price {
+          padding-right: 60px;
+          font-size: 24px;
+          color: @priceColor;
+        }
+        .food-rate {
+          flex: 1;
+          text-align: left;
+          color: @hex;
+          font-size: 20px;
+        }
+        .food-old-price {
+          padding-right: 60px;
+          color: @hex;
+          font-size: 20px;
+          text-decoration: line-through;
+        }
+        .right-row-quantity {
+          width: 100%;
+          display: flex;
+          padding-right: 60px;
+          justify-content: flex-end;
+          .food-quantity-img {
+            width: 42px;
+            height: 42px;
+            display: flex;
+          }
+          .food-quantity {
+            width: 40px;
+            padding: 8px 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.to-order {
+  width: 100%;
+  display: flex;
+  background-color: @white;
+  position: fixed;
+  bottom: 0;
+  .cart-product-box {
+    .cart-img {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: -25px;
+      left: 20px;
+    }
+    .cart-product-num {
+      position: absolute;
+      top: -30px;
+      left: 80px;
+      width: 17px;
+      height: 17px;
+      padding: 7px;
+      font-size: 18px;
+      line-height: 20px;
+      color: @white;
+      border-radius: 50%;
+      background-color: @priceColor;
+    }
+  }
+  .cart-text {
+    padding: 0 20px 0 130px;
+    font-size: 24px;
+    color: @hex;
+    line-height: 90px;
+  }
+  .cart-price {
+    flex: 1;
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    color: @priceColor;
+    line-height: 90px;
+  }
+  .to-order-btn {
+    height: 40px;
+    font-size: 30px;
+    color: @white;
+    white-space: normal;
+    padding: 25px 90px;
+    background-image: linear-gradient(to right, @mainLef, @mainRight);
+  }
+}
+
+/*滚动条样式*/
+::-webkit-scrollbar {
+  height: 0;
+}
