@@ -18,7 +18,7 @@
     </div>
 
     <div class="food-list">
-      <div class="food-box" v-for="(item, index) in foodList">
+      <div class="food-box" v-for="(item, index) in foodList" @click="toDetail(item)">
         <img class="food-img" :src="item.src" alt="">
         <div class="food-box-right">
           <div class="right-row">
@@ -76,12 +76,12 @@
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "水果" }
         ],
         foodList: [
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10", oldPrice: "12.00", rate: "95.8", inventory: "0", num: "0" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.20", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "2" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" }
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10", oldPrice: "12.00", rate: "95.8", inventory: "0", num: "0", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.20", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "2", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" }
         ],
         scroll: false,
         cart_total: 0,
@@ -114,6 +114,11 @@
           this.foodList[index].num = Number(this.foodList[index].num) + 1;
           this.cart_total += 1;
         }
+      },
+      // 去餐品详情页
+      toDetail(item) {
+        let fid = item.fid;
+        this.$router.push({path: "/foodDetail", query: { fid }});
       },
       // 去下单
       toOrder() {
