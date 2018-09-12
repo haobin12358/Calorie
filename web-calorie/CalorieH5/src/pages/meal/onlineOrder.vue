@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 50px">
+  <div style="margin-bottom: 60px">
     <div class="mt-swipe-box">
       <mt-swipe :auto="15000">
         <mt-swipe-item v-for="item in bannerList" :key="item.id">
@@ -17,43 +17,35 @@
       </ul>
     </div>
 
-    <div class="food-list">
-      <div class="food-box" v-for="(item, index) in foodList" @click="toDetail(item)">
-        <img class="food-img" :src="item.src" alt="">
-        <div class="food-box-right">
-          <div class="right-row">
-            <div class="food-name">{{item.name}}</div>
-            <div class="food-price">￥{{item.price}}</div>
-          </div>
-          <div class="right-row">
-            <div class="food-rate">好评率：{{item.rate}}%</div>
-            <div class="food-old-price">￥{{item.oldPrice}}</div>
-          </div>
-          <div class="right-row">
-            <div class="right-row-quantity">
-              <img class="food-quantity-img" src="/static/images/purple/meal_minus.png" v-if="item.num != 0" @click="quantityChange(index, 'min')">
-              <div class="food-quantity m-ft-24 m-grey-color m-ft-b" v-if="item.num != 0">{{item.num}}</div>
-              <img class="food-quantity-img" src="/static/images/purple/meal_plus.png" alt="" @click="quantityChange(index, 'plus')">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <food-list :foodList="foodList"></food-list>
 
     <div class="to-order">
       <div class="cart-product-box">
-        <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
-        <div class="cart-product-num" v-if="cart_total != 0">{{cart_total}}</div>
+        <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="toCart">
+        <div class="cart-product-num" v-if="cart_num_show">{{cart_total}}</div>
       </div>
       <div class="cart-text">合计</div>
       <div class="cart-price">￥{{total_price}}</div>
       <div class="to-order-btn" @click="toOrder">去 下 单</div>
+    </div>
+
+    <div class="m-modal" v-if="cart_show">
+      <div class="m-modal-state">
+        <div class="food-list-box" v-if="cart_total != 0">
+          <food-list :foodList="cartList"></food-list>
+        </div>
+        <div class="food-list-box" v-if="cart_total == 0">
+          <img class="null-cart-img" src="/static/images/purple/meal_shop_cart2.png" alt="">
+          <div class="m-ft-24 m-grey-color">购物车空空如也哦~</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import common from '../../common/js/common';
+  import foodList from './components/foodList';
 
   export default {
     name: "onlineOrder",
@@ -76,19 +68,22 @@
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "水果" }
         ],
         foodList: [
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10", oldPrice: "12.00", rate: "95.8", inventory: "0", num: "0", fid: "as24dfd" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.20", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "2", fid: "as24dfd" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1", fid: "as24dfd" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" }
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "9", oldPrice: "12.00", rate: "95.8", inventory: "5", num: "0", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "9", oldPrice: "12.00", rate: "95.8", inventory: "5", num: "2", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "11.02", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "11.02", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "12.12", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "2", fid: "as24dfd" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "15.14", oldPrice: "12.00", rate: "95.8", inventory: "0", num: "0", fid: "as24dfd" }
         ],
+        cartList: [],
         scroll: false,
+        cart_num_show: true,
         cart_total: 0,
         total_price: 0,
+        cart_show: false
       }
     },
-    components: {  },
+    components: { foodList },
     methods: {
       // 滑动固定顶部
       handleScroll () {
@@ -107,6 +102,7 @@
       },
       // 菜品数量变化
       quantityChange(index, operation) {
+        console.log(index, operation);
         if(operation == "min") {
           this.foodList[index].num = Number(this.foodList[index].num) - 1;
           this.cart_total -= 1;
@@ -117,8 +113,26 @@
       },
       // 去餐品详情页
       toDetail(item) {
+        console.log(item);
         let fid = item.fid;
         this.$router.push({path: "/foodDetail", query: { fid }});
+      },
+      // 查看购物车
+      toCart() {
+        if(this.cart_show) {
+          this.cart_show = false;
+          this.cart_num_show = true;
+        }else if(!this.cart_show) {
+          this.cart_show = true;
+          this.cart_num_show = false;
+
+          // 获取购物车中的列表
+          for(let i = 0; i < this.foodList.length; i ++) {
+            if(this.foodList[i].num != 0) {
+              this.cartList.push(this.foodList[i]);
+            }
+          }
+        }
       },
       // 去下单
       toOrder() {
@@ -132,6 +146,9 @@
       for(let i = 0; i < this.foodList.length; i ++) {
         this.cart_total = this.cart_total + Number(this.foodList[i].num);
         this.total_price = this.total_price + Number(this.foodList[i].num) * Number(this.foodList[i].price);
+      }
+      if(this.cart_total == 0) {
+        this.cart_num_show = false;
       }
     }
   }
