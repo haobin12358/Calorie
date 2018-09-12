@@ -21,7 +21,7 @@
         </div>
         <div class="product-row-four">
           <div class="coupons-num m-text tr">已优惠￥5</div>
-          <div class="real-pay m-text">实付<span class="m-ft-30 m-black">￥40.0</span>元</div>
+          <div class="m-text">实付<span class="m-ft-30 m-black">￥40.0</span>元</div>
         </div>
       </div>
     </div>
@@ -143,9 +143,6 @@
           line-height: 50px;
           padding-right: 40px;
         }
-        .real-pay {
-
-        }
       }
     }
     .row-right-img {
@@ -166,9 +163,6 @@
       width: 100%;
       display: flex;
       padding-top: 24px;
-      .row-right {
-
-      }
       .row-right-one {
         width: 290px;
         padding: 5px;
