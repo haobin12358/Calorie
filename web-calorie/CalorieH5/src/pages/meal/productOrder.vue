@@ -10,7 +10,7 @@
         <div class="product-row-two">
           <div class="product-row" v-for="item in productList">
             <div class="product-name m-text tl">{{item.name}}</div>
-            <div class="product-quantity m-text">x {{item.num}}</div>
+            <div class="m-text">x {{item.num}}</div>
           </div>
         </div>
         <div class="product-row-three">
@@ -34,10 +34,20 @@
       <div class="info-row">
         <div class="info-text">送餐时间：</div>
         <div class="row-right-two">
-          <div class="time-text info-text">11:00-11:30</div>
+          <div class="time-text info-text" @click="popupVisible = true">11:00-11:30</div>
           <img class="drop-down-img" src="/static/images/purple/triangle.png" alt="">
         </div>
       </div>
+
+      <mt-popup class="mt-popup" v-model="popupVisible" popup-transition="popup-fade" position="bottom">
+        <div class="modal-row-one">
+          <div class="popup-text m-grey tl" @click="popupVisible = false">取消</div>
+          <div class="row-one-text tc">请选择送餐时间</div>
+          <div class="popup-text tr" @click="timeDone">确定</div>
+        </div>
+        <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
+      </mt-popup>
+
       <div class="info-row">
         <div class="info-text">联系电话：</div>
         <div class="row-right-three">
@@ -54,6 +64,14 @@
       <div class="memo-text info-text">备 注</div>
       <textarea class="memo-input info-text" cols="35" rows="2"></textarea>
     </div>
+
+    <div class="to-pay-box">
+      <img class="money-img" src="/static/images/purple/meal_money.png" alt="">
+      <div class="m-ft-24 m-hex">合计</div>
+      <div class="price-num m-ft-30 m-price m-ft-b tl">￥18.0</div>
+      <div class="to-pay-btn">去 支 付</div>
+    </div>
+
   </div>
 </template>
 
@@ -65,12 +83,23 @@
         productList: [
           { name: "鸡胸肉沙拉", num: "1" },
           { name: "龙利鱼沙拉", num: "2" }
-        ]
+        ],
+        popupVisible: false,
+        slots: [
+          { values: ["11:00 - 11:30", "11:30 - 12:00", "12:00 - 12:30", "12:30 - 13:00", "13:00 - 13:30"] }
+        ],
       }
     },
     components: {  },
     methods: {
-
+      // 监听送餐时间段选择器
+      onValuesChange(picker, values) {
+        console.log(values[0]);
+      },
+      // 送餐时间-确定按钮
+      timeDone() {
+        this.popupVisible = false;
+      }
     },
     mounted() {
 
@@ -78,7 +107,7 @@
   }
 </script>
 
-<style lang="less" rel="stylesheet/less" scoped>
+<style lang="less" rel="stylesheet/less">
   @import "../../common/css/index";
 
   .product-content {
@@ -114,9 +143,6 @@
           .product-name {
             flex: 1;
             padding-left: 50px;
-          }
-          .product-quantity {
-
           }
         }
       }
@@ -155,7 +181,6 @@
     font-size: 24px;
     color: @hexGrey;
   }
-
   .buyer-info {
     padding: 26px 36px 50px 36px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -208,16 +233,34 @@
         border: solid 1px @borderColor;
       }
     }
+    .mt-popup {
+      width: 100%;
+      .modal-row-one {
+        width: 100%;
+        display: flex;
+        .row-one-text {
+          width: 50%;
+          font-size: 28px;
+          margin: 15px 30px;
+          white-space: normal;
+        }
+        .popup-text {
+          width: 20%;
+          font-size: 28px;
+          margin: 15px 30px;
+        }
+      }
+    }
   }
   .info-text {
     padding: 5px;
     font-size: 24px;
     color: @hexGrey;
   }
-
   .memo {
     width: 100%;
     display: flex;
+    margin-bottom: 100px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     .memo-text {
       padding: 40px;
@@ -225,6 +268,31 @@
     .memo-input {
       letter-spacing: 1.2px;
       margin: 20px 0 20px 60px;
+    }
+  }
+  .to-pay-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: @white;
+    .money-img {
+      width: 53px;
+      height: 53px;
+      padding: 0 10px 0 52px;
+    }
+    .price-num {
+      flex: 1;
+      padding-left: 18px;
+    }
+    .to-pay-btn {
+      height: 40px;
+      font-size: 30px;
+      color: @white;
+      white-space: normal;
+      padding: 25px 90px;
+      background-image: linear-gradient(to right, @mainLef, @mainRight);
     }
   }
 </style>
