@@ -1,0 +1,97 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+  .container{
+    .meal-image{
+      height:570rpx;
+
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .main-content{
+      padding: 20rpx 30rpx 0;
+      color: @mainFontColor;
+
+      .line1{
+        text-align: center;
+        margin-bottom: 28rpx;
+
+        .fz30();
+      }
+
+      .line2{
+        margin-bottom: 20rpx;
+
+        .fz24();
+      }
+
+      .line3{
+        display: flex;
+        justify-content: space-between;
+        color: @subFontColor;
+
+        .fz20();
+      }
+    }
+  }
+</style>
+
+<template>
+
+  <view class="container">
+    <view class="meal-image">
+      <image src="https://dummyimage.com/600x400"></image>
+    </view>
+    <view class="main-content">
+      <view class="line1">
+        蒜泥娃娃菜
+      </view>
+      <view class="line2">
+        配方：娃娃菜、大蒜、青红椒、猪肉泥
+      </view>
+
+
+      <view class="line3">
+        <view class="rate">
+          好评率：98%
+        </view>
+        <view class="go-evaluate">
+          评价详情 >
+        </view>
+      </view>
+      <view class="line4">
+        view.money
+        view.
+      </view>
+    </view>
+
+    <shopping-list></shopping-list>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import ShoppingList from '@/components/shoppingList';
+
+  export default class MealDetail extends wepy.page {
+    config = {};
+
+    components = {
+      'shopping-list': ShoppingList
+    };
+
+
+    data = {};
+    computed = {};
+
+    methods = {};
+
+    onLoad() {
+
+    }
+  }
+</script>
+

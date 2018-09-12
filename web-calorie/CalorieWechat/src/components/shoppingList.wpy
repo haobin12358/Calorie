@@ -1,0 +1,167 @@
+<style scoped lang="less">
+    @import "../styles/base";
+
+    .shopping-list{
+      position: fixed;
+      width: 100%;
+      height: 89rpx;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      background: #ffffff;
+      z-index: 3000;
+
+      .fz24();
+
+      .shopcart{
+        position: absolute;
+        top: -25%;
+        left: 20rpx;
+        width: 88rpx;
+        height: 88rpx;
+
+        image{
+          width: 100%;
+          height: 100%;
+        }
+
+        .shopcart-num{
+          position: absolute;
+          top: -10%;
+          left: 50rpx;
+          width: 37rpx;
+          height: 37rpx;
+          background: @moneyColor;
+          border-radius: 50%;
+
+          text-align: center;
+          line-height: 37rpx;
+        }
+      }
+
+      .footer-left{
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        .amount-block{
+          margin-left: 115rpx;
+
+          .amount-text{
+            margin-right: 18rpx;
+            color: @subFontColor;
+          }
+
+          .amount-num{
+            color: @moneyColor;
+          }
+        }
+      }
+      .footer-right{
+        width: 292rpx;
+        background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+        text-align: center;
+        line-height: 89rpx;
+        color: #ffffff;
+      }
+    }
+
+
+    .popup-screen{
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      background: #000000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      opacity: 0.6;
+    }
+
+    .popup-content{
+      position: fixed;
+      z-index: 2000;
+      left: 66rpx;
+      bottom: 106rpx;
+      width: 619rpx;
+      background: #ffffff;
+      border-radius: 20rpx;
+      padding: 47rpx 22rpx 0 27rpx;
+      box-sizing: border-box;
+
+      .popup-content-scroll{
+        max-height: 500rpx;
+
+      }
+    }
+</style>
+
+<template>
+  <block wx:if="{{showShopList}}">
+    <view class="popup-screen"  @tap="showShopList"></view>
+    <view class="popup-content">
+      <scroll-view  wx:if="{{mealList.length}}" scroll-y class="popup-content-scroll">
+        <meal-list :list.sync="mealList"></meal-list>
+      </scroll-view>
+      <placeholder wx:else></placeholder>
+    </view>
+  </block>
+  <view class="shopping-list">
+    <view class="footer-left">
+      <view class="amount-block" >
+        <text class="amount-text">合计</text>
+        <text class="amount-num">￥18.0</text>
+      </view>
+    </view>
+    <view class="footer-right">
+      去下单
+    </view>
+
+    <view class="shopcart" @tap.stop="showShopList">
+      <image src="../../images/purple/meal_shop_cart.png"></image>
+      <view class="shopcart-num">12</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import Popup from '@/components/common/popup';
+  import Placeholder from '@/components/common/placeholder';
+  import MealList from '@/components/mealList';
+
+  export default class ShoppingList extends wepy.component {
+    props = {
+      mealList: {
+        //  Object Array String Number Boolean
+        type: Array
+      }
+    };
+
+    components = {
+      popup: Popup,
+      'meal-list': MealList,
+      'placeholder': Placeholder,
+    }
+
+    data = {
+      showShopList: false
+    };
+
+    computed = {};
+
+    methods = {
+      showShopList(){
+        console.log('显示购物列表');
+        this.showShopList = !this.showShopList;
+      }
+    };
+
+
+    onLoad() {
+
+    }
+  }
+</script>
+
