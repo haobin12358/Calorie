@@ -70,6 +70,11 @@ export const constantRouterMap = [
   // 健康周边
   { path: '/healthSurrounding', component: () => import('../pages/meal/healthSurrounding'), hidden: true },
 
+  // 商品评价
+  { path: '/productEvaluation', component: () => import('../pages/meal/productEvaluation'), hidden: true },
+  // 商品订单
+  { path: '/productOrder', component: () => import('../pages/meal/productOrder'), hidden: true },
+
 ];
 
 export default new Router({
