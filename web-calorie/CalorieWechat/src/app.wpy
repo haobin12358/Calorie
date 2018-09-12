@@ -9,11 +9,14 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/meal/index',
-      'pages/diary/index',
-      'pages/information/index',
-      'pages/interaction/index',
-      'pages/personal/index',
+      'pages/meal/orderOnline',  //  在线点餐
+      'pages/meal/mealDetail',  //  餐品详情
+      'pages/meal/index', // 参配首页
+
+      'pages/diary/index',  //  日记首页
+      'pages/information/index',  //  资讯首页
+      'pages/interaction/index',  //  互动首页
+      'pages/personal/index', //  个人首页
 
       'pages/index'
     ],

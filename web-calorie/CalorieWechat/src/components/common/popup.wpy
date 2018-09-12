@@ -43,10 +43,6 @@
         //  Object Array String Number Boolean
         type: Boolean,
         default: false
-      },
-      postion: {
-        type: String,
-        default: 'center'
       }
     };
 

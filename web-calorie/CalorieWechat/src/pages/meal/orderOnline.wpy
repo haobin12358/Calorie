@@ -1,0 +1,307 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+    .container{
+      display: flex;
+      flex-direction: column;
+
+      .container-hd{
+        height: 300rpx;
+        display: flex;
+        align-items: flex-end;
+
+        image{
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .menu-list{
+        height: 140rpx;
+        white-space: nowrap;
+
+        .menu-item{
+          margin-right: 40rpx;
+          padding-top: 10rpx;
+          display: inline-block;
+          text-align: center;
+
+          &:first-child{
+            margin-left: 20rpx;
+          }
+          &:last-child{
+            margin-right: 20rpx;
+          }
+
+          .icon{
+            width: 70rpx;
+            height: 70rpx;
+            border: 1rpx solid #576eea;;
+            border-radius: 50%;
+          }
+
+          .name{
+            white-space: nowrap;
+
+            .fz21();
+          }
+        }
+
+        .menu-item.menu-item-active{
+          .icon{
+            border: solid 5rpx #576eea;
+          }
+        }
+      }
+
+      .menu-list-fixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 10;
+      }
+
+      .container-bd-space{
+        padding-top: 156rpx;
+      }
+
+      .container-bd{
+        /*flex: 1;*/
+        padding-bottom: 89rpx;
+
+      }
+
+      .container-ft{
+        position: fixed;
+        width: 100%;
+        height: 89rpx;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        background: #ffffff;
+
+        .fz24();
+
+        .shopcart{
+          position: absolute;
+          top: -25%;
+          left: 20rpx;
+          width: 88rpx;
+          height: 88rpx;
+
+          image{
+            width: 100%;
+            height: 100%;
+          }
+
+          .shopcart-num{
+            position: absolute;
+            top: -10%;
+            left: 50rpx;
+            width: 37rpx;
+            height: 37rpx;
+            background: @moneyColor;
+            border-radius: 50%;
+
+            text-align: center;
+            line-height: 37rpx;
+          }
+        }
+
+        .footer-left{
+          flex: 1;
+          display: flex;
+          align-items: center;
+
+          .amount-block{
+            margin-left: 115rpx;
+
+            .amount-text{
+              margin-right: 18rpx;
+              color: @subFontColor;
+            }
+
+            .amount-num{
+              color: @moneyColor;
+            }
+          }
+        }
+        .footer-right{
+          width: 292rpx;
+          background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+          text-align: center;
+          line-height: 89rpx;
+          color: #ffffff;
+        }
+      }
+    }
+</style>
+
+<template>
+  <view class="container">
+    <view class="container-hd">
+      <image src="../../images/test_order_online.png" mode="aspectFill" style="height: {{containerHdHeight}}px;opacity:  {{containerHdOpacity}};"></image>
+    </view>
+    <scroll-view scroll-x="true" class="menu-list {{fixedMenuBar?'menu-list-fixed':''}}">
+      <view wx:for="{{menuList}}" @tap="switchMenu({{index}})" class="menu-item {{index==currentMenuIndex? 'menu-item-active': ''}}">
+        <image class="icon" src="https://dummyimage.com/600x400"></image>
+        <view class="name">{{item}}</view>
+      </view>
+    </scroll-view>
+    <view class="container-bd {{fixedMenuBar? 'container-bd-space': ''}}">
+      <meal-list :list.sync="mealList" @tapItem.user="goMealDetail"></meal-list>
+    </view>
+
+    <shopping-list :mealList.sync="mealList"></shopping-list>
+
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import CardMixin from '@/mixins/cardMixin';
+  import ShoppingList from '@/components/shoppingList';
+  import MealList from '@/components/mealList';
+
+  export default class OrderOnline extends wepy.page {
+    config = {};
+
+    components = {
+      'shopping-list': ShoppingList,
+      'meal-list': MealList
+    };
+
+    data = {
+      containerHdHeight: 150,
+      containerHdOpacity: 1,
+      currentMenuIndex: 0,
+      fixedMenuBar: false,
+      menuList: [
+        '全部','包子粥类','面条米线','川菜','粤菜','肉类','蔬菜'
+      ],
+      mealList:[
+        {
+          name: '油爆虾',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 1,
+          storeNum: 2
+        },{
+          name: '蒜泥娃娃菜',
+          money: '12.0',
+          rate: 80,
+          originMoney: '14.0',
+          shopNum: 1,
+          storeNum: 2
+
+        },{
+          name: '干菜扣肉',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 2
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },
+      ],
+      mealList: []
+    };
+
+    mixins = [CardMixin];
+
+    computed = {};
+
+    methods = {
+      switchMenu(index){
+        this.currentMenuIndex = index;
+      },
+      goMealDetail(){
+        this.$navigate('/pages/meal/mealDetail');
+      }
+    };
+
+    onPageScroll(obj){
+      if(obj.scrollTop > 150){
+        this.fixedMenuBar = true;
+      }else{
+        this.containerHdHeight = 150-obj.scrollTop;
+        this.containerHdOpacity =1- obj.scrollTop/150;
+        this.fixedMenuBar = false;
+      }
+
+      this.$apply();
+    }
+
+    onLoad() {
+
+
+    }
+  }
+</script>
+

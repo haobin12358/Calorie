@@ -3,20 +3,18 @@
 
   .placeholder{
     text-align: center;
+    height: 500rpx;
 
     .placeholder-icon {
-      margin-top: 277rpx;
-      width: 450rpx;
+      width: 150rpx;
       height: 150rpx;
+      padding-top: 33%;
     }
 
     .placeholder-text{
-      margin-top: 93rpx;
-      font-size: 32rpx;
-
-      navigator{
-        display: inline-block;
-      }
+      margin-top: 19rpx;
+      font-size: 24rpx;
+      color: @mainFontColor;
     }
 
   }
@@ -24,15 +22,9 @@
 
 <template>
   <view class="placeholder">
-    <image class="placeholder-icon" src="../../images/paper_plane.png"></image>
+    <image class="placeholder-icon" src="../../images/purple/meal_shop_cart2.png"></image>
     <view class="placeholder-text">
-      <block wx:if="{{type == 'binding'}}">
-        去绑定,<navigator url="/pages/person/binding"><text>绑定账户</text></navigator>后即可查看
-      </block>
-      <block wx:if="{{type == 'newUser'}}">
-        前往<navigator open-type="switchTab" url="/pages/person/index"><text>个人页</text></navigator>去联系客服,成为我们的合作伙伴!
-      </block>
-
+      购物车空空如也哦~
     </view>
   </view>
 </template>

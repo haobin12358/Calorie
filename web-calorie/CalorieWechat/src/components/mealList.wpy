@@ -1,0 +1,142 @@
+<style scoped lang="less">
+  @import "../styles/base";
+
+  .meal-list{
+    .meal-item{
+      display: flex;
+      padding: 15rpx 30rpx 15rpx 15rpx;
+      position: relative;
+      margin-bottom: 20rpx;
+
+      .item-img{
+        width: 120rpx;
+        height: 120rpx;
+        margin-right: 45rpx;
+      }
+
+      .main-content{
+        flex: 1;
+        .fz24();
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .line1{
+          display: flex;
+          justify-content: space-between;
+
+          .name{
+            color: @mainFontColor;
+          }
+
+          .money{
+            color: @moneyColor;
+          }
+        }
+        .line2{
+          display: flex;
+          justify-content: space-between;
+          color: @subFontColor;
+
+          .fz20();
+
+          .rate{
+
+          }
+
+          .origin-money{
+            text-decoration: line-through;
+
+          }
+        }
+        .line3{
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          image{
+            width: 42rpx;
+            height: 42rpx;
+          }
+
+          text{
+            margin: 0 36rpx;
+          }
+
+        }
+      }
+
+      .food-item-mask{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        opacity: .2;
+        text-align: center;
+        line-height: 148rpx;
+        color: #ffffff;
+
+        .fz24();
+      }
+    }
+  }
+
+</style>
+
+<template>
+  <view class="meal-list">
+    <view wx:for="{{list}}" class="meal-item" @tap.stop="tapItemHandler">
+      <image class="item-img" src="https://dummyimage.com/600x400"></image>
+      <view class="main-content">
+        <view class="line1">
+          <view class="name">{{item.name}}</view>
+          <view class="money">￥{{item.money}}</view>
+        </view>
+        <view class="line2">
+          <view class="rate">好评率:{{item.rate}}%</view>
+          <view class="origin-money">￥{{item.originMoney}}</view>
+        </view>
+        <view class="line3">
+          <block wx:if="{{item.shopNum}}">
+            <image src="../../images/purple/meal_minus.png"></image>
+            <text>{{item.shopNum}}</text>
+          </block>
+          <image src="../../images/purple/meal_plus.png"></image>
+        </view>
+      </view>
+      <view wx:if="{{item.storeNum == 0}}" class="food-item-mask">告罄</view>
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class MealList extends wepy.component {
+    props = {
+      list: {
+        //  Object Array String Number Boolean
+        type: Array
+      }
+    };
+
+    data = {};
+
+    computed = {};
+
+    methods = {
+      tapItemHandler(){
+        this.$emit('tapItem')
+      }
+    };
+
+
+    onLoad() {
+
+    }
+  }
+</script>
+

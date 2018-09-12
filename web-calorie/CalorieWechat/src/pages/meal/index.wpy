@@ -55,13 +55,28 @@
       left: 45rpx;
       width: 660rpx;
       z-index: 10;
-      height: 130rpx;
+      padding: 27rpx 0 8rpx;
       display: flex;
       justify-content: space-around;
       background: #ffffff;
       border-radius: 20rpx;
       box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
       color: @mainFontColor;
+
+      .tab-bar-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .icon{
+          height: 70rpx;
+          width: 70rpx;
+        }
+
+        .name{
+          .fz20();
+        }
+      }
     }
   }
 
@@ -95,7 +110,6 @@
               height: 100%;
             }
           }
-
         }
       }
 
@@ -162,6 +176,9 @@
             background: #ffffff;
             box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
 
+            &:first-child{
+              margin-left: 45rpx;
+            }
 
             .item-hd{
               height: 280rpx;
@@ -215,10 +232,14 @@
             border-radius: 20rpx;
             width: 325rpx;
             height: 490rpx;
-            margin-right: 20rpx;
             margin-bottom: 20rpx;
             background: #ffffff;
             box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+            &:nth-child(odd){
+              margin-right: 20rpx;
+              margin-left: 45rpx;
+            }
 
             .item-hd{
               height: 354rpx;
@@ -294,10 +315,23 @@
       </swiper>
 
       <view class="hd-tab-bar">
-        <view class="tab-bar-item">在线点餐</view>
-        <view class="tab-bar-item">健康配送</view>
-        <view class="tab-bar-item">健康周边</view>
-        <view class="tab-bar-item">健康卡</view>
+        <view class="tab-bar-item" @tap="goOrderOnline">
+          <image class="icon" src="../../images/purple/meal_order_online.png"></image>
+          <view class="name">在线点餐</view>
+        </view>
+        <view class="tab-bar-item" @tap="goHealthDeliver">
+          <image class="icon" src="../../images/purple/meal_health_deliver.png"></image>
+          <view class="name">健康配送</view>
+        </view>
+        <view class="tab-bar-item" @tap="goHealthAround">
+          <image class="icon" src="../../images/purple/meal_health_health_around.png"></image>
+          <view class="name">健康周边</view>
+        </view>
+        <view class="tab-bar-item" @tap="goFitnessCard">
+          <image class="icon" src="../../images/purple/meal_fitness_card.png"></image>
+          <view class="name">健康卡</view>
+        </view>
+
       </view>
     </view>
     <view class="container-bd">
@@ -398,7 +432,20 @@
     };
     computed = {};
 
-    methods = {};
+    methods = {
+      goOrderOnline(){
+        this.$navigate('/pages/meal/orderOnline');
+      },
+      goHealthDeliver(){
+
+      },
+      goHealthAround(){
+
+      },
+      goFitnessCard(){
+
+      }
+    };
 
     onLoad() {
 
