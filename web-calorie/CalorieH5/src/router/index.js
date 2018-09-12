@@ -63,6 +63,8 @@ export const constantRouterMap = [
   /*餐配*/
   // 在线点餐
   { path: '/onlineOrder', component: () => import('../pages/meal/onlineOrder'), hidden: true },
+  // 餐品详情
+  { path: '/foodDetail', component: () => import('../pages/meal/foodDetail'), hidden: true },
   // 健康配送
   { path: '/healthDistribution', component: () => import('../pages/meal/healthDistribution'), hidden: true },
   // 健康周边
