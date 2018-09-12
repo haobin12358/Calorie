@@ -41,9 +41,18 @@
       <div class="info-row">
         <div class="info-text">联系电话：</div>
         <div class="row-right-three">
-          <input class="phone-input" type="text">
+          <input class="phone-input" type="text" maxlength="11">
         </div>
       </div>
+      <div class="info-row">
+        <div class="info-text">送餐地点：</div>
+        <div class="address-text info-text tl">浙江工业大学屏峰校区家和西苑14幢112<span class="m-border-color">【默认】</span></div>
+      </div>
+    </div>
+
+    <div class="memo">
+      <div class="memo-text info-text">备 注</div>
+      <textarea class="memo-input info-text" cols="35" rows="2"></textarea>
     </div>
   </div>
 </template>
@@ -90,7 +99,7 @@
         padding: 15px 0 15px 0;
         border-bottom: 1px #c7c7c7 solid;
         .store-name {
-
+          margin-left: 15px;
         }
       }
       .product-row-two {
@@ -139,19 +148,19 @@
         }
       }
     }
-    .m-text {
-      font-size: 24px;
-      color: @hexGrey;
-    }
     .row-right-img {
       width: 30px;
       height: 30px;
-      padding: 10px 0 0 30px;
+      padding: 9px 0 0 30px;
     }
+  }
+  .m-text {
+    font-size: 24px;
+    color: @hexGrey;
   }
 
   .buyer-info {
-    /*padding: 50px 36px;*/
+    padding: 26px 36px 50px 36px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     .info-row {
       width: 100%;
@@ -176,6 +185,8 @@
         border: solid 1px @borderColor;
         .time-text {
           flex: 1;
+          padding: 3px;
+          margin-right: -40px;
         }
         .drop-down-img {
           width: 35px;
@@ -185,18 +196,41 @@
       }
       .row-right-three {
         .phone-input {
-          /*width: 300px;
-          height: 50px;
+          width: 220px;
+          height: 42px;
           margin-left: 30px;
+          padding-left: 80px;
           border-radius: 30px;
-          border: solid 1px @borderColor;*/
+          border: solid 1px @borderColor;
         }
       }
+      .address-text {
+        width: 420px;
+        padding: 15px 20px;
+        margin-left: 30px;
+        line-height: 35px;
+        letter-spacing: 1.2px;
+        border-radius: 20px;
+        border: solid 1px @borderColor;
+      }
     }
-    .info-text {
-      padding: 5px;
-      font-size: 24px;
-      color: @hexGrey;
+  }
+  .info-text {
+    padding: 5px;
+    font-size: 24px;
+    color: @hexGrey;
+  }
+
+  .memo {
+    width: 100%;
+    display: flex;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    .memo-text {
+      padding: 40px;
+    }
+    .memo-input {
+      letter-spacing: 1.2px;
+      margin: 20px 0 20px 60px;
     }
   }
 </style>
