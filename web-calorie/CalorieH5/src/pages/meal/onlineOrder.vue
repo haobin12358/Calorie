@@ -17,16 +17,25 @@
       </ul>
     </div>
 
-    <div class="food-box" v-for="item in foodList">
-      <img class="food-img" :src="item.src" alt="">
-      <div class="food-box-right">
-        <div class="right-row">
-          <div class="food-name">{{item.name}}</div>
-          <div class="food-price">￥{{item.price}}</div>
-        </div>
-        <div class="right-row">
-          <div class="food-rate">好评率：{{item.rate}}%</div>
-          <div class="food-old-price">￥{{item.oldPrice}}</div>
+    <div class="food-list">
+      <div class="food-box" v-for="item in foodList">
+        <img class="food-img" :src="item.src" alt="">
+        <div class="food-box-right">
+          <div class="right-row">
+            <div class="food-name">{{item.name}}</div>
+            <div class="food-price">￥{{item.price}}</div>
+          </div>
+          <div class="right-row">
+            <div class="food-rate">好评率：{{item.rate}}%</div>
+            <div class="food-old-price">￥{{item.oldPrice}}</div>
+          </div>
+          <div class="right-row">
+            <div class="right-row-quantity">
+              <img class="food-quantity-img" src="/static/images/purple/meal_minus.png" alt="">
+              <div class="food-quantity m-ft-24 m-grey-color m-ft-b">{{item.num}}</div>
+              <img class="food-quantity-img" src="/static/images/purple/meal_plus.png" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -34,7 +43,7 @@
     <div class="to-order">
       <div class="cart-product-box">
         <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
-        <div class="cart-product-num">22</div>
+        <div class="cart-product-num">9</div>
       </div>
       <div class="cart-text">合计</div>
       <div class="cart-price">￥18.0</div>
@@ -67,20 +76,20 @@
           { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "水果" }
         ],
         foodList: [
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "0" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" },
-          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10" }
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "0", num: "555" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "2" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "1" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" },
+          { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", price: "10.00", oldPrice: "12.00", rate: "95.8", inventory: "10", num: "0" }
         ],
         scroll: false
       }
@@ -95,7 +104,8 @@
       // 滑动固定顶部
       handleScroll () {
         let scrollTop = common.getScrollTop();
-        if(scrollTop > 150) {
+        let clientHeight = common.getClientHeight();
+        if(scrollTop > clientHeight * 0.224) {
           this.scroll = true;
         }else {
           this.scroll = false;
