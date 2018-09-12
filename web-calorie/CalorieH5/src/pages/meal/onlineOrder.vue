@@ -136,7 +136,7 @@
       },
       // 去下单
       toOrder() {
-
+        this.$router.push("/productOrder");
       }
     },
     mounted() {
