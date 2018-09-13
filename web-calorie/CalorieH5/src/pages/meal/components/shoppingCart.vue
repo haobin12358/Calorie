@@ -13,7 +13,7 @@
     <div class="m-modal" v-if="cart_show">
       <div class="m-modal-state">
         <div class="food-list-box" v-if="cart_total != 0">
-          <food-list :foodList="cartList"></food-list>
+          <food-list :foodList="cartList" @toDetail="toDetail"></food-list>
         </div>
         <div class="food-list-box" v-if="cart_total == 0">
           <img class="null-cart-img" src="/static/images/purple/meal_shop_cart2.png" alt="">
@@ -25,6 +25,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import foodList from './foodList';
+
   export default {
     name: "shoppingCart",
     data() {
@@ -32,10 +34,24 @@
 
       }
     },
-    props:{  },
-    components: {  },
+    props:{
+      cart_num_show: { type: Boolean, default: false },
+      cart_total: { type: Number, default: 0 },
+      total_price: { type: Number, default: 0 },
+      cart_show: { type: Boolean, default: false },
+      cartList: { type: Array, default: [] },
+    },
+    components: { foodList },
     methods: {
-
+      toCart() {
+        this.$emit('toCart');
+      },
+      toOrder() {
+        this.$emit('toOrder');
+      },
+      toDetail(item) {
+        this.$emit('toDetail', item);
+      }
     },
     mounted() {
 
@@ -44,5 +60,6 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
+  @import "../../../common/css/_order";
 
 </style>

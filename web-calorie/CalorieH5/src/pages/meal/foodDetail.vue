@@ -25,19 +25,14 @@
       </div>
     </div>
 
-    <div class="to-order">
-      <div class="cart-product-box">
-        <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
-        <div class="cart-product-num" v-if="cart_total != 0">{{cart_total}}</div>
-      </div>
-      <div class="cart-text">合计</div>
-      <div class="cart-price">￥{{total_price}}</div>
-      <div class="to-order-btn" @click="toOrder">去 下 单</div>
-    </div>
+    <shopping-cart :cart_num_show="cart_num_show" :cart_total="cart_total" :total_price="total_price"
+                   :cart_show="cart_show" :cartList="cartList" @toCart="toCart" @toOrder="toOrder" @toDetail="toDetail"></shopping-cart>
+
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import shoppingCart from './components/shoppingCart';
 
   export default {
     name: "foodDetail",
@@ -45,11 +40,15 @@
       return {
         food: { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", formula: "娃娃菜、大蒜、青红椒、猪肉泥", price: "10", oldPrice: "12.00",
           rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" },
-        cart_total: 1,
+        cartList: [],
+        scroll: false,
+        cart_num_show: false,
+        cart_total: 0,
         total_price: 0,
+        cart_show: false
       }
     },
-    components: {  },
+    components: { shoppingCart },
     methods: {
       // 菜品数量变化
       quantityChange(operation) {
@@ -62,14 +61,41 @@
           this.cart_total += 1;
         }
       },
+      // 查看购物车
+      toCart() {
+        if(this.cart_show) {
+          this.cart_show = false;
+          if(this.cart_total != 0) {
+            this.cart_num_show = true;
+          }
+        }else if(!this.cart_show) {
+          this.cart_show = true;
+          this.cart_num_show = false;
+        }
+      },
+      // 去餐品详情页
+      toDetail(item) {
+        console.log(item);
+        let fid = item.fid;
+        this.$router.push({path: "/foodDetail", query: { fid }});
+      },
       // 去下单
       toOrder() {
-
+        this.$router.push("/productOrder");
       }
     },
     mounted() {
       let fid = this.$route.query.fid;
       // console.log(fid);
+
+      // 确定购物车角标数字和总价
+      for(let i = 0; i < this.cartList.length; i ++) {
+        this.cart_total = this.cart_total + Number(this.cartList[i].num);
+        this.total_price = this.total_price + Number(this.cartList[i].num) * Number(this.cartList[i].price);
+      }
+      if(this.cart_total == 0) {
+        this.cart_num_show = false;
+      }
     }
   }
 </script>
@@ -107,14 +133,12 @@
     display: flex;
     padding: 20px 0;
     &.active {
-      //opacity: 0.2;
       background-color: #CBCBCB;
     }
     .food-price {
       padding: 0 60px 0 30px;
     }
     .food-old-price {
-      /*flex: 1;*/
       padding-top: 5px;
       text-decoration: line-through;
     }
@@ -139,58 +163,6 @@
           padding: 8px 15px;
         }
       }
-    }
-  }
-
-  .to-order {
-    width: 100%;
-    display: flex;
-    background-color: @white;
-    position: fixed;
-    bottom: 0;
-    .cart-product-box {
-      .cart-img {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: -25px;
-        left: 20px;
-      }
-      .cart-product-num {
-        position: absolute;
-        top: -30px;
-        left: 80px;
-        width: 17px;
-        height: 17px;
-        padding: 7px;
-        font-size: 18px;
-        line-height: 20px;
-        color: @white;
-        border-radius: 50%;
-        background-color: @priceColor;
-      }
-    }
-    .cart-text {
-      padding: 0 20px 0 130px;
-      font-size: 24px;
-      color: @hex;
-      line-height: 90px;
-    }
-    .cart-price {
-      flex: 1;
-      text-align: left;
-      font-size: 30px;
-      font-weight: bold;
-      color: @priceColor;
-      line-height: 90px;
-    }
-    .to-order-btn {
-      height: 40px;
-      font-size: 30px;
-      color: @white;
-      white-space: normal;
-      padding: 25px 90px;
-      background-image: linear-gradient(to right, @mainLef, @mainRight);
     }
   }
 </style>

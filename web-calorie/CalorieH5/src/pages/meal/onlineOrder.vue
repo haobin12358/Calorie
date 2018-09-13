@@ -19,7 +19,10 @@
 
     <food-list :foodList="foodList" @toDetail="toDetail"></food-list>
 
-    <div class="to-order">
+    <shopping-cart :cart_num_show="cart_num_show" :cart_total="cart_total" :total_price="total_price"
+      :cart_show="cart_show" :cartList="cartList" @toCart="toCart" @toOrder="toOrder" @toDetail="toDetail"></shopping-cart>
+
+    <!--<div class="to-order">
       <div class="cart-product-box">
         <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="toCart">
         <div class="cart-product-num" v-if="cart_num_show">{{cart_total}}</div>
@@ -40,13 +43,14 @@
           <div class="m-ft-24 m-grey-color">购物车空空如也哦~</div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import common from '../../common/js/common';
   import foodList from './components/foodList';
+  import shoppingCart from './components/shoppingCart';
 
   export default {
     name: "onlineOrder",
@@ -84,7 +88,7 @@
         cart_show: false
       }
     },
-    components: { foodList },
+    components: { foodList, shoppingCart },
     methods: {
       // 滑动固定顶部
       handleScroll () {
@@ -122,7 +126,9 @@
       toCart() {
         if(this.cart_show) {
           this.cart_show = false;
-          this.cart_num_show = true;
+          if(this.cart_total != 0) {
+            this.cart_num_show = true;
+          }
         }else if(!this.cart_show) {
           this.cart_show = true;
           this.cart_num_show = false;
