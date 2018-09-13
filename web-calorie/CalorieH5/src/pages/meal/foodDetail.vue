@@ -129,7 +129,7 @@
     .row-right-img {
       width: 30px;
       height: 30px;
-      padding: 5px 30px;
+      padding: 0 30px;
     }
   }
 
