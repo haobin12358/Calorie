@@ -48,6 +48,8 @@
         </li>
       </ul>
     </div>
+
+    <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
   </div>
 </template>
 
@@ -243,6 +245,17 @@
           }
         }
       }
+    }
+  }
+  .cart-img {
+    width: 100px;
+    height: 100px;
+    opacity: 0.5;
+    position: fixed;
+    left: 10px;
+    bottom: 40px;
+    &.active {
+
     }
   }
   /*滚动条样式*/
