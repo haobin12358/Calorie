@@ -5,8 +5,9 @@
     .meal-item{
       display: flex;
       padding: 15rpx 30rpx 15rpx 15rpx;
+      margin-bottom: 10rpx;
       position: relative;
-      margin-bottom: 20rpx;
+      box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
 
       .item-img{
         width: 120rpx;

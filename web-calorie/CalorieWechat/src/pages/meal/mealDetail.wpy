@@ -58,13 +58,13 @@
         <view class="rate">
           好评率：98%
         </view>
-        <view class="go-evaluate">
+        <view class="go-evaluate" @tap="goEvaluate">
           评价详情 >
         </view>
       </view>
       <view class="line4">
-        view.money
-        view.
+        <view class="money"></view>
+        <view class="num-handler"></view>
       </view>
     </view>
 
@@ -87,7 +87,11 @@
     data = {};
     computed = {};
 
-    methods = {};
+    methods = {
+      goEvaluate(){
+        this.$navigate('/pages/meal/commodityComment');
+      }
+    };
 
     onLoad() {
 

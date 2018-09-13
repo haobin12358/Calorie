@@ -1,0 +1,367 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+  .container{
+    padding-bottom: 89rpx;
+
+    .container-block{
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      margin-bottom: 20rpx;
+    }
+
+    .order-bill{
+      display: flex;
+      padding:30rpx 20rpx 60rpx 30rpx;
+
+      .canteen-img{
+        width: 104rpx;
+        height: 104rpx;
+      }
+
+      .main-content{
+        padding-top: 37rpx;
+        padding-left: 10rpx;
+        flex: 1;
+        color: @subFontColor;
+
+        .bill-hd{
+          display: flex;
+          align-items: center;
+
+          .canteen-name{
+            margin-right: 38rpx;
+            color: @mainFontColor;
+
+            .fz30();
+          }
+
+          .canteen-name-sub-arrow{
+            width: 16rpx;
+            height: 16rpx;
+          }
+
+        }
+
+        .bill-bd{
+          margin-bottom: 46rpx;
+
+          .fz24();
+
+          .shop-list{
+            border-top: solid 1px #c7c7c7;
+            border-bottom: solid 1px #c7c7c7;
+            padding: 17rpx 0 30rpx 30rpx;
+
+            .shop-item{
+              display: flex;
+              justify-content: space-between;
+
+            }
+          }
+
+          .fee-detail{
+            display: flex;
+            align-items: center;
+            padding: 17rpx 0 0 30rpx;
+
+            .fee-detail-hd{
+
+
+            }
+            .fee-detail-bd{
+              flex: 1;
+              text-align: right;
+              margin-right: 17rpx;
+
+            }
+
+            .fee-detail-ft{
+              width: 16rpx;
+              height: 16rpx;
+
+            }
+          }
+        }
+
+        .bill-ft{
+          display: flex;
+          justify-content: flex-end;
+
+          .fz24();
+
+          .subtotal{
+            text{
+              color: @mainFontColor;
+              font-weight: bold;
+
+              .fz30();
+            }
+          }
+        }
+
+      }
+    }
+
+    .order-info{
+      padding: 43rpx 0 48rpx 34rpx;
+      color: #8a8a8a;
+
+      .fz24();
+
+      .order-info-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 24rpx;
+
+        .item-hd{
+          margin-right: 30rpx;
+        }
+
+        .item-hd-textarae{
+          align-self: flex-start;
+        }
+        .item-bd{
+          height: 45rpx;
+          width: 300rpx;
+          border-radius: 30rpx;
+          border: solid 1px #576eea;
+        }
+
+        .item-bd-common{
+          text-align: center;
+          line-height: 45rpx;
+        }
+
+        .item-bd-select{
+          text-align: center;
+          line-height: 45rpx;
+
+          .item-bd-select-arrow{
+            border: 12rpx solid #576eea;
+            border-color:#576eea transparent transparent;
+            float: right;
+            margin-right: 26rpx;
+            margin-top: 18rpx;
+          }
+        }
+
+        .item-bd-input{
+          input{
+            padding: 0 20rpx;
+          }
+
+        }
+
+        .item-bd-textarae{
+          height: 106rpx;
+          border-radius: 20rpx;
+          padding: 20rpx;
+        }
+
+      }
+    }
+
+    .extra-order-info{
+      color: #8a8a8a;
+      padding: 35rpx;
+
+      .fz24();
+
+      .extra-order-info-item{
+        display: flex;
+        align-items: center;
+
+        .item-hd{
+          margin-right: 30rpx;
+
+        }
+        .item-bd{}
+      }
+    }
+
+    .footer-resident-pay{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 89rpx;
+      width: 100%;
+      display: flex;
+      background: #ffffff;
+      z-index: 10;
+      border-top: solid 1px #d5d5d5;
+
+      .footer-left{
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        padding-left: 52rpx;
+
+        .money-img{
+          width: 53rpx;
+          height: 53rpx;
+          margin-right: 9rpx;
+        }
+
+        .subtotal-text{
+          color: @subFontColor;
+          margin-right: 18rpx;
+
+          .fz24();
+        }
+        .subtotal-num{
+          color: @moneyColor;
+
+          .fz30();
+        }
+      }
+
+      .footer-right{
+        width: 293rpx;
+        text-align: center;
+        line-height: 89rpx;
+        color: #ffffff;
+        background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+      }
+    }
+
+
+  }
+</style>
+
+<template>
+  <view class="container">
+    <view class="container-block order-bill">
+      <image class="canteen-img" src="https://dummyimage.com/600x400"></image>
+      <view class="main-content">
+        <view class="bill-hd">
+          <view class="canteen-name">
+            嘉禾食堂
+          </view>
+          <image src="../../images/arrow.png" class="canteen-name-sub-arrow"> > </image>
+        </view>
+        <view class="bill-bd">
+          <view class="shop-list">
+            <view wx:for="123456" class="shop-item">
+              <view class="meal-name">{{item}}</view>
+              <view class="shop-num">x{{item}}</view>
+            </view>
+          </view>
+
+          <view class="fee-detail">
+            <view class="fee-detail-hd">优惠券</view>
+            <view class="fee-detail-bd">暂无可用</view>
+            <image class="fee-detail-ft" src="../../images/arrow.png"></image>
+          </view>
+        </view>
+        <view class="bill-ft">
+
+          <view class="subtotal">
+            实付 <text>￥ 18.0</text>元
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="container-block order-info">
+      <view class="order-info-item">
+        <view class="item-hd">
+          取餐方式:
+        </view>
+        <view class="item-bd item-bd-common">
+          {{deliver ? '送餐上门' : '自取'}}
+
+        </view>
+      </view>
+      <view class="order-info-item">
+          <view class="item-hd">
+            送餐时间:
+          </view>
+          <view class="item-bd item-bd-select">
+            <picker range="{{timeSlot}}" @change="changeDeliverTime">
+            {{timeSlot[currentTimeSlotIndex]}}
+            <view class="item-bd-select-arrow"> </view>
+            </picker>
+          </view>
+      </view>
+
+      <view class="order-info-item">
+        <view class="item-hd">
+          联系电话:
+        </view>
+        <view class="item-bd item-bd-input">
+          <input type="text"/>
+        </view>
+      </view>
+
+      <view wx:if="{{deliver}}" class="order-info-item">
+        <view class="item-hd item-hd-textarae">
+          送餐地点:
+        </view>
+
+        <textarea class="item-bd item-bd-textarae">
+
+        </textarea>
+      </view>
+
+
+    </view>
+    <view class="container-block extra-order-info">
+      <view class="extra-order-info-item">
+        <view class="item-hd">
+          备注
+        </view>
+        <view class="item-bd">
+          <input type="text" placeholder="在这输入备注"/>
+        </view>
+      </view>
+    </view>
+
+    <view class="footer-resident-pay">
+      <view class="footer-left">
+        <image class="money-img" src="../../images/purple/meal_money.png"></image>
+        <view class="subtotal-text">合计</view>
+        <view class="subtotal-num">￥18.0</view>
+      </view>
+      <view class="footer-right">
+        去支付
+      </view>
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class PayMealOrder extends wepy.page {
+    config = {};
+
+    components = {};
+
+    data = {
+      deliver: false,
+      timeSlot:[
+        '11:00-11:30',
+        '11:30-12:00',
+        '12:00-12:30',
+        '12:30-13:00',
+      ],
+      currentTimeSlotIndex: 0
+    };
+
+    computed = {};
+
+    methods = {
+      changeDeliverTime({detail: {value}}){
+        this.currentTimeSlotIndex = value;
+      }
+    };
+
+    onLoad(params) {
+      this.deliver = params.deliver == 'true';
+
+    }
+  }
+</script>
+

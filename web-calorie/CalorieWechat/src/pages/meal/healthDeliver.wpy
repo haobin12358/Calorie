@@ -1,149 +1,149 @@
 <style scoped lang="less">
-    @import "../../styles/base";
+  @import "../../styles/base";
 
-    .container{
+  .container{
+    display: flex;
+    flex-direction: column;
+
+    .container-hd{
+      height: 300rpx;
       display: flex;
-      flex-direction: column;
+      align-items: flex-end;
 
-      .container-hd{
-        height: 300rpx;
-        display: flex;
-        align-items: flex-end;
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .menu-list{
+      height: 140rpx;
+      white-space: nowrap;
+      box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+      .menu-item{
+        margin-right: 40rpx;
+        padding-top: 10rpx;
+        display: inline-block;
+        text-align: center;
+
+        &:first-child{
+          margin-left: 20rpx;
+        }
+        &:last-child{
+          margin-right: 20rpx;
+        }
+
+        .icon{
+          width: 70rpx;
+          height: 70rpx;
+          border: 1rpx solid #576eea;;
+          border-radius: 50%;
+        }
+
+        .name{
+          white-space: nowrap;
+
+          .fz21();
+        }
+      }
+
+      .menu-item.menu-item-active{
+        .icon{
+          border: solid 5rpx #576eea;
+        }
+      }
+    }
+
+    .menu-list-fixed{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      z-index: 10;
+    }
+
+    .container-bd-space{
+      padding-top: 156rpx;
+    }
+
+    .container-bd{
+      /*flex: 1;*/
+      padding-bottom: 89rpx;
+
+    }
+
+    .container-ft{
+      position: fixed;
+      width: 100%;
+      height: 89rpx;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      background: #ffffff;
+
+      .fz24();
+
+      .shopcart{
+        position: absolute;
+        top: -25%;
+        left: 20rpx;
+        width: 88rpx;
+        height: 88rpx;
 
         image{
           width: 100%;
           height: 100%;
         }
-      }
 
-      .menu-list{
-        height: 140rpx;
-        white-space: nowrap;
-        box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
-
-        .menu-item{
-          margin-right: 40rpx;
-          padding-top: 10rpx;
-          display: inline-block;
-          text-align: center;
-
-          &:first-child{
-            margin-left: 20rpx;
-          }
-          &:last-child{
-            margin-right: 20rpx;
-          }
-
-          .icon{
-            width: 70rpx;
-            height: 70rpx;
-            border: 1rpx solid #576eea;;
-            border-radius: 50%;
-          }
-
-          .name{
-            white-space: nowrap;
-
-            .fz21();
-          }
-        }
-
-        .menu-item.menu-item-active{
-          .icon{
-            border: solid 5rpx #576eea;
-          }
-        }
-      }
-
-      .menu-list-fixed{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        z-index: 10;
-      }
-
-      .container-bd-space{
-        padding-top: 156rpx;
-      }
-
-      .container-bd{
-        /*flex: 1;*/
-        padding-bottom: 89rpx;
-
-      }
-
-      .container-ft{
-        position: fixed;
-        width: 100%;
-        height: 89rpx;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        background: #ffffff;
-
-        .fz24();
-
-        .shopcart{
+        .shopcart-num{
           position: absolute;
-          top: -25%;
-          left: 20rpx;
-          width: 88rpx;
-          height: 88rpx;
+          top: -10%;
+          left: 50rpx;
+          width: 37rpx;
+          height: 37rpx;
+          background: @moneyColor;
+          border-radius: 50%;
 
-          image{
-            width: 100%;
-            height: 100%;
-          }
-
-          .shopcart-num{
-            position: absolute;
-            top: -10%;
-            left: 50rpx;
-            width: 37rpx;
-            height: 37rpx;
-            background: @moneyColor;
-            border-radius: 50%;
-
-            text-align: center;
-            line-height: 37rpx;
-          }
-        }
-
-        .footer-left{
-          flex: 1;
-          display: flex;
-          align-items: center;
-
-          .amount-block{
-            margin-left: 115rpx;
-
-            .amount-text{
-              margin-right: 18rpx;
-              color: @subFontColor;
-            }
-
-            .amount-num{
-              color: @moneyColor;
-            }
-          }
-        }
-        .footer-right{
-          width: 292rpx;
-          background-image: linear-gradient(to right, #2dd0ef, #8614d9);
           text-align: center;
-          line-height: 89rpx;
-          color: #ffffff;
+          line-height: 37rpx;
         }
+      }
+
+      .footer-left{
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        .amount-block{
+          margin-left: 115rpx;
+
+          .amount-text{
+            margin-right: 18rpx;
+            color: @subFontColor;
+          }
+
+          .amount-num{
+            color: @moneyColor;
+          }
+        }
+      }
+      .footer-right{
+        width: 292rpx;
+        background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+        text-align: center;
+        line-height: 89rpx;
+        color: #ffffff;
       }
     }
+  }
 </style>
 
 <template>
   <view class="container">
     <view class="container-hd">
-      <image src="../../images/test_order_online.png" mode="aspectFill" style="height: {{containerHdHeight}}px;opacity:  {{containerHdOpacity}};"></image>
+      <image src="../../images/test2.png" mode="aspectFill" style="height: {{containerHdHeight}}px;opacity:  {{containerHdOpacity}};"></image>
     </view>
     <scroll-view scroll-x="true" class="menu-list {{fixedMenuBar?'menu-list-fixed':''}}">
       <view wx:for="{{menuList}}" @tap="switchMenu({{index}})" class="menu-item {{index==currentMenuIndex? 'menu-item-active': ''}}">
@@ -167,9 +167,9 @@
   import ShoppingList from '@/components/shoppingList';
   import MealList from '@/components/mealList';
 
-  export default class OrderOnline extends wepy.page {
+  export default class HealthDeliver extends wepy.page {
     config = {
-      navigationBarTitleText: '在线点餐'
+      navigationBarTitleText: '健康配送'
     }
 
     components = {
@@ -288,7 +288,7 @@
         this.$navigate('/pages/meal/mealDetail');
       },
       goPayMealOrder(){
-        this.$navigate('/pages/meal/payMealOrder');
+        this.$navigate('/pages/meal/payMealOrder?deliver=true');
       }
     };
 
