@@ -19,7 +19,7 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
-      <ul class="product-list">
+      <ul class="product-list animated bounceInRight">
         <li class="product-box" v-for="item in onlineList">
           <img class="product-img" :src="item.src" alt="">
           <div class="product-bottom">
@@ -54,7 +54,8 @@
 <script type="text/ecmascript-6">
   import menuLabel from '../../components/common/menuLabel'
   import navbar from '../../components/common/navbar'
-  import common from '../../common/js/common';
+  import common from '../../common/js/common'
+  import animate from 'animate.css'
 
   export default {
     name: "healthSurrounding",

@@ -23,7 +23,7 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
-      <ul class="product-list">
+      <ul class="product-list animated bounceInRight">
         <li class="product-box" v-for="item in onlineList">
           <img class="product-img" :src="item.src" alt="">
           <div class="product-bottom">
@@ -38,7 +38,7 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
-      <ul class="product-list">
+      <ul class="product-list animated bounceInUp">
         <li class="health-box" v-for="item in healthList">
           <img class="health-img" :src="item.src" alt="">
           <div class="health-name m-ft-24 m-grey-color tl">{{item.name}}</div>
@@ -73,7 +73,8 @@
 
 <script type="text/ecmascript-6">
   import menuLabel from '../../components/common/menuLabel'
-  import common from '../../common/js/common';
+  import common from '../../common/js/common'
+  import animate from 'animate.css'
 
   export default {
     name: "index",
