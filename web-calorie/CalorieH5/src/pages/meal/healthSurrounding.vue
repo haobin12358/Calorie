@@ -293,7 +293,7 @@
     .m-modal-state{
       top: 350px;
       width: 620px;
-      min-height: 614px;
+      min-height: 660px;
       overflow: scroll;
       overflow-x: hidden;
       z-index: 1004;
@@ -302,5 +302,6 @@
   /*滚动条样式*/
   ::-webkit-scrollbar {
     height: 0;
+    width: 0;
   }
 </style>
