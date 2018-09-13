@@ -1,0 +1,160 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+  .container{
+    .comment-list{
+      .comment-item{
+        margin-bottom: 14rpx;
+        box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+
+        padding: 25rpx 20rpx 85rpx 30rpx;
+        display: flex;
+
+        .user-img{
+          width: 90rpx;
+          height: 90rpx;
+          margin-right: 31rpx;
+        }
+
+        .main-content{
+          flex: 1;
+          color: #8a8a8a;
+
+
+          .fz24();
+
+          .main-content-hd{
+            padding-left: 1rpx;
+            padding-bottom: 9rpx;
+            border-bottom: 1px solid #c7c7c7;
+
+            .line1{}
+
+            .line2{
+              display: flex;
+              .rate-hd {
+                margin-right: 24rpx;
+              }
+              .rate-bd{
+                flex: 1;
+
+                display: flex;
+                align-items: center;
+
+                .image-block {
+                  .star-image {
+                    position: relative;
+                    src: "../../images/star.png";
+                    height: 39rpx;
+                    width: 39rpx;
+
+                    .item {
+                      position: absolute;
+                      width: 25rpx;
+                      top: 0;
+                      height: 50rpx;
+                    }
+                  }
+                }
+              }
+              .rate-ft{
+
+              }
+            }
+          }
+
+          .main-content-bd{
+            padding-top: 20rpx;
+
+            .comment-text{
+              color: black;
+              margin-bottom: 20rpx;
+            }
+
+            .comment-img{
+              image{
+                width: 170rpx;
+                height: 170rpx;
+                margin-right: 20rpx;
+                margin-bottom: 10rpx;
+
+              }
+            }
+          }
+
+
+        }
+      }
+    }
+  }
+</style>
+
+<template>
+  <view class="container">
+    <view class="comment-list">
+      <view wx:for="123456" class="comment-item">
+        <image class="user-img" src="https://dummyimage.com/600x400"></image>
+        <view class="main-content">
+          <view class="main-content-hd">
+            <view class="line1">
+              马云
+            </view>
+            <view class="line2">
+              <view class="rate-hd">
+                评价
+              </view>
+              <view class="rate-bd">
+                <view class="image-block">
+                  <block wx:for="{{stars}}" wx:key="*this">
+                    <image class="star-image"  style="left:{{item*10}}rpx;"
+                           src="{{key > item ?((key-item) <= 0.71?halfSrc:selectedSrc) : normalSrc}}">
+                    </image>
+                  </block>
+                </view>
+              </view>
+              <view class="rate-ft">
+                好
+              </view>
+            </view>
+          </view>
+          <view class="main-content-bd">
+            <view class="comment-text">
+              非常好吃!!!
+            </view>
+            <view class="comment-img">
+              <image wx:for="123456" src="https://dummyimage.com/600x400"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class CommodityComment extends wepy.page {
+    config = {};
+
+    components = {};
+
+    data = {
+      key: 4,
+      stars: [0, 1, 2, 3, 4],
+      normalSrc: '../../images/star.png',
+      selectedSrc: '../../images/star_full.png',
+      halfSrc: '../../images/star_half.png',
+    };
+    computed = {};
+
+    methods = {};
+
+    onLoad() {
+
+    }
+  }
+</script>
+

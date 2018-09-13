@@ -437,6 +437,7 @@
         this.$navigate('/pages/meal/orderOnline');
       },
       goHealthDeliver(){
+        this.$navigate('/pages/meal/healthDeliver');
 
       },
       goHealthAround(){

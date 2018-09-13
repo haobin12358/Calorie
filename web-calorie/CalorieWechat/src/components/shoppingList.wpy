@@ -10,6 +10,7 @@
       display: flex;
       background: #ffffff;
       z-index: 3000;
+      border-top: solid 1px #d5d5d5;
 
       .fz24();
 
@@ -114,7 +115,7 @@
         <text class="amount-num">￥18.0</text>
       </view>
     </view>
-    <view class="footer-right">
+    <view class="footer-right" @tap="tapGoPay">
       去下单
     </view>
 
@@ -155,6 +156,9 @@
       showShopList(){
         console.log('显示购物列表');
         this.showShopList = !this.showShopList;
+      },
+      tapGoPay(){
+        this.$emit('tapGoPay')
       }
     };
 
