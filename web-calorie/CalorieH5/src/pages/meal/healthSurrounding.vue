@@ -20,7 +20,7 @@
     </div>
     <div class="online-order">
       <ul class="product-list animated bounceInRight">
-        <li class="product-box" v-for="item in onlineList">
+        <li class="product-box" v-for="item in onlineList" @click="toDetail(item)">
           <img class="product-img" :src="item.src" alt="">
           <div class="product-bottom">
             <div class="product-name m-ft-24 m-grey-color tl">{{item.name}}</div>
@@ -35,7 +35,7 @@
     </div>
     <div class="surrounding-health">
       <ul class="surrounding-list animated bounceInUp">
-        <li class="surrounding-box" v-for="item in surroundingList">
+        <li class="surrounding-box" v-for="item in surroundingList" @click="toDetail(item)">
           <img class="surrounding-img" :src="item.src" alt="">
           <div class="surrounding-bottom">
             <div class="surrounding-name m-ft-24 m-grey-color tl">{{item.name}}</div>
@@ -75,16 +75,16 @@
           { click: false, name: "其他营养" }
         ],
         onlineList: [
-          { src: "/static/images/product1.png", name: "哑铃", price: "800.0" },
-          { src: "/static/images/product1.png", name: "瑜伽球", price: "8.0" },
-          { src: "/static/images/product1.png", name: "拉力带", price: "8.0" },
-          { src: "/static/images/product1.png", name: "哑铃", price: "8.0" }
+          { pid: "adf1546", src: "/static/images/product1.png", name: "哑铃", price: "800.0" },
+          { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽球", price: "8.0" },
+          { pid: "adf1546", src: "/static/images/product1.png", name: "拉力带", price: "8.0" },
+          { pid: "adf1546", src: "/static/images/product1.png", name: "哑铃", price: "8.0" }
         ],
         surroundingList: [
-          { src: "/static/images/product1.png", name: "瑜伽垫", price: "800.0", from: "健身器材1店" },
-          { src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
-          { src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
-          { src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" }
+          { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "800.0", from: "健身器材1店" },
+          { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
+          { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
+          { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" }
         ]
       }
     },
@@ -105,6 +105,12 @@
         }
         arr[v].click = true;
         this.nav_list = [].concat(arr);
+      },
+      // 去餐品详情页
+      toDetail(item) {
+        console.log(item);
+        let pid = item.pid;
+        this.$router.push({path: "/productDetail", query: { pid }});
       },
     },
     mounted() {
