@@ -49,13 +49,22 @@
       </ul>
     </div>
 
-    <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
+    <img class="cart-img" :class="cart_show? 'active':''" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
+
+
+    <div class="m-modal" v-if="cart_show">
+      <div class="m-modal-state">
+        <cart-choose></cart-choose>
+      </div>
+      <div class="overlay" @click="cart_show = false"></div>
+    </div>
+
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import menuLabel from '../../components/common/menuLabel'
   import navbar from '../../components/common/navbar'
+  import cartChoose from './components/cartChoose'
   import common from '../../common/js/common'
   import animate from 'animate.css'
 
@@ -85,10 +94,11 @@
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" }
-        ]
+        ],
+        cart_show: false,
       }
     },
-    components: { menuLabel, navbar },
+    components: { navbar, cartChoose },
     methods: {
       // 顶部四个btn跳转
       toPage(item) {
@@ -112,6 +122,14 @@
         let pid = item.pid;
         this.$router.push({path: "/productDetail", query: { pid }});
       },
+      // 点击购物车图标打开-关闭modal
+      cartModal() {
+        if(this.cart_show) {
+          this.cart_show = false;
+        }else if(!this.cart_show) {
+          this.cart_show = true;
+        }
+      }
     },
     mounted() {
 
@@ -121,6 +139,7 @@
 
 <style lang="less" rel="stylesheet/less" scoped>
   @import "../../common/css/index";
+  @import "../../common/css/modal";
 
   .search-input {
     width: 720px;
@@ -138,10 +157,6 @@
   .mt-swipe-box {
     height: 330px;
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
-  }
-  .menu-label {
-    position: absolute;
-    top: 360px;
   }
   .text-row {
     width: 100%;
@@ -261,7 +276,27 @@
     left: 10px;
     bottom: 40px;
     &.active {
+      opacity: 1;
+      z-index: 1005;
+    }
+  }
 
+  .m-modal{
+    .overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1003;
+    }
+    .m-modal-state{
+      top: 350px;
+      width: 620px;
+      min-height: 614px;
+      overflow: scroll;
+      overflow-x: hidden;
+      z-index: 1004;
     }
   }
   /*滚动条样式*/
