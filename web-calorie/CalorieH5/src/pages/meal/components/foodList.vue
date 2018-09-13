@@ -17,7 +17,7 @@
             <div class="right-row-quantity">
               <img class="food-quantity-img" src="/static/images/purple/meal_minus.png" v-if="item.num != 0" @click.stop="quantityChange(index, 'min')">
               <div class="food-quantity m-ft-24 m-grey-color m-ft-b" v-if="item.num != 0">{{item.num}}</div>
-              <img class="food-quantity-img" src="/static/images/purple/meal_plus.png" alt="" @click.stop="quantityChange(index, 'plus')">
+              <img class="food-quantity-img" src="/static/images/purple/meal_plus.png" v-if="item.inventory != 0" @click.stop="quantityChange(index, 'plus')">
             </div>
           </div>
         </div>
@@ -46,7 +46,6 @@
       },
       // 去商品详情页
       toDetail(item) {
-        console.log(1, item);
         this.$emit('toDetail', item);
       }
     },

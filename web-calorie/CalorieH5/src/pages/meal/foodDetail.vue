@@ -12,14 +12,15 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
 
-    <div class="food-box">
+    <div class="food-box" :class="food.inventory == 0? 'active':''">
       <div class="food-price m-ft-28 m-price m-ft-b">￥{{food.price}}</div>
       <div class="food-old-price m-ft-22 m-hex tl">￥{{food.oldPrice}}</div>
+      <div class="food-null-text m-ft-24 m-white">售罄</div>
       <div class="right-row">
         <div class="right-row-quantity">
           <img class="food-quantity-img" src="/static/images/purple/meal_minus.png" v-if="food.num != 0" @click="quantityChange('min')">
           <div class="food-quantity m-ft-24 m-grey-color m-ft-b" v-if="food.num != 0">{{food.num}}</div>
-          <img class="food-quantity-img" src="/static/images/purple/meal_plus.png" alt="" @click="quantityChange('plus')">
+          <img class="food-quantity-img" src="/static/images/purple/meal_plus.png" v-if="food.inventory != 0" @click="quantityChange('plus')">
         </div>
       </div>
     </div>
@@ -43,7 +44,7 @@
     data() {
       return {
         food: { src: "http://himg.china.cn/0/4_203_120316_750_750.jpg", name: "草莓甜点", formula: "娃娃菜、大蒜、青红椒、猪肉泥", price: "10", oldPrice: "12.00",
-          rate: "95.8", inventory: "0", num: "1", fid: "as24dfd" },
+          rate: "95.8", inventory: "10", num: "0", fid: "as24dfd" },
         cart_total: 1,
         total_price: 0,
       }
@@ -105,13 +106,22 @@
     width: 100%;
     display: flex;
     padding: 20px 0;
+    &.active {
+      //opacity: 0.2;
+      background-color: #CBCBCB;
+    }
     .food-price {
       padding: 0 60px 0 30px;
     }
     .food-old-price {
-      flex: 1;
+      /*flex: 1;*/
       padding-top: 5px;
       text-decoration: line-through;
+    }
+    .food-null-text {
+      flex: 1;
+      text-align: left;
+      padding-left: 40px;
     }
     .right-row {
       display: flex;

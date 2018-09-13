@@ -17,7 +17,7 @@
       </ul>
     </div>
 
-    <food-list :foodList="foodList"></food-list>
+    <food-list :foodList="foodList" @toDetail="toDetail"></food-list>
 
     <div class="to-order">
       <div class="cart-product-box">
@@ -30,9 +30,10 @@
     </div>
 
     <div class="m-modal" v-if="cart_show">
+      <div class="overlay" @click="cart_show = false"></div>
       <div class="m-modal-state">
         <div class="food-list-box" v-if="cart_total != 0">
-          <food-list :foodList="cartList"></food-list>
+          <food-list :foodList="cartList" @toDetail="toDetail"></food-list>
         </div>
         <div class="food-list-box" v-if="cart_total == 0">
           <img class="null-cart-img" src="/static/images/purple/meal_shop_cart2.png" alt="">
