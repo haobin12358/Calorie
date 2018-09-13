@@ -34,7 +34,7 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="surrounding-health">
-      <ul class="surrounding-list">
+      <ul class="surrounding-list animated bounceInUp">
         <li class="surrounding-box" v-for="item in surroundingList">
           <img class="surrounding-img" :src="item.src" alt="">
           <div class="surrounding-bottom">
