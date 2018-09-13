@@ -1,6 +1,7 @@
 
 @import "./_variate";
 @import "./index";
+@import "./modal";
 
 .mt-swipe-box {
   margin-bottom: 0;
@@ -48,62 +49,68 @@
   }
 }
 
-.food-list {
-  .food-box {
-    width: 100%;
-    display: flex;
-    margin: 10px 0;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    &:first-child {
-      margin-top: 150px;
-    }
-    .food-img {
-      width: 120px;
-      height: 120px;
-      padding: 15px;
-    }
-    .food-box-right {
-      flex: 1;
-      .right-row {
+.food-box {
+  width: 100%;
+  display: flex;
+  margin: 15px 0;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  &:first-child {
+    margin-top: 140px;
+  }
+  &.active {
+    //opacity: 0.2;
+    background-color: #CBCBCB;
+  }
+  .food-img {
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+  }
+  .food-box-right {
+    flex: 1;
+    .right-row {
+      display: flex;
+      padding: 12px 0 0 30px;
+      .food-name {
+        flex: 1;
+        text-align: left;
+        font-size: 24px;
+        color: @greyColor;
+      }
+      .food-price {
+        padding-right: 40px;
+        font-size: 24px;
+        color: @priceColor;
+      }
+      .food-rate {
+        text-align: left;
+        color: @hex;
+        font-size: 20px;
+      }
+      .food-null-text {
+        flex: 1;
+        text-align: left;
+        padding-left: 40px;
+      }
+      .food-old-price {
+        padding-right: 40px;
+        color: @hex;
+        font-size: 20px;
+        text-decoration: line-through;
+      }
+      .right-row-quantity {
+        width: 100%;
         display: flex;
-        padding: 12px 0 0 30px;
-        .food-name {
-          flex: 1;
-          text-align: left;
-          font-size: 24px;
-          color: @greyColor;
-        }
-        .food-price {
-          padding-right: 60px;
-          font-size: 24px;
-          color: @priceColor;
-        }
-        .food-rate {
-          flex: 1;
-          text-align: left;
-          color: @hex;
-          font-size: 20px;
-        }
-        .food-old-price {
-          padding-right: 60px;
-          color: @hex;
-          font-size: 20px;
-          text-decoration: line-through;
-        }
-        .right-row-quantity {
-          width: 100%;
+        padding-right: 40px;
+        justify-content: flex-end;
+        .food-quantity-img {
+          width: 42px;
+          height: 42px;
           display: flex;
-          padding-right: 60px;
-          justify-content: flex-end;
-          .food-quantity-img {
-            width: 42px;
-            height: 42px;
-            display: flex;
-          }
-          .food-quantity {
-            width: 40px;
-            padding: 8px 15px;
-          }
+        }
+        .food-quantity {
+          width: 40px;
+          padding: 8px 15px;
         }
       }
     }
@@ -116,23 +123,25 @@
   background-color: @white;
   position: fixed;
   bottom: 0;
+  z-index: 1002;
+  border-top: 1px #d5d5d5 solid;
   .cart-product-box {
     .cart-img {
       width: 100px;
       height: 100px;
       position: absolute;
-      top: -25px;
-      left: 20px;
+      top: -45px;
+      left: 10px;
     }
     .cart-product-num {
       position: absolute;
-      top: -30px;
-      left: 80px;
-      width: 17px;
-      height: 17px;
-      padding: 7px;
+      top: -50px;
+      left: 70px;
+      width: 35px;
+      height: 20px;
+      padding: 7px 0;
       font-size: 18px;
-      line-height: 20px;
+      line-height: 25px;
       color: @white;
       border-radius: 50%;
       background-color: @priceColor;
@@ -159,6 +168,32 @@
     white-space: normal;
     padding: 25px 90px;
     background-image: linear-gradient(to right, @mainLef, @mainRight);
+  }
+}
+
+.m-modal{
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .m-modal-state{
+    top: 500px;
+    width: 620px;
+    min-height: 614px;
+    overflow: scroll;
+    overflow-x: hidden;
+    .food-list-box {
+      width: 550px;
+      margin: -100px 0 30px 30px;
+      .null-cart-img {
+        width: 135px;
+        height: 130px;
+        margin-top: 300px;
+      }
+    }
   }
 }
 
