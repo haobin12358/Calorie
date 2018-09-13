@@ -15,7 +15,7 @@
     <navbar :list="nav_list" @navClick="navClick"></navbar>
 
     <div class="text-row">
-      <div class="row-left-text">在线点餐</div>
+      <div class="row-left-text">热门商品</div>
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
@@ -30,23 +30,7 @@
       </ul>
     </div>
     <div class="text-row">
-      <div class="row-left-text">健康配送</div>
-      <img class="row-right-img" src="/static/images/arrow.png" alt="">
-    </div>
-    <div class="online-order">
-      <ul class="product-list">
-        <li class="health-box" v-for="item in healthList">
-          <img class="health-img" :src="item.src" alt="">
-          <div class="health-name m-ft-24 m-grey-color tl">{{item.name}}</div>
-          <div class="health-bottom">
-            <div class="health-price m-ft-24 m-price tl">￥{{item.price}}</div>
-            <div class="bottom-btn">快捷下单</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="text-row">
-      <div class="row-left-text">健康周边</div>
+      <div class="row-left-text">为您推荐</div>
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="surrounding-health">
@@ -88,22 +72,16 @@
           { click: false, name: "其他营养" }
         ],
         onlineList: [
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "800.0" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" }
-        ],
-        healthList: [
-          { src: "/static/images/product1.png", name: "鸡胸肉土豆泥沙拉", price: "800.0" },
-          { src: "/static/images/product1.png", name: "鸡胸肉土豆泥沙拉", price: "8.0" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0" }
+          { src: "/static/images/product1.png", name: "哑铃", price: "800.0" },
+          { src: "/static/images/product1.png", name: "瑜伽球", price: "8.0" },
+          { src: "/static/images/product1.png", name: "拉力带", price: "8.0" },
+          { src: "/static/images/product1.png", name: "哑铃", price: "8.0" }
         ],
         surroundingList: [
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "800.0", from: "早安city" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" },
-          { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" }
+          { src: "/static/images/product1.png", name: "瑜伽垫", price: "800.0", from: "健身器材1店" },
+          { src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
+          { src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
+          { src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" }
         ]
       }
     },
@@ -164,14 +142,14 @@
       font-size: 30px;
       font-weight: bold;
       padding: 10px 0;
-      margin-left: 45px;
+      margin-left: 30px;
       text-align: left;
       color: @greyColor;
     }
     .row-right-img {
       width: 30px;
       height: 30px;
-      padding: 15px 30px;
+      padding: 15px 20px;
     }
   }
   .online-order {
@@ -192,10 +170,10 @@
         background-color: @white;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         &:first-child {
-          margin-left: 45px;
+          margin-left: 30px;
         }
         &:last-child {
-          margin-right: 45px;
+          margin-right: 30px;
         }
         .product-img {
           width: 231px;
@@ -220,40 +198,6 @@
           }
         }
       }
-      .health-box {
-        display: inline-block;
-        height: 400px;
-        margin-right: 20px;
-        border-radius: 20px;
-        background-color: @white;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-        &:first-child {
-          margin-left: 45px;
-        }
-        &:last-child {
-          margin-right: 45px;
-        }
-        .health-img {
-          width: 280px;
-          height: 289px;
-          border-radius: 20px 20px 0 0;
-        }
-        .health-name {
-          font-size: 24px;
-          margin-left: 11px;
-          color: @greyColor;
-          padding-bottom: 15px;
-        }
-        .health-bottom {
-          width: 100%;
-          display: flex;
-          .health-price {
-            flex: 1;
-            margin-left: 11px;
-            line-height: 47px;
-          }
-        }
-      }
     }
   }
   .bottom-btn {
@@ -265,19 +209,19 @@
     background-image: linear-gradient(to right, @mainLef, @mainRight);
   }
   .surrounding-health {
-    margin: 15px 0 0 40px;
+    margin: 15px 0 0 30px;
     .surrounding-list {
       display: flex;
       flex-wrap: wrap;
       .surrounding-box {
-        width: 325px;
+        width: 340px;
         height: 500px;
         border-radius: 20px;
         margin: 0 20px 20px 0;
         background-color: #ffffff;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         .surrounding-img {
-          width: 325px;
+          width: 340px;
           height: 356px;
           border-radius: 20px 20px 0 0;
         }
