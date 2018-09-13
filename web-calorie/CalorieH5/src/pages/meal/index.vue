@@ -133,6 +133,7 @@
     height: 40px;
     display: flex;
     padding: 15px;
+    line-height: 45px;
     background-image: linear-gradient(to right, @mainLef, @mainRight);
   }
   .address-choose {
@@ -143,6 +144,7 @@
     display: flex;
     opacity: 0.3;
     padding: 10px;
+    line-height: 45px;
     background-color: @white;
   }
   .row-img {
