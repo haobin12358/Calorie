@@ -5,6 +5,7 @@
         <li v-for="(item, index) in list" :class="item.click?'active':''" @click="navClick(index)">
           <span class="m-navbar-text">{{item.name}}</span>
           <span class="m-dot" v-if="item.dot"></span>
+          <div class="nav-bottom"> </div>
         </li>
       </ul>
     </div>
@@ -43,27 +44,19 @@
   .m-navbar{
     margin-top: 10px;
     padding: 0 18px;
-    border-bottom: 1px solid @borderColor;
     .ul-four{
       display: flex;
       flex-flow: row;
       align-items: center;
-      font-size: 32px;
+      font-size: 24px;
+      color: @greyColor;
       white-space: nowrap;
       justify-content: space-around;
       li{
         padding: 10px 0;
-        /*width: 25%;*/
         position: relative;
         span.m-navbar-text{
           padding: 10px 20px;
-          font-weight: 600;
-        }
-        &.active{
-          span.m-navbar-text{
-            color: @mainColor;
-            border-bottom: 3px solid @mainColor;
-          }
         }
         .m-dot{
           position: absolute;
@@ -71,6 +64,16 @@
           height: 8px;
           border-radius: 50%;
           background-color: @mainColor;
+        }
+        .nav-bottom {
+          width: 50px;
+          height: 3px;
+          margin: 10px 0 0 40px;
+        }
+        &.active{
+          .nav-bottom {
+            background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+          }
         }
       }
     }
