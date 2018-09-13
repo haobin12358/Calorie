@@ -112,7 +112,7 @@
           padding-bottom: 5px;
           .evaluation-score-img {
             width: 30px;
-            left: 29px;
+            height: 29px;
             padding-left: 15px;
           }
         }
