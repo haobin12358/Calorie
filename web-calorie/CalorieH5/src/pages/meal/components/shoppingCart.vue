@@ -20,6 +20,7 @@
           <div class="m-ft-24 m-grey-color">购物车空空如也哦~</div>
         </div>
       </div>
+      <div class="overlay" @click="toCart"></div>
     </div>
   </div>
 </template>
