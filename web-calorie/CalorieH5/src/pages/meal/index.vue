@@ -154,8 +154,7 @@
     padding-right: 10px;
   }
   .mt-swipe-box {
-    margin-bottom: 130px;
-    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+    height: 460px;
   }
   .menu-label {
     position: absolute;
