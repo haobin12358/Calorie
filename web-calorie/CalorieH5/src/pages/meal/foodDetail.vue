@@ -6,7 +6,7 @@
 
     <div class="food-formula m-ft-24 m-grey-color tl">配方：{{food.formula}}</div>
 
-    <div class="food-evaluation m-ft-20 m-hex">
+    <div class="food-evaluation m-ft-20 m-hex" @click="toEvaluation(food)">
       <div class="food-rate tl">好评率：{{food.rate}}%</div>
       <div>评价详情</div>
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
@@ -60,6 +60,11 @@
           this.food.num = Number(this.food.num) + 1;
           this.cart_total += 1;
         }
+      },
+      // 评价详情
+      toEvaluation(food) {
+        let fid = food.fid;
+        this.$router.push({path: "/productEvaluation", query: { fid }});
       },
       // 查看购物车
       toCart() {
