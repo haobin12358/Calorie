@@ -3,7 +3,7 @@
     <div class="m-navbar" >
       <ul class="ul-four">
         <li v-for="(item, index) in list" :class="item.click?'active':''" @click="navClick(index)">
-          <span class="m-navbar-text">{{item.tnname}}</span>
+          <span class="m-navbar-text">{{item.name}}</span>
           <span class="m-dot" v-if="item.dot"></span>
         </li>
       </ul>
@@ -28,7 +28,7 @@
           if(this.list[v].click){
             return false;
           }
-          common.changeTitle(this.list[v].tnname);
+          common.changeTitle(this.list[v].name);
           this.$emit('navClick',v)
         }
       },
