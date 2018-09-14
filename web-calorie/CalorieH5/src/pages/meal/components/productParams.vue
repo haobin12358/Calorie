@@ -2,7 +2,7 @@
   <div>
 
     <div class="m-modal" v-if="params_show">
-      <div class="m-modal-state">
+      <div class="m-modal-state animated bounceInUp">
         <div class="product-info">
           <div class="img-box">
             <img class="product-img" src="/static/images/product1.png" alt="">
@@ -75,6 +75,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import animate from 'animate.css'
+
   export default {
     name: "productParams",
     data() {
