@@ -301,7 +301,7 @@
       color: @white;
       white-space: normal;
       padding: 25px 90px;
-      background-image: linear-gradient(to right, @mainLef, @mainRight);
+      background-image: linear-gradient(to right, @mainLeft, @mainRight);
     }
   }
 </style>

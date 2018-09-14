@@ -3,7 +3,7 @@
     <div class="add-cart-buy">
       <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
       <div class="add-cart m-text">加入购物车</div>
-      <div class="buy-now m-text">立即购买</div>
+      <div class="buy-now m-text" @click="submitOrder">立即购买</div>
     </div>
 
     <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></cart-choose>
@@ -33,6 +33,10 @@
       toDetail(item) {
         this.$emit('toDetail', item);
       },
+      // 立即购买
+      submitOrder() {
+        this.$router.push("/submitOrder");
+      }
     },
     mounted() {
       let pid = this.$route.query.pid;
@@ -64,7 +68,7 @@
       padding: 12px 65px;
       margin-left: 170px;
       border-radius: 40px 0 0 40px;
-      background-image: linear-gradient(to right, @mainLef, #5876E4);
+      background-image: linear-gradient(to right, @mainLeft, #5876E4);
     }
     .buy-now {
       padding: 12px 65px;

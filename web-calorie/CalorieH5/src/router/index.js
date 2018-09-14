@@ -76,6 +76,8 @@ export const constantRouterMap = [
   { path: '/productOrder', component: () => import('../pages/meal/productOrder'), hidden: true },
   // 商品详情
   { path: '/productDetail', component: () => import('../pages/meal/productDetail'), hidden: true },
+  // 提交订单
+  { path: '/submitOrder', component: () => import('../pages/meal/submitOrder'), hidden: true },
 
 ];
 

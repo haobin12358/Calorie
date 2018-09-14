@@ -33,7 +33,7 @@
           <div class="total-price m-ft-24 m-hex">合计
             <span class="m-ft-30 m-price m-ft-b">￥1903.02</span>
           </div>
-          <div class="buy-btn">立即购买</div>
+          <div class="buy-btn" @click="submitOrder">立即购买</div>
         </div>
       </div>
 
@@ -78,6 +78,10 @@
       // 去商品详情页
       toDetail(item) {
         this.$emit('toDetail', item);
+      },
+      // 立即购买
+      submitOrder() {
+        this.$router.push("/submitOrder");
       }
     },
     mounted() {
@@ -184,7 +188,7 @@
           white-space: normal;
           padding: 25px 70px;
           border-radius: 0 0 20px 0;
-          background-image: linear-gradient(to right, @mainLef, @mainRight);
+          background-image: linear-gradient(to right, @mainLeft, @mainRight);
         }
       }
     }

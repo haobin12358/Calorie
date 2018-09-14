@@ -151,7 +151,7 @@
     display: flex;
     padding: 15px;
     line-height: 45px;
-    background-image: linear-gradient(to right, @mainLef, @mainRight);
+    background-image: linear-gradient(to right, @mainLeft, @mainRight);
   }
   .row-img {
     width: 40px;
@@ -234,7 +234,7 @@
     padding: 6px 28px;
     margin-right: 15px;
     border-radius: 30px;
-    background-image: linear-gradient(to right, @mainLef, @mainRight);
+    background-image: linear-gradient(to right, @mainLeft, @mainRight);
   }
   .surrounding-health {
     margin: 15px 0 0 30px;
