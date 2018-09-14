@@ -3,7 +3,7 @@
     <div class="m-modal" v-if="cart_show">
       <div class="m-modal-state">
         <div class="product-list">
-          <div class="product-box" v-for="(item, index) in productList">
+          <div class="product-box" v-for="(item, index) in productList" @click="toDetail(item)">
             <img class="choose-img" v-if="chooseAll" src="/static/images/purple/meal_check.png">
             <img class="choose-img" v-if="!chooseAll" src="/static/images/purple/meal_uncheck.png">
             <img class="product-img" src="/static/images/product1.png" alt="">
@@ -37,6 +37,8 @@
         </div>
       </div>
 
+      <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
+
       <div class="overlay" @click="cartModal"></div>
     </div>
   </div>
@@ -69,13 +71,13 @@
         console.log(index, operation);
         // this.$emit('quantityChange', index, operation);
       },
+      // 关闭modal
       cartModal() {
         this.$emit("cartModal");
       },
       // 去商品详情页
       toDetail(item) {
-        console.log(item);
-        // this.$emit('toDetail', item);
+        this.$emit('toDetail', item);
       }
     },
     mounted() {
@@ -95,10 +97,12 @@
       bottom: 0;
       left: 0;
       z-index: 1003;
+      opacity: 0.4;
+      background-color: #DCDCDC;
     }
     .m-modal-state{
       width: 620px;
-      min-height: 780px;
+      min-height: 690px;
       max-height: 900px;
       overflow: scroll;
       overflow-x: hidden;
@@ -184,6 +188,14 @@
         }
       }
     }
+  }
+  .cart-img {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    left: 10px;
+    bottom: 40px;
+    z-index: 1004;
   }
 
   /*滚动条样式*/

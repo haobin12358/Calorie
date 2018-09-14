@@ -278,7 +278,7 @@
     opacity: 0.5;
     position: fixed;
     left: 10px;
-    bottom: 40px;
+    bottom: 50px;
     &.active {
       opacity: 1;
       z-index: 1005;

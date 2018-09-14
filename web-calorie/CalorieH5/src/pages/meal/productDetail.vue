@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="product-detail" :class="cart_show? 'active':''">
     <mt-swipe class="mt-swipe-imgs" :auto="0" :show-indicators="false" @change="handleChange">
       <mt-swipe-item v-for="item in productImgs" :key="item.id">
         <img :src="item" class="product-img">
@@ -37,7 +37,7 @@
       </li>
     </ul>
 
-    <add-cart-buy></add-cart-buy>
+    <add-cart-buy :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></add-cart-buy>
   </div>
 </template>
 
@@ -65,6 +65,7 @@ import common from '../../common/js/common';
           {img: "http://pic1.win4000.com/wallpaper/6/59bcc07478a17.jpg"},
           {img: "http://pic1.win4000.com/wallpaper/6/59bcc08474821.jpg"}
         ],
+        cart_show: false,
       }
     },
     components: { addCartBuy },
@@ -81,7 +82,20 @@ import common from '../../common/js/common';
         for (let j = 0; j < (5 - this.score); j ++) {
           this.scoreList.push("/static/images/star.png");
         }
-      }
+      },
+      // 关闭modal
+      cartModal() {
+        if(this.cart_show) {
+          this.cart_show = false;
+        }else if(!this.cart_show) {
+          this.cart_show = true;
+        }
+      },
+      // 去餐品详情页
+      toDetail(item) {
+        // let pid = item.pid;
+        this.cart_show = false;
+      },
     },
     mounted() {
       let pid = this.$route.query.pid;
@@ -98,6 +112,12 @@ import common from '../../common/js/common';
 
 <style lang="less" rel="stylesheet/less" scoped>
   @import "../../common/css/index";
+
+  .product-detail {
+    &.active {
+      position: fixed;
+    }
+  }
 
   .mt-swipe-imgs {
     width: 750px;

@@ -1,14 +1,17 @@
 <template>
   <div>
     <div class="add-cart-buy">
-      <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" alt="">
+      <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
       <div class="add-cart m-text">加入购物车</div>
       <div class="buy-now m-text">立即购买</div>
     </div>
+
+    <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></cart-choose>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import cartChoose from './cartChoose'
 
   export default {
     name: "addCartBuy",
@@ -17,11 +20,23 @@
 
       }
     },
+    components: { cartChoose },
+    props:{
+      cart_show: { type: Boolean, default: false },
+    },
     methods: {
-
+      // 关闭modal
+      cartModal() {
+        this.$emit("cartModal");
+      },
+      // 去餐品详情页
+      toDetail(item) {
+        this.$emit('toDetail', item);
+      },
     },
     mounted() {
-
+      let pid = this.$route.query.pid;
+      // console.log(pid);
     }
   }
 </script>
@@ -35,11 +50,12 @@
     display: flex;
     padding-top: 13px;
     background-color: @white;
+    border-top: 1px @hex solid;
     position: fixed;
     bottom: 0;
     .cart-img {
-      width: 88px;
-      height: 88px;
+      width: 100px;
+      height: 100px;
       position: absolute;
       left: 10px;
       bottom: 40px;
