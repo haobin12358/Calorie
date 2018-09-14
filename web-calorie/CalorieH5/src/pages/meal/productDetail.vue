@@ -17,7 +17,7 @@
       <div class="sales-num m-text">月销：1526 笔</div>
       <div class="store-name m-text">健身器材1号店</div>
     </div>
-    <div class="detail-row shadow-bottom">
+    <div class="detail-row shadow-bottom" @click="params_show = true">
       <div class="m-text">规格</div>
       <div class="color-choose-text m-grey-color tl">选择    颜色分类 重量</div>
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
