@@ -51,7 +51,6 @@
 
     <img class="cart-img" :class="cart_show? 'active':''" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
 
-
     <div class="m-modal" v-if="cart_show">
       <div class="m-modal-state">
         <cart-choose></cart-choose>

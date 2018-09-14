@@ -73,7 +73,7 @@
   @import "../../../common/css/index";
 
   .product-list {
-    margin-bottom: 490px;
+    margin-bottom: 330px;
     .product-box {
       width: 570px;
       display: flex;
