@@ -51,12 +51,7 @@
 
     <img class="cart-img" :class="cart_show? 'active':''" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
 
-    <div class="m-modal" v-if="cart_show">
-      <div class="m-modal-state">
-        <cart-choose></cart-choose>
-      </div>
-      <div class="overlay" @click="cart_show = false"></div>
-    </div>
+    <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal"></cart-choose>
 
   </div>
 </template>
@@ -94,7 +89,7 @@
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" }
         ],
-        cart_show: false,
+        cart_show: true,
       }
     },
     components: { navbar, cartChoose },
@@ -287,25 +282,6 @@
     &.active {
       opacity: 1;
       z-index: 1005;
-    }
-  }
-
-  .m-modal{
-    .overlay {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1003;
-    }
-    .m-modal-state{
-      top: 310px;
-      width: 620px;
-      min-height: 690px;
-      overflow: scroll;
-      overflow-x: hidden;
-      z-index: 1004;
     }
   }
   /*滚动条样式*/
