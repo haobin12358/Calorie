@@ -1,53 +1,61 @@
 <template>
   <div>
-    <div class="order-row">
-      <img class="product-img" src="/static/images/product1.png" alt="">
-      <div class="row-right">
-        <div class="row-right-row">
-          <div class="product-name m-ft-30 m-grey-color tl">哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃</div>
-          <div class="m-ft-24 m-price m-ft-b">￥1698.25</div>
+    <div v-if="payOK">
+      <div class="order-row">
+        <img class="product-img" src="/static/images/product1.png" alt="">
+        <div class="row-right">
+          <div class="row-right-row">
+            <div class="product-name m-ft-30 m-grey-color tl">哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃哑铃</div>
+            <div class="m-ft-24 m-price m-ft-b">￥1698.25</div>
+          </div>
+          <div class="product-info hex-text tl">黑色/15kg</div>
+          <div class="greyC-text tr">x 1</div>
         </div>
-        <div class="product-info hex-text tl">黑色/15kg</div>
-        <div class="greyC-text tr">x 1</div>
       </div>
-    </div>
 
-    <div class="order-row">
-      <img class="wechat-pay-img" src="/static/images/wechat_pay.png" alt="">
-      <div class="pay-text hex-text">微信支付</div>
-      <img class="choose-img" src="/static/images/purple/meal_check_pay.png" alt="">
-    </div>
-    <div class="order-row">
-      <img class="wechat-pay-img" src="/static/images/wechat_pay_blue.png" alt="">
-      <div class="pay-text hex-text">优惠券</div>
-      <img class="choose-img" src="/static/images/meal_uncheck.png" alt="">
-    </div>
-
-    <div class="order-row">
-      <img class="pay-img" src="/static/images/pay_amount.png" alt="">
-      <div class="pay-text hex-text">支付金额</div>
-      <div class="pay-nums-text pay-num-text hex-text">运费：0</div>
-      <div class="pay-num-text hex-text">合计：<span class="m-price">￥1698.25</span></div>
-    </div>
-
-    <div class="memo-box">
-      <div class="hex-text tl">买家留言</div>
-      <textarea class="memo-input greyC-text" cols="45" rows="3"></textarea>
-    </div>
-
-    <div class="address-box">
-      <div class="hex-text tl">收件人</div>
-      <div class="address-row">
-        <div class="buyer-name greyC-text tl">居居女孩</div>
-        <div class="greyC-text">15864446564</div>
+      <div class="order-row">
+        <img class="wechat-pay-img" src="/static/images/wechat_pay.png" alt="">
+        <div class="pay-text hex-text">微信支付</div>
+        <img class="choose-img" src="/static/images/purple/meal_check_pay.png" alt="">
       </div>
-      <div class="address-row">
-        <div class="address-text greyC-text tl">浙江工业大学（屏峰校区）家和西苑十四幢【默认】</div>
-        <div class="m-ft-24 m-border-color">修改</div>
+      <div class="order-row">
+        <img class="wechat-pay-img" src="/static/images/wechat_pay_blue.png" alt="">
+        <div class="pay-text hex-text">优惠券</div>
+        <img class="choose-img" src="/static/images/meal_uncheck.png" alt="">
       </div>
+
+      <div class="order-row">
+        <img class="pay-img" src="/static/images/pay_amount.png" alt="">
+        <div class="pay-text hex-text">支付金额</div>
+        <div class="pay-nums-text pay-num-text hex-text">运费：0</div>
+        <div class="pay-num-text hex-text">合计：<span class="m-price">￥1698.25</span></div>
+      </div>
+
+      <div class="memo-box">
+        <div class="hex-text tl">买家留言</div>
+        <textarea class="memo-input greyC-text" cols="45" rows="3"></textarea>
+      </div>
+
+      <div class="address-box">
+        <div class="hex-text tl">收件人</div>
+        <div class="address-row">
+          <div class="buyer-name greyC-text tl">居居女孩</div>
+          <div class="greyC-text">15864446564</div>
+        </div>
+        <div class="address-row">
+          <div class="address-text greyC-text tl">浙江工业大学（屏峰校区）家和西苑十四幢【默认】</div>
+          <div class="m-ft-24 m-border-color">修改</div>
+        </div>
+      </div>
+
+      <div class="pay-btn m-ft-38 m-white" @click="toPay">支付订单</div>
     </div>
 
-    <div class="pay-btn m-ft-38 m-white">支付订单</div>
+    <div v-if="!payOK">
+      <img class="pay-ok-img" src="/static/images/purple/meal_success_pay.png" alt="">
+      <div class="pay-ok-text">支付成功，{{returnTime}} 秒后自动返回首页...</div>
+      <div class="pay-btn m-ft-38 m-white" @click="toIndex">返回首页</div>
+    </div>
   </div>
 </template>
 
@@ -58,15 +66,36 @@
     name: "submitOrder",
     data() {
       return {
-
+        payOK: true,
+        returnTime: 3
       }
     },
     components: {  },
     methods: {
+      // 支付订单
+      toPay() {
+        this.payOK = false;
+        this.countDown();
+      },
+      // 去首页
+      toIndex() {
 
+      },
+      // 倒计时
+      countDown() {
+        if(!this.payOK) {
+          setInterval(()=>{
+            this.returnTime--;
+            let that = this;
+            if(this.returnTime == 0){
+              that.$router.push("meal");
+            }
+          },1000);
+        }
+      }
     },
     mounted() {
-
+      this.countDown();
     },
     created() {
       // 设置页面title
@@ -166,6 +195,14 @@
     background-image: linear-gradient(to right, @mainLeft, @mainRight);
     position: fixed;
     bottom: 0;
+  }
+  .pay-ok-img {
+    width: 300px;
+    height: 300px;
+    margin: 260px 225px 20px 225px;
+  }
+  .pay-ok-text {
+
   }
   .hex-text {
     font-size: 24px;

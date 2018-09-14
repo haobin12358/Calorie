@@ -1,5 +1,5 @@
 <template>
-  <div class="product-detail" :class="cart_show? 'active':''">
+  <div class="product-detail" :class="cart_show || params_show? 'active':''">
     <mt-swipe class="mt-swipe-imgs" :auto="0" :show-indicators="false" @change="handleChange">
       <mt-swipe-item v-for="item in productImgs" :key="item.id">
         <img :src="item" class="product-img">
@@ -37,12 +37,23 @@
       </li>
     </ul>
 
-    <add-cart-buy :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></add-cart-buy>
+    <div class="add-cart-buy">
+      <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
+      <div class="add-cart m-text" @click="toParams">加入购物车</div>
+      <div class="buy-now m-text" @click="submitOrder">立即购买</div>
+    </div>
+
+    <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></cart-choose>
+
+    <product-params :params_show="params_show" @toParams="toParams"></product-params>
+    <!--<add-cart-buy :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></add-cart-buy>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import addCartBuy from './components/addCartBuy'
+import cartChoose from './components/cartChoose'
+import productParams from './components/productParams'
 import common from '../../common/js/common';
 
   export default {
@@ -66,9 +77,10 @@ import common from '../../common/js/common';
           {img: "http://pic1.win4000.com/wallpaper/6/59bcc08474821.jpg"}
         ],
         cart_show: false,
+        params_show: false,
       }
     },
-    components: { addCartBuy },
+    components: { addCartBuy, cartChoose, productParams },
     methods: {
       // 切换轮播图时的事件
       handleChange(index) {
@@ -91,11 +103,23 @@ import common from '../../common/js/common';
           this.cart_show = true;
         }
       },
+      // 关闭params_show_modal
+      toParams() {
+        if(this.params_show) {
+          this.params_show = false;
+        }else if(!this.params_show) {
+          this.params_show = true;
+        }
+      },
       // 去餐品详情页
       toDetail(item) {
         // let pid = item.pid;
         this.cart_show = false;
       },
+      // 立即购买
+      submitOrder() {
+        this.$router.push("/submitOrder");
+      }
     },
     mounted() {
       let pid = this.$route.query.pid;
@@ -199,6 +223,41 @@ import common from '../../common/js/common';
     height: auto;
     margin: auto;
     background: url("/static/images/loading.gif") no-repeat fixed center;
+  }
+
+  .add-cart-buy {
+    width: 100%;
+    height: 77px;
+    display: flex;
+    padding-top: 13px;
+    background-color: @white;
+    border-top: 1px @hex solid;
+    position: fixed;
+    bottom: 0;
+    .cart-img {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 10px;
+      bottom: 40px;
+    }
+    .add-cart {
+      padding: 12px 65px;
+      margin-left: 170px;
+      border-radius: 40px 0 0 40px;
+      background-image: linear-gradient(to right, @mainLeft, #5876E4);
+    }
+    .buy-now {
+      padding: 12px 65px;
+      border-radius: 0 40px 40px 0;
+      background-image: linear-gradient(to right, #314ad1, @mainRight);
+    }
+    .m-text {
+      width: 150px;
+      height: 40px;
+      font-size: 30px;
+      color: @white;
+    }
   }
 </style>
 
