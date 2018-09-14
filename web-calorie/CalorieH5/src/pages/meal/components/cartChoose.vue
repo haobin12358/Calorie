@@ -70,7 +70,6 @@
         // this.$emit('quantityChange', index, operation);
       },
       cartModal() {
-        console.log(41545)
         this.$emit("cartModal");
       },
       // 去商品详情页

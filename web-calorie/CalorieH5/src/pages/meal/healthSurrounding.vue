@@ -89,7 +89,7 @@
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" },
           { pid: "adf1546", src: "/static/images/product1.png", name: "瑜伽垫", price: "8.0", from: "健身器材1店" }
         ],
-        cart_show: true,
+        cart_show: false,
       }
     },
     components: { navbar, cartChoose },
