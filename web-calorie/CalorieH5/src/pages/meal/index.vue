@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div class="search-input m-ft-21 m-white tl">请输入商家/商品名称</div>
-    <div class="address-choose m-ft-24 m-black tl">浙江工业大学（屏峰校区）</div>
+    <div class="search-input m-ft-21 m-white tl">
+      <img class="row-img" src="/static/images/magnifier.png" alt="">
+      <div>请输入商家/商品名称</div>
+    </div>
+    <div class="address-choose m-ft-24 m-black tl">
+      <img class="row-img" src="/static/images/position.png" alt="">
+      <div>浙江工业大学（屏峰校区）</div>
+    </div>
     <div class="mt-swipe-box">
       <mt-swipe :auto="15000">
         <mt-swipe-item v-for="item in bannerList" :key="item.id">
@@ -17,7 +23,7 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
-      <ul class="product-list">
+      <ul class="product-list animated bounceInRight">
         <li class="product-box" v-for="item in onlineList">
           <img class="product-img" :src="item.src" alt="">
           <div class="product-bottom">
@@ -32,7 +38,7 @@
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
     </div>
     <div class="online-order">
-      <ul class="product-list">
+      <ul class="product-list animated bounceInUp">
         <li class="health-box" v-for="item in healthList">
           <img class="health-img" :src="item.src" alt="">
           <div class="health-name m-ft-24 m-grey-color tl">{{item.name}}</div>
@@ -67,7 +73,8 @@
 
 <script type="text/ecmascript-6">
   import menuLabel from '../../components/common/menuLabel'
-  import common from '../../common/js/common';
+  import common from '../../common/js/common'
+  import animate from 'animate.css'
 
   export default {
     name: "index",
@@ -123,23 +130,31 @@
   @import "../../common/css/index";
 
   .search-input {
+    width: 720px;
     height: 40px;
+    display: flex;
     padding: 15px;
+    line-height: 45px;
     background-image: linear-gradient(to right, @mainLef, @mainRight);
-
   }
   .address-choose {
     position: absolute;
     top: 70px;
     z-index: 1000;
     width: 730px;
+    display: flex;
     opacity: 0.3;
     padding: 10px;
+    line-height: 45px;
     background-color: @white;
   }
+  .row-img {
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+  }
   .mt-swipe-box {
-    margin-bottom: 130px;
-    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+    height: 460px;
   }
   .menu-label {
     position: absolute;

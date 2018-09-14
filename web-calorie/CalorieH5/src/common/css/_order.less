@@ -1,7 +1,22 @@
 
 @import "./_variate";
-@import "./index";
+//@import "./index";
 @import "./modal";
+
+//在线点餐、健康配送
+
+.online-order {
+  margin-bottom: 60px;
+  &.active {
+    position: fixed;
+  }
+}
+.health-distribution {
+  margin-bottom: 60px;
+  &.active {
+    position: fixed;
+  }
+}
 
 .mt-swipe-box {
   margin-bottom: 0;
@@ -14,6 +29,7 @@
 
 .cook-style {
   &.active {
+    width: 100%;
     position: fixed;
     background-color: #Fff;
     top: 0;
@@ -90,7 +106,7 @@
       .food-null-text {
         flex: 1;
         text-align: left;
-        padding-left: 40px;
+        padding-left: 30px;
       }
       .food-old-price {
         padding-right: 40px;
@@ -178,20 +194,23 @@
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 1003;
   }
   .m-modal-state{
-    top: 500px;
     width: 620px;
-    min-height: 614px;
+    min-height: 690px;
     overflow: scroll;
     overflow-x: hidden;
+    z-index: 1004;
+    position: fixed;
+    top: 220px;
     .food-list-box {
       width: 550px;
-      margin: -100px 0 30px 30px;
+      margin: -110px 0 295px 30px;
       .null-cart-img {
         width: 135px;
         height: 130px;
-        margin-top: 300px;
+        margin-top: 350px;
       }
     }
   }

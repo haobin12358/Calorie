@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 60px">
+  <div class="online-order" :class="cart_show? 'active':''">
     <div class="mt-swipe-box">
       <mt-swipe :auto="15000">
         <mt-swipe-item v-for="item in bannerList" :key="item.id">
@@ -22,28 +22,6 @@
     <shopping-cart :cart_num_show="cart_num_show" :cart_total="cart_total" :total_price="total_price"
       :cart_show="cart_show" :cartList="cartList" @toCart="toCart" @toOrder="toOrder" @toDetail="toDetail"></shopping-cart>
 
-    <!--<div class="to-order">
-      <div class="cart-product-box">
-        <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="toCart">
-        <div class="cart-product-num" v-if="cart_num_show">{{cart_total}}</div>
-      </div>
-      <div class="cart-text">合计</div>
-      <div class="cart-price">￥{{total_price}}</div>
-      <div class="to-order-btn" @click="toOrder">去 下 单</div>
-    </div>
-
-    <div class="m-modal" v-if="cart_show">
-      <div class="overlay" @click="cart_show = false"></div>
-      <div class="m-modal-state">
-        <div class="food-list-box" v-if="cart_total != 0">
-          <food-list :foodList="cartList" @toDetail="toDetail"></food-list>
-        </div>
-        <div class="food-list-box" v-if="cart_total == 0">
-          <img class="null-cart-img" src="/static/images/purple/meal_shop_cart2.png" alt="">
-          <div class="m-ft-24 m-grey-color">购物车空空如也哦~</div>
-        </div>
-      </div>
-    </div>-->
   </div>
 </template>
 
