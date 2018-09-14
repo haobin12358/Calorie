@@ -1,0 +1,270 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+    @import "../../styles/animate";
+
+    .container{
+      .container-search-bar {
+        height: 50rpx;
+        background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+        padding-left: 43rpx;
+        box-sizing: border-box;
+
+        .search-bar-tip{
+          color: #ffffff;
+          line-height: 50rpx;
+
+          .fz21();
+        }
+      }
+
+      .container-hd{
+        .hd-swiper{
+          height: 330rpx;
+
+          swiper-item{
+            image{
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .container-bd{
+        .meal-block{
+          margin: 20rpx 0;
+
+          .meal-block-title{
+            margin-bottom: 18rpx;
+            padding-left: 45rpx;
+            padding-right: 33rpx;
+
+            .fz30();
+
+            display: flex;
+            justify-content: space-between;
+
+            .title-text{}
+            .title-arrow{
+              width: 25rpx;
+              height: 20rpx;
+
+              image{
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+
+        .meal-block-list{
+          .meal-block-bd{
+            height: 310rpx;
+            white-space: nowrap;
+            width: 100%;
+          }
+        }
+      }
+
+      .fixed-shop-cart{
+        position: fixed;
+        left: 13rpx;
+        bottom: 26rpx;
+        width: 88rpx;
+        height: 88rpx;
+        z-index: 3000;
+      }
+    }
+
+</style>
+
+<template>
+  <view class="container">
+    <view class="container-search-bar">
+      <view class="search-bar-tip">请输入商家/商品名称</view>
+    </view>
+    <view class="container-hd">
+      <swiper class="hd-swiper" autoplay="true" circular="true" indicator-dots="true">
+        <swiper-item>
+          <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+        </swiper-item>
+        <swiper-item>
+          <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="container-bd">
+      <tab :tabList="tabList" :currentTab.sync="currentTabIndex" @switchTab.user="switchTab"></tab>
+      <view class="meal-block meal-block-list ">
+        <view class="meal-block-title">
+          <view class="title-text">热门商品</view>
+          <view class="title-arrow">
+            <image src="../../images/arrow.png"></image>
+          </view>
+        </view>
+        <scroll-view scroll-x class="meal-block-bd">
+          <commodity-list class=" {{firstAnimate? 'animated '+firstAnimate: ''}}" @tapItem.user="goCommodityDetail"></commodity-list>
+        </scroll-view>
+      </view>
+      <view class="meal-block">
+        <view class="meal-block-title">
+          <view class="title-text">为你推荐</view>
+          <view class="title-arrow">
+            <image src="../../images/arrow.png"></image>
+          </view>
+        </view>
+        <view class="meal-block-bd">
+          <commodity-grid-list class="{{secondAnimate? 'animated '+secondAnimate: ''}}" @tapItem.user="goCommodityDetail"></commodity-grid-list>
+        </view>
+      </view>
+
+    </view>
+
+    <image class="fixed-shop-cart"  @tap="showShopCart" src="../../images/purple/meal_shop_cart.png" style="opacity: {{shopCartVisible? '1': '.5'}};"></image>
+    <shop-cart :show.sync="shopCartVisible" :list.sync="mealList"></shop-cart>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import Tab from '@/components/common/tab';
+  import CommodityList from '@/components/commodityList'
+  import CommodityGridList from '@/components/commodityGridList'
+  import ShopCart from '@/components/shopCart'
+
+  export default class HealthProducts extends wepy.page {
+    config = {
+      navigationBarTitleText: '健康周边'
+    };
+
+    components = {
+      tab: Tab,
+      'commodity-list': CommodityList,
+      'commodity-grid-list': CommodityGridList,
+      'shop-cart': ShopCart,
+    };
+
+    data = {
+      tabList: ['户外运动', '健身设备', '健康果蔬','其他营养'],
+      currentTabIndex: 0,
+      firstAnimate: 'bounceInRight',
+      secondAnimate: 'fadeIn',
+
+      shopCartVisible: true,
+      mealList:[
+        {
+          name: '油爆虾',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 1,
+          storeNum: 2
+        },{
+          name: '蒜泥娃娃菜',
+          money: '12.0',
+          rate: 80,
+          originMoney: '14.0',
+          shopNum: 1,
+          storeNum: 2
+
+        },{
+          name: '干菜扣肉',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 2
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },
+      ],
+    };
+    computed = {};
+
+    methods = {
+      switchTab(index){
+        console.log('页面切换tab', index);
+        this.firstAnimate = '';
+        this.secondAnimate = '';
+        this.$apply();
+        this.firstAnimate = 'bounceInRight';
+        this.secondAnimate = 'fadeIn';
+      },
+
+      goCommodityDetail(){
+        this.$navigate('/pages/meal/commodityDetail');
+      },
+
+      showShopCart(){
+        this.shopCartVisible = !this.shopCartVisible;
+      }
+    };
+
+    onLoad() {
+
+    }
+  }
+</script>
+

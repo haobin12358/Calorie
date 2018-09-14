@@ -1,0 +1,273 @@
+<style scoped lang="less">
+    @import "../styles/base";
+    .shop-cart{
+
+    }
+
+    .popup-screen{
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      background: #000000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      opacity: 0.6;
+    }
+
+    .popup-content{
+      position: fixed;
+      z-index: 2000;
+      left: 66rpx;
+      bottom: 72rpx;
+      width: 619rpx;
+      background: #ffffff;
+      border-radius: 20rpx;
+      /*border-top-right-radius: 20rpx;*/
+      box-sizing: border-box;
+      overflow: hidden;
+
+        .popup-content-scroll{
+          max-height: 900rpx;
+          min-height: 500rpx;
+          padding: 0 20rpx 0 30rpx;
+          box-sizing: border-box;
+
+          .meal-item{
+            display: flex;
+
+            padding: 16rpx;
+            /*为了显示阴影*/
+            margin: 2rpx;
+            margin-bottom: 20rpx;
+            box-shadow: 0rpx 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+            &:first-child{
+              margin-top: 40rpx;
+            }
+
+            .item-choose-img{
+              align-self: center;
+              width: 24rpx;
+              height: 24rpx;
+              margin-right: 13rpx;
+            }
+            .item-commodity-img{
+              width: 120rpx;
+              height: 120rpx;
+              margin-right: 45rpx;
+            }
+
+            .main-content{
+              flex: 1;
+              .fz24();
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+
+              .line1{
+                display: flex;
+                justify-content: space-between;
+
+                .name{
+                  color: @mainFontColor;
+                }
+
+                .money{
+                  color: @moneyColor;
+                }
+              }
+              .line2{
+                /*display: flex;*/
+                /*justify-content: space-between;*/
+                color: @subFontColor;
+
+                .fz20();
+
+                .rate{
+
+                }
+
+                .origin-money{
+                  text-decoration: line-through;
+
+                }
+              }
+              .line3{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                image{
+                  width: 42rpx;
+                  height: 42rpx;
+                }
+
+                text{
+                  margin: 0 36rpx;
+                }
+
+              }
+            }
+
+            .food-item-mask{
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: #000000;
+              opacity: .2;
+              text-align: center;
+              line-height: 148rpx;
+              color: #ffffff;
+
+              .fz24();
+            }
+          }
+        }
+
+        .footer-go-pay{
+          background: #ffffff;
+          height: 90rpx;
+          border-top: 1px solid #d5d5d5;
+          /*border-bottom-left-radius: 20rpx;*/
+          /*border-bottom-left-radius: 20rpx;*/
+          /*border-bottom-right-radius: 20rpx;*/
+          display: flex;
+          /*overflow: hidden;*/
+
+          .footer-left{
+            flex: 1;
+            color: @subFontColor;
+            padding-left: 30rpx;
+            padding-right: 10rpx;
+            display: flex;
+            align-items: center;
+
+            .fz24();
+
+            .select-all{
+              display: flex;
+              align-items: center;
+
+              .select-all-img{
+                width: 24rpx;
+                height: 24rpx;
+                margin-right: 14rpx;
+              }
+
+            }
+
+            .amount-text{
+              flex: 1;
+              text-align: right;
+            }
+
+            .amount-num{
+              color: @moneyColor;
+              font-weight: bold;
+            }
+          }
+
+          .footer-right{
+            width: 293rpx;
+            height: 90rpx;
+            line-height: 90rpx;
+            text-align: center;
+            background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+            color: #ffffff;
+
+            .fz30();
+          }
+        }
+
+
+    }
+</style>
+
+<template>
+  <block wx:if="{{show}}">
+    <view class="popup-screen"  @tap="hideShopCart"></view>
+    <view class="popup-content">
+        <scroll-view  scroll-y="true" class="popup-content-scroll">
+          <view wx:for="{{list}}" class="meal-item" @tap.stop="tapItemHandler">
+            <image class="item-choose-img" src="../../images/purple/meal_uncheck.png"></image>
+            <image class="item-commodity-img" src="https://dummyimage.com/600x400"></image>
+            <view class="main-content">
+              <view class="line1">
+                <view class="name">{{item.name}}</view>
+                <view class="money">￥{{item.money}}</view>
+              </view>
+              <view class="line2">
+                <view class="rate">好评率:{{item.rate}}%</view>
+              </view>
+              <view class="line3">
+                <block wx:if="{{item.shopNum}}">
+                  <image src="../../images/purple/meal_minus.png"></image>
+                  <text>{{item.shopNum}}</text>
+                </block>
+                <image src="../../images/purple/meal_plus.png"></image>
+              </view>
+            </view>
+            <!--<view wx:if="{{item.storeNum == 0}}" class="food-item-mask">告罄</view>-->
+          </view>
+        </scroll-view>
+        <view class="footer-go-pay">
+          <view class="footer-left">
+            <view class="select-all">
+              <image class="select-all-img" src="../../images/purple/meal_uncheck.png"></image>
+              <view class="select-all-text">全选</view>
+
+            </view>
+            <view class="amount-text">
+              合计
+            </view>
+            <view class="amount-num">
+              ￥193.0
+            </view>
+
+          </view>
+          <view class="footer-right">
+            立即购买
+          </view>
+        </view>
+
+      <!--<placeholder wx:else></placeholder>-->
+    </view>
+  </block>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class ShopCart extends wepy.component {
+    props = {
+      show: {
+        type: Boolean,
+        default: false,
+        twoWay: true
+      },
+      list:{
+        type: Array
+      }
+    };
+
+    data = {};
+
+    computed = {};
+
+    methods = {
+      hideShopCart(){
+        this.show = false;
+      }
+    };
+
+
+    onLoad() {
+
+    }
+  }
+</script>
+

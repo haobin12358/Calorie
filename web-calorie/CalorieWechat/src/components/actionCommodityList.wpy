@@ -1,0 +1,106 @@
+<style scoped lang="less">
+    @import "../styles/base";
+
+    .two-props-goods-action-list{
+      .meal-item{
+        border-radius: 20rpx;
+        width: 280rpx;
+        height: 401rpx;
+        display: inline-block;
+        margin-right: 20rpx;
+        background: #ffffff;
+        box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+        &:first-child{
+          margin-left: 45rpx;
+        }
+
+        .item-hd{
+          height: 280rpx;
+
+          image{
+            border-top-right-radius: 20rpx;
+            border-top-left-radius: 20rpx;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .item-bd{
+          padding-left: 11rpx;
+          padding-right: 16rpx;
+          margin-top: 3rpx;
+
+          .fz24();
+          .line1{
+            margin-bottom: 25rpx;
+
+          }
+          .line2{
+            display: flex;
+            justify-content: space-between;
+
+            .money{
+              color: @moneyColor;
+            }
+
+            .place-order{
+              background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+              box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+              padding: 6rpx 28rpx;
+              color: #ffffff;
+              border-radius: 30px;
+
+              .fz21();
+            }
+          }
+        }
+      }
+      }
+
+</style>
+
+<template>
+  <view class="two-props-goods-action-list">
+    <view wx:for="123456" class="meal-item" @tap.stop="tapItemHandler">
+      <view class="item-hd">
+        <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+      </view>
+      <view class="item-bd">
+        <view class="line1">蒜泥娃娃菜</view>
+        <view class="line2">
+          <view class="money">￥8.0</view>
+          <view class="place-order" @tap.stop="tapPlaceOrderHandler">快捷下单</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class TwoPropsActionCommodityList extends wepy.component {
+    props = {
+    };
+
+    data = {};
+
+    computed = {};
+
+    methods = {
+      tapItemHandler(){
+        this.$emit('tapItem');
+      },
+      tapPlaceOrderHandler(){
+        this.$emit('tapPlaceOrder');
+      }
+    };
+
+
+    onLoad() {
+
+    }
+  }
+</script>
+
