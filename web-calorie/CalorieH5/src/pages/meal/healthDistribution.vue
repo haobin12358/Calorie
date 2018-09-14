@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 60px">
+  <div class="health-distribution" :class="cart_show? 'active':''">
     <div class="mt-swipe-box">
       <mt-swipe :auto="15000">
         <mt-swipe-item v-for="item in bannerList" :key="item.id">

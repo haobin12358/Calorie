@@ -73,7 +73,7 @@
   @import "../../../common/css/index";
 
   .product-list {
-    margin-bottom: 330px;
+    margin-bottom: 300px;
     .product-box {
       width: 570px;
       display: flex;
@@ -127,7 +127,7 @@
     background-color: @white;
     border-top: 1px solid @hex;
     position: fixed;
-    bottom: 99px;
+    bottom: 100px;
     .choose-all-img {
       width: 30px;
       height: 30px;
@@ -135,6 +135,7 @@
     }
     .total-price {
       flex: 1;
+      line-height: 90px;
     }
     .buy-btn {
       height: 40px;

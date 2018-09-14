@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="health-surrounding" :class="cart_show? 'active':''">
     <div class="search-input m-ft-21 m-white tl">
       <img class="row-img" src="/static/images/magnifier.png" alt="">
       <div>请输入商家/商品名称</div>
@@ -139,6 +139,12 @@
 <style lang="less" rel="stylesheet/less" scoped>
   @import "../../common/css/index";
   @import "../../common/css/modal";
+
+  .health-surrounding {
+    &.active {
+      position: fixed;
+    }
+  }
 
   .search-input {
     width: 720px;
@@ -290,9 +296,9 @@
       z-index: 1003;
     }
     .m-modal-state{
-      top: 350px;
+      top: 310px;
       width: 620px;
-      min-height: 660px;
+      min-height: 690px;
       overflow: scroll;
       overflow-x: hidden;
       z-index: 1004;

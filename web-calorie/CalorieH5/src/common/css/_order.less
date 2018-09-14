@@ -5,6 +5,19 @@
 
 //在线点餐、健康配送
 
+.online-order {
+  margin-bottom: 60px;
+  &.active {
+    position: fixed;
+  }
+}
+.health-distribution {
+  margin-bottom: 60px;
+  &.active {
+    position: fixed;
+  }
+}
+
 .mt-swipe-box {
   margin-bottom: 0;
   height: 300px;
@@ -184,19 +197,20 @@
     z-index: 1003;
   }
   .m-modal-state{
-    top: 350px;
     width: 620px;
-    min-height: 614px;
+    min-height: 690px;
     overflow: scroll;
     overflow-x: hidden;
     z-index: 1004;
+    position: fixed;
+    top: 220px;
     .food-list-box {
       width: 550px;
-      margin: -110px 0 30px 30px;
+      margin: -110px 0 295px 30px;
       .null-cart-img {
         width: 135px;
         height: 130px;
-        margin-top: 300px;
+        margin-top: 350px;
       }
     }
   }
