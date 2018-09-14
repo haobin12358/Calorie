@@ -2,7 +2,7 @@
   <div>
     <img class="food-img" :src="food.src" alt="">
 
-    <div class="food-name m-ft-30 m-grey-color">{{food.name}}</div>
+    <div class="m-ft-30 m-grey-color">{{food.name}}</div>
 
     <div class="food-formula m-ft-24 m-grey-color tl">配方：{{food.formula}}</div>
 
@@ -33,6 +33,7 @@
 
 <script type="text/ecmascript-6">
   import shoppingCart from './components/shoppingCart';
+  import common from '../../common/js/common';
 
   export default {
     name: "foodDetail",
@@ -101,6 +102,10 @@
       if(this.cart_total == 0) {
         this.cart_num_show = false;
       }
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("餐品详情");
     }
   }
 </script>
@@ -112,9 +117,6 @@
     width: 750px;
     height: 570px;
     padding-bottom: 20px;
-  }
-  .food-name {
-
   }
   .food-formula {
     padding: 28px 0 20px 30px;

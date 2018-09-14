@@ -122,6 +122,10 @@
     },
     mounted() {
 
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("餐配");
     }
   }
 </script>

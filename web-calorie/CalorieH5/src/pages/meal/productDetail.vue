@@ -43,6 +43,7 @@
 
 <script type="text/ecmascript-6">
 import addCartBuy from './components/addCartBuy'
+import common from '../../common/js/common';
 
   export default {
     name: "productDetail",
@@ -72,9 +73,6 @@ import addCartBuy from './components/addCartBuy'
       handleChange(index) {
         this.imgNum = index + 1;
       },
-
-
-
       // 处理分数的星星数目
       scoreDo() {
         for (let i = 0; i < this.score; i ++) {
@@ -84,15 +82,16 @@ import addCartBuy from './components/addCartBuy'
           this.scoreList.push("/static/images/star.png");
         }
       }
-
-
-
     },
     mounted() {
       let pid = this.$route.query.pid;
       // console.log(pid);
 
       this.scoreDo();
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("商品详情");
     }
   }
 </script>

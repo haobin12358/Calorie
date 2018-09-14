@@ -21,6 +21,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import common from '../../common/js/common';
+
   export default {
     name: "productEvaluation",
     data() {
@@ -76,6 +78,10 @@
       // console.log(fid);
 
       this.score();
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("评价列表");
     }
   }
 </script>

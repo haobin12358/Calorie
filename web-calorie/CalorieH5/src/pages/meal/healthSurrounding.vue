@@ -132,6 +132,10 @@
     },
     mounted() {
 
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("健康周边");
     }
   }
 </script>
