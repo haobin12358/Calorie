@@ -1,0 +1,108 @@
+<style scoped lang="less">
+  @import "../../styles/base";
+
+  .tab{
+    /*border-bottom: 2rpx solid #e9e9e9;*/
+    height: 50rpx;
+    line-height: 50rpx;
+    position: relative;
+
+    .tab-list{
+      display: flex;
+
+      .tab-item{
+        flex: 1;
+        text-align: center;
+        color: #444444;
+
+        .fz24();
+      }
+
+      .tab-item-active{
+        // color: @mainColor;
+      }
+    }
+
+    .tab-slider{
+      position: absolute;
+      bottom: 0;
+      width: 50rpx;
+      left: 70rpx;
+      height: 4rpx;
+      background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+      content: "";
+      transition:transform .3s;
+
+    }
+  }
+</style>
+
+<template>
+  <view class="tab">
+    <view class="tab-list">
+      <view wx:for="{{tabList}}" wx:key="*this" class="tab-item {{currentTab == index ? 'tab-item-active': ''}}"
+             @tap="switchTab({{index}})">
+        {{item}}
+      </view>
+    </view>
+    <view class="tab-slider" style="left: {{sliderLeft}}rpx;-webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+
+</template>
+
+<script>
+    import wepy from 'wepy'
+
+    const sliderWidth = 25;
+
+    export default class Tab extends wepy.component {
+      props = {
+        //  当前激活tab 索引
+        currentTab: {
+          type: Number,
+          default: 0
+        },
+        //  tab数组
+        tabList: {
+          type: Array,
+          default: []
+        }
+
+      }
+      data = {
+        // sliderOffset: 0,
+        sliderLeft: 0,
+      }
+
+      computed = {
+        sliderOffset() {
+          let res = this.windowWidth / this.tabList.length * this.currentTab
+
+          return res
+        }
+      }
+
+      methods = {
+       switchTab(index,e) {
+
+          if (this.currentTab == index) {
+          } else {
+            this.currentTab = index;
+            this.$emit("switchTab", this.currentTab);
+          }
+        }
+      }
+
+      events = {}
+
+      async  onLoad() {
+        let res = await wepy.getSystemInfo();
+
+        this.windowWidth = res.windowWidth
+        this.sliderLeft = res.windowWidth / this.tabList.length - sliderWidth;
+
+        this.$apply();
+      }
+    }
+</script>
+

@@ -2,21 +2,7 @@
     @import "../styles/base";
 
     .two-props-goods-list{
-      .meal-block-hd{
-        margin-bottom: 18rpx;
-        .fz30();
 
-        display: flex;
-        justify-content: space-between;
-
-        .title-text{}
-        .title-arrow{}
-      }
-
-      .meal-block-bd{
-        height: 310rpx;
-        white-space: nowrap;
-        width: 100%;
 
         .meal-item{
           border-radius: 20rpx;
@@ -26,6 +12,10 @@
           margin-right: 20rpx;
           background: #ffffff;
           box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+          &:first-child{
+            margin-left: 45rpx;
+          }
 
           .item-hd{
             height: 231rpx;
@@ -54,48 +44,42 @@
           }
         }
       }
-    }
+
 </style>
 
 <template>
   <view class="two-props-goods-list">
-    <view class="meal-block-hd">
-      <view class="title-text">
-        {{title}}
+    <view wx:for="123456" class="meal-item" @tap.stop="tapItemHandler">
+      <view class="item-hd">
+        <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
       </view>
-      <view class="title-arrow">
-        箭头
+      <view class="item-bd">
+        <view class="name">蒜泥娃娃菜</view>
+        <view class="money">￥8.0</view>
       </view>
     </view>
-    <scroll-view scroll-x="true" class="meal-block-bd">
-      <view wx:for="123456" class="meal-item">
-        <view class="item-hd">
-          <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
-        </view>
-        <view class="item-bd">
-          <view class="name">蒜泥娃娃菜</view>
-          <view class="money">￥8.0</view>
-        </view>
-      </view>
-    </scroll-view>
   </view>
+
 </template>
 
 <script>
   import wepy from 'wepy';
 
-  export default class TwoPropsGoodsList extends wepy.component {
+  export default class TwoPropsCommodityList extends wepy.component {
     props = {
-      title: {
-        type: String
-      },
     };
 
     data = {};
 
-    computed = {};
+    computed = {
 
-    methods = {};
+    };
+
+    methods = {
+      tapItemHandler(){
+        this.$emit('tapItem')
+      }
+    };
 
 
     onLoad() {

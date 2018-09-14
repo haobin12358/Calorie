@@ -1,0 +1,121 @@
+<style scoped lang="less">
+    @import "../styles/base";
+
+  .commodity-grid-list{
+      display: flex;
+      flex-wrap: wrap;
+
+      .meal-item{
+        border-radius: 20rpx;
+        width: 325rpx;
+        height: 490rpx;
+        margin-bottom: 20rpx;
+        background: #ffffff;
+        box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
+
+        &:nth-child(odd){
+          margin-right: 20rpx;
+          margin-left: 45rpx;
+        }
+
+        .item-hd{
+          height: 354rpx;
+
+          image{
+            border-top-right-radius: 20rpx;
+            border-top-left-radius: 20rpx;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .item-bd{
+          padding-left: 20rpx;
+          padding-right: 11rpx;
+
+          .line1{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 41rpx;
+            .fz24();
+
+            .money{
+              color: @moneyColor;
+            }
+          }
+          .line2{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .source{
+              .fz21();
+            }
+            .place-order{
+              background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+              box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+              padding: 6rpx 28rpx;
+              color: #ffffff;
+              border-radius: 30px;
+
+              .fz21();
+            }
+          }
+        }
+      }
+
+  }
+</style>
+
+<template>
+  <view class="commodity-grid-list">
+    <view wx:for="123456" class="meal-item" @tap.stop="tapItemHandler">
+      <view class="item-hd">
+        <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
+      </view>
+      <view class="item-bd">
+        <view class="line1">
+          <view class="name">菠萝包</view>
+          <view class="money">￥9.0</view>
+        </view>
+        <view class="line2">
+          <view class="source">早安city</view>
+          <view class="place-order" @tap.stop="tapPlaceOrderHandler">快捷下单</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class CommodityGridList extends wepy.component {
+    props = {
+      xxx: {
+        //  Object Array String Number Boolean
+        type: Object
+      }
+    };
+
+    data = {};
+
+    computed = {};
+
+    methods = {
+      tapItemHandler(){
+        this.$emit('tapItem')
+      },
+      tapPlaceOrderHandler(){
+        this.$emit('tapPlaceOrder');
+      }
+    };
+
+
+    onLoad() {
+
+    }
+  }
+</script>
+
