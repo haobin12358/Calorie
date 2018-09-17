@@ -11,12 +11,14 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/meal/healthCommodity', // 健康周边
-      'pages/meal/commodityDetail', // 商品详情
       'pages/meal/index', // 参配首页
+      'pages/meal/commodityDetail', // 商品详情
+      'pages/meal/payOrderResult', // 支付结果
+      'pages/meal/payCommodityOrder', // 商城支付
+      'pages/meal/mealDetail',  //  餐品详情
+      'pages/meal/healthCommodity', // 健康周边
       'pages/meal/commodityComment', // 商品评价
       'pages/meal/healthDeliver', // 健康配送
-      'pages/meal/mealDetail',  //  餐品详情
       'pages/meal/payMealOrder',  //  点餐支付
       'pages/meal/orderOnline',  //  在线点餐
 

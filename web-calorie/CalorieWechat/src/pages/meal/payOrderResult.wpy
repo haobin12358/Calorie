@@ -1,0 +1,77 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+  .container{
+    text-align: center;
+
+    .placeholder-img{
+      margin-top: 250rpx;
+      width: 341rpx;
+      height: 341rpx;
+    }
+
+    .placeholder-text{
+      .fz24();
+      color: @mainFontColor;
+
+      text{
+        color: #576eea;
+        text-decoration: underline;
+      }
+    }
+
+    .back-to-home{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 100rpx;
+      background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+      color: #ffffff;
+      text-align: center;
+      line-height: 100rpx;
+      .fz38();
+    }
+  }
+</style>
+
+<template>
+  <view class="container">
+    <image class="placeholder-img" src="../../images/purple/meal_success_pay.png"></image>
+    <view class="placeholder-text">支付成功，<text>{{countDown}}</text>秒后自动返回首页...</view>
+
+    <view class="back-to-home" @tap="backToHome">回到首页</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class PayOrderResult extends wepy.page {
+    config = {};
+
+    components = {};
+
+    data = {
+      countDown: 3
+    };
+    computed = {};
+
+    methods = {
+      backToHome(){
+        this.$navigate('/pages/meal/index');
+      }
+    };
+
+    onLoad() {
+      setInterval(()=>{
+        this.countDown--;
+        this.$apply();
+
+        if(this.countDown == 0){
+          this.$switch('/pages/meal/index');
+        }
+      },1000);
+    }
+  }
+</script>
+

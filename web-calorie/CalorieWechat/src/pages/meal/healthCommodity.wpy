@@ -68,8 +68,8 @@
 
       .fixed-shop-cart{
         position: fixed;
-        left: 13rpx;
-        bottom: 26rpx;
+        left: 27rpx;
+        bottom: 24rpx;
         width: 88rpx;
         height: 88rpx;
         z-index: 3000;
@@ -121,9 +121,9 @@
     </view>
 
     <image class="fixed-shop-cart"  @tap="showShopCart" src="../../images/purple/meal_shop_cart.png" style="opacity: {{shopCartVisible? '1': '.5'}};"></image>
-    <shop-cart :show.sync="shopCartVisible" :list.sync="mealList"></shop-cart>
   </view>
 
+  <shop-cart :show.sync="shopCartVisible" :list.sync="mealList"></shop-cart>
 </template>
 
 <script>
@@ -151,12 +151,13 @@
       firstAnimate: 'bounceInRight',
       secondAnimate: 'fadeIn',
 
-      shopCartVisible: true,
+      shopCartVisible: false,
       mealList:[
         {
           name: '油爆虾',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
           originMoney: '12.0',
           shopNum: 1,
           storeNum: 2
@@ -164,6 +165,8 @@
           name: '蒜泥娃娃菜',
           money: '12.0',
           rate: 80,
+          spec: '黑色/15kg',
+
           originMoney: '14.0',
           shopNum: 1,
           storeNum: 2
@@ -172,12 +175,16 @@
           name: '干菜扣肉',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
+
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 2
         },{
           name: '腊肠炒面',
           money: '10.0',
+          spec: '黑色/15kg',
+
           rate: 90,
           originMoney: '12.0',
           shopNum: 0,
@@ -186,6 +193,8 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
+
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -193,6 +202,8 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
+
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -200,6 +211,8 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
+
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -207,6 +220,8 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
+
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -214,6 +229,7 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -221,6 +237,7 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -228,6 +245,7 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0
@@ -235,6 +253,7 @@
           name: '腊肠炒面',
           money: '10.0',
           rate: 90,
+          spec: '黑色/15kg',
           originMoney: '12.0',
           shopNum: 0,
           storeNum: 0

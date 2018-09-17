@@ -1,0 +1,264 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+  .container{
+    padding-bottom: 200rpx;
+
+    .container-block{
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      margin-top: 10rpx;
+      padding: 23rpx 36rpx 42rpx 50rpx;
+
+    }
+
+    .commodity-list{
+      .commodity-item{
+        display: flex;
+
+        .commodity-img{
+          width: 185rpx;
+          height: 185rpx;
+          margin-right: 30rpx;
+        }
+
+        .main-content{
+          flex: 1;
+          .fz24();
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .line1{
+            display: flex;
+            justify-content: space-between;
+            /*margin-bottom: 10rpx;*/
+
+            .name{
+              color: @mainFontColor;
+              .fz30();
+            }
+            .money{
+              color: @moneyColor;
+            }
+
+          }
+          .line2{
+            margin-bottom: 64rpx;
+            color: @subFontColor;
+          }
+          .line3{
+            /*text-align: right;*/
+            display: flex;
+            justify-content: flex-end;
+
+            .shop-num{
+              color: @mainFontColor;
+            }
+          }
+        }
+      }
+    }
+
+    .payment-item{
+      display: flex;
+      align-items: center;
+      padding-top: 27rpx;
+      padding-bottom: 31rpx;
+
+      .payment-item-hd{
+        width: 36rpx;
+        height: 36rpx;
+        margin-right: 30rpx;
+      }
+      .payment-item-bd{
+        color: @subFontColor;
+        flex: 1;
+
+        .fz24();
+      }
+      .payment-item-ft{
+        width: 30rpx;
+        height: 30rpx;
+      }
+    }
+
+    .payment-amount{
+      display: flex;
+      align-items: center;
+      color: @subFontColor;
+      padding-top: 27rpx;
+      padding-bottom: 31rpx;
+      .fz24();
+
+      .payment-amount-hd{
+        width: 32rpx;
+        height: 32rpx;
+        margin-right: 36rpx;
+      }
+      .payment-amount-bd{
+        flex: 1;
+      }
+      .payment-amount-ft{
+        text{
+          font-weight: bold;
+          color: @moneyColor;
+        }
+      }
+    }
+
+    .customer-message{
+      padding-bottom: 70rpx;
+      .fz24();
+
+      .customer-message-hd{
+        margin-bottom: 20rpx;
+        color: @subFontColor;
+      }
+      .customer-message-bd{
+        color: @mainFontColor;
+      }
+    }
+
+    .customer-express-info{
+      padding-bottom: 28rpx;
+      .fz24();
+      color: @mainFontColor;
+
+      .customer-express-info-hd{
+        color: @subFontColor;
+        margin-bottom: 20rpx;
+      }
+
+      .customer-express-info-bd{
+        .line1{
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20rpx;
+        }
+        .line2{
+          display: flex;
+          justify-content: space-between;
+
+          .change-block{
+            color: #576eea;
+          }
+        }
+      }
+    }
+
+    .pay-order{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 100rpx;
+      background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+      color: #ffffff;
+      text-align: center;
+      line-height: 100rpx;
+      .fz38();
+    }
+  }
+</style>
+
+<template>
+  <view class="container">
+    <view class="container-block commodity-list">
+      <view class="commodity-item">
+        <image class="commodity-img" src="https://dummyimage.com/600x400"></image>
+        <view class="main-content">
+          <view class="line1">
+            <view class="name">哑铃</view>
+            <view class="money">￥168.0</view>
+          </view>
+          <view class="line2">
+            黑色/15kg
+          </view>
+          <view class="line3">
+            <text class="shop-num" space="emsp">x 1</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="container-block payment-item">
+      <image class="payment-item-hd" src="../../images/wechat_pay.png"></image>
+      <view class="payment-item-bd">
+        微信支付
+      </view>
+      <image class="payment-item-ft" src="../../images/purple/meal_check_pay.png"></image>
+    </view>
+    <view class="container-block payment-item">
+      <image class="payment-item-hd" src="../../images/coupon.png"></image>
+      <view class="payment-item-bd">
+        优惠券
+      </view>
+      <image class="payment-item-ft" src="../../images/meal_uncheck.png"></image>
+    </view>
+    <view class="container-block payment-amount">
+      <image class="payment-amount-hd" src="../../images/pay_amount.png"></image>
+      <view class="payment-amount-bd">
+        支付金额
+      </view>
+      <view class="payment-amount-ft">
+        运费：0 运费：<text>￥168.0</text>
+      </view>
+    </view>
+    <view class="container-block customer-message">
+      <view class="customer-message-hd">
+        买家留言
+
+      </view>
+      <view class="customer-message-bd">
+        留言内容
+        留言内容
+        留言内容
+        留言内容
+        留言内容
+        留言内容
+      </view>
+    </view>
+    <view class="container-block customer-express-info">
+      <view class="customer-express-info-hd">收件人</view>
+      <view class="customer-express-info-bd">
+        <view class="line1">
+          <view class="name">马云</view>
+          <view class="phone">15700000000</view>
+        </view>
+        <view class="line2">
+          <view class="address">杭州xxx</view>
+          <view class="change-block">修改</view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="pay-order" @tap="payOrder">
+      支付订单
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class PayCommodityOrder extends wepy.page {
+    config = {};
+
+    components = {};
+
+    data = {};
+    computed = {};
+
+    methods = {
+      payOrder(){
+        this.$navigate('/pages/meal/payOrderResult');
+
+      }
+    };
+
+    onLoad() {
+
+    }
+  }
+</script>
+

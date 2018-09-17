@@ -1,25 +1,566 @@
 <style scoped lang="less">
-    @import "../../styles/base";
+  @import "../../styles/base";
+  @import "../../styles/animate";
 
+  .container{
+    .commodity-image{
+      height:570rpx;
+
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .commodity-info-block{
+      margin-bottom: 10rpx;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+      padding: 25rpx 25rpx 15rpx 30rpx;
+    }
+
+    .commodity-info-detail{
+      .line1{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40rpx;
+
+        .fz30();
+
+        .name{
+          color:  @mainFontColor;
+        }
+        .money{
+          color:  @moneyColor;
+        }
+      }
+      .line2{
+        color: @subFontColor;
+        display: flex;
+        justify-content: space-between;
+
+        .fz24();
+      }
+
+    }
+
+    .commodity-info-spec{
+      .fz24();
+      display: flex;
+      align-items: center;
+
+      .spec-hd{
+        color: @mainFontColor;
+        margin-right: 30rpx;
+      }
+      .spec-bd{
+        flex: 1;
+        color: @subFontColor;
+      }
+      .spec-ft{
+        width: 25rpx;
+        height: 20rpx;
+
+        image{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .commodity-info-evaluate{
+      .fz24();
+      display: flex;
+      align-items: center;
+      color: @subFontColor;
+
+      .evaluate-hd{
+        color: @mainFontColor;
+        margin-right: 30rpx;
+      }
+      .evaluate-bd{
+        flex: 1;
+      }
+      .evaluate-ft{
+        display: flex;
+        align-items: center;
+
+        .ft-text{
+          margin-right: 22rpx;
+        }
+
+        .ft-img{
+          width: 25rpx;
+          height: 20rpx;
+        }
+      }
+    }
+
+    /*详情图*/
+    .commodity-info-imgs{
+      image{
+        width: 100%;
+        height: 500rpx;
+      }
+    }
+
+
+
+    .fixed-footer-block{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+      background: #ffffff;
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1rpx solid #d5d5d5;
+      height: 90rpx;
+
+      /*.footer-popup{*/
+        /*height: 100%;*/
+        /*width: 100%;*/
+        /*position: absolute;*/
+        /*bottom: 90rpx;*/
+        /*display: flex;*/
+        /*flex-direction: column;*/
+
+      /*}*/
+        .btns-block{
+          align-self: center;
+          height: 62rpx;
+          color: #ffffff;
+          display: flex;
+          text-align: center;
+          line-height: 62rpx;
+          margin-right: 15rpx;
+
+          .fz30();
+
+          .addToCart{
+            width: 281rpx;
+            height: 62rpx;
+            background-image: linear-gradient(99deg, #2dd0ef, #5873e4);
+            border-top-left-radius:40rpx ;
+            border-bottom-left-radius:40rpx ;
+          }
+
+          .goPay{
+            width: 281rpx;
+            height: 62rpx;
+            background-image: linear-gradient(99deg, #314ad1, #8614d9);
+            border-top-right-radius:40rpx ;
+            border-bottom-right-radius:40rpx ;
+          }
+
+
+      }
+
+    }
+  }
+  .fixed-shop-cart{
+    position: fixed;
+    left: 27rpx;
+    bottom: 24rpx;
+    width: 88rpx;
+    height: 88rpx;
+    z-index: 3000;
+  }
+
+  .choose-spec-mask{
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0.6;
+  }
+  .choose-spec{
+    position: fixed;
+    bottom: 0rpx;
+    width: 100%;
+    height: 760rpx;
+    z-index: 4000;
+    background: #ffffff;
+    border-top-right-radius:40rpx ;
+    border-top-left-radius:40rpx ;
+    padding: 30rpx 40rpx 27rpx 65rpx;
+    box-sizing: border-box;
+    text-align: center;
+    .fz24();
+    display: flex;
+    flex-direction: column;
+
+    .choose-spec-hd{
+      height: 300rpx;
+      position: relative;
+      .commodity-img{
+        width: 230rpx;
+        height: 230rpx;
+        margin-bottom: 9rpx;
+      }
+
+      .commodity-money{
+        color: @moneyColor;
+        margin-bottom: 10rpx;
+        .fz30();
+      }
+
+      .close-choose-spec{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 35rpx;
+        height: 35rpx;
+      }
+    }
+
+    .choose-spec-bd{
+      height: 300rpx;
+      margin-bottom: 53rpx;
+      /*flex: 1;*/
+      .spec-class-item{
+        margin-bottom: 21rpx;
+
+        .spec-class-item-hd{
+          text-align: left;
+          margin-bottom: 16rpx;
+          color: @subFontColor;
+        }
+        .spec-class-item-bd{
+          display: flex;
+          flex-wrap: wrap;
+
+          .spec-item{
+            background: #d5d5d5;
+            color: @mainFontColor;
+            padding: 14rpx 51rpx;
+            border-radius: 30rpx;
+            margin-right: 30rpx;
+          }
+
+          .spec-item-active{
+            background: #576eea;
+            color: #ffffff;
+          }
+        }
+      }
+
+      .shop-num-block{
+        .shop-num-block-hd{
+          text-align: left;
+          margin-bottom: 16rpx;
+          color: @subFontColor;
+        }
+
+        .shop-num-block-bd{
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          image{
+            width: 42rpx;
+            height: 42rpx;
+          }
+
+          text{
+            margin: 0 36rpx;
+          }
+        }
+      }
+    }
+
+    .choose-spec-confirm{
+      height: 62rpx;
+      color: #ffffff;
+      line-height: 62rpx;
+      text-align: center;
+      width: 620rpx;
+      border-radius: 40rpx;
+      background-image: linear-gradient(95deg, #2dd0ef, #8614d9);
+      .fz30();
+    }
+  }
 </style>
 
 <template>
-  商品详情
 
+  <view class="container">
+    <view class="commodity-image">
+      <image src="https://dummyimage.com/600x400"></image>
+    </view>
+
+    <view class="commodity-info-block commodity-info-detail">
+      <view class="line1">
+        <view class="name">哑铃哑铃哑铃哑铃</view>
+        <view class="money">￥168.0</view>
+      </view>
+      <view class="line2">
+        <view class="">快递：0.00</view>
+        <view class="">月销：1200笔</view>
+        <view class="">健身器材1号店</view>
+      </view>
+    </view>
+    <view class="commodity-info-block commodity-info-spec">
+      <view class="spec-hd">规格</view>
+      <text space="emsp" class="spec-bd">选择 颜色分类 重量</text>
+      <view class="spec-ft">
+        <image src="../../images/arrow.png"></image>
+      </view>
+    </view>
+    <view class="commodity-info-block commodity-info-evaluate">
+      <view class="evaluate-hd">评价</view>
+      <view class="evaluate-bd">
+        <rate :key="rateKey" :readonly="rateReadonly" :starSize="rateStarSize"></rate>
+      </view>
+      <view class="evaluate-ft" @tap="goCommodityComment">
+        <view class="ft-text">查看详情</view>
+        <image class="ft-img" src="../../images/arrow.png"></image>
+      </view>
+    </view>
+
+    <view class="commodity-info-imgs">
+      <image wx:for="123456" mode="aspectFit" src="https://dummyimage.com/600x400"></image>
+    </view>
+
+    <view class="fixed-footer-block">
+        <view class="btns-block">
+          <view class="addToCart" @tap="showChooseSpec">加入购物车</view>
+          <view class="goPay" @tap="goPayCommodityOrder">立即购买</view>
+        </view>
+    </view>
+  </view>
+  <image class="fixed-shop-cart"   @tap="showShopCart" src="../../images/purple/meal_shop_cart.png"></image>
+  <shop-cart :show.sync="shopCartVisible" :list.sync="mealList"></shop-cart>
+
+  <block wx:if="{{chooseSpecVisible}}">
+    <view class="choose-spec-mask" @tap="hideChooseSpec"></view>
+    <view   class="choose-spec animated bounceInUp" >
+      <view class="choose-spec-hd">
+        <image class="commodity-img" src="https://dummyimage.com/600x400"></image>
+        <view class="commodity-money">
+          ￥193.0
+        </view>
+        <image src="../../images/close.png" class="close-choose-spec" @tap="hideChooseSpec"></image>
+      </view>
+      <scroll-view scroll-y="true" class="choose-spec-bd">
+        <view class="spec-class-item">
+          <view class="spec-class-item-hd">
+            颜色分类
+          </view>
+          <view class="spec-class-item-bd">
+            <view class="spec-item">红色</view>
+            <view class="spec-item">银色</view>
+            <view class="spec-item spec-item-active">黑色</view>
+          </view>
+        </view>
+        <view class="spec-class-item">
+          <view class="spec-class-item-hd">
+            重量
+          </view>
+          <view class="spec-class-item-bd">
+            <view class="spec-item">5kg</view>
+            <view class="spec-item">10kg</view>
+            <view class="spec-item spec-item-active">15kg</view>
+          </view>
+        </view>
+        <view class="spec-class-item">
+          <view class="spec-class-item-hd">
+            重量
+          </view>
+          <view class="spec-class-item-bd">
+            <view class="spec-item">5kg</view>
+            <view class="spec-item">10kg</view>
+            <view class="spec-item spec-item-active">15kg</view>
+          </view>
+        </view>
+        <view class="spec-class-item">
+          <view class="spec-class-item-hd">
+            重量
+          </view>
+          <view class="spec-class-item-bd">
+            <view class="spec-item">5kg</view>
+            <view class="spec-item">10kg</view>
+            <view class="spec-item spec-item-active">15kg</view>
+          </view>
+        </view>
+
+        <view class="shop-num-block">
+          <view class="shop-num-block-hd">
+            购买数量
+          </view>
+          <view class="shop-num-block-bd">
+            <block wx:if="{{shopNum}}">
+              <image src="../../images/purple/meal_minus.png"></image>
+              <text>{{shopNum}}</text>
+            </block>
+            <image src="../../images/purple/meal_plus.png"></image>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view  class="choose-spec-confirm">
+        确定
+      </view>
+    </view>
+  </block>
 </template>
 
 <script>
   import wepy from 'wepy';
+  import Rate from '@/components/common/rate';
+  import ShopCart from '@/components/shopCart';
 
   export default class CommodityDetail extends wepy.page {
     config = {};
 
-    components = {};
+    components = {
+      rate: Rate,
+      'shop-cart': ShopCart,
 
-    data = {};
+    };
+
+    data = {
+      rateKey: 4,
+      rateReadonly: true,
+      rateStarSize: 20,
+
+      shopCartVisible: false,
+      mealList:[
+        {
+          name: '油爆虾',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+          originMoney: '12.0',
+          shopNum: 1,
+          storeNum: 2
+        },{
+          name: '蒜泥娃娃菜',
+          money: '12.0',
+          rate: 80,
+          spec: '黑色/15kg',
+
+          originMoney: '14.0',
+          shopNum: 1,
+          storeNum: 2
+
+        },{
+          name: '干菜扣肉',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 2
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          spec: '黑色/15kg',
+
+          rate: 90,
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },{
+          name: '腊肠炒面',
+          money: '10.0',
+          rate: 90,
+          spec: '黑色/15kg',
+          originMoney: '12.0',
+          shopNum: 0,
+          storeNum: 0
+        },
+      ],
+
+      chooseSpecVisible: false,
+      shopNum: 10
+    };
     computed = {};
 
-    methods = {};
+    methods = {
+      showShopCart(){
+        this.shopCartVisible = !this.shopCartVisible;
+      },
+      hideChooseSpec(){
+        this.chooseSpecVisible = false;
+      },
+      showChooseSpec(){
+        this.chooseSpecVisible = true;
+      },
+      goCommodityComment(){
+        this.$navigate('/pages/meal/commodityComment')
+      },
+      goPayCommodityOrder(){
+        this.$navigate('/pages/meal/payCommodityOrder')
+      }
+
+    };
 
     onLoad() {
 

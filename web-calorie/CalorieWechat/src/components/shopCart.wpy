@@ -79,13 +79,11 @@
                 }
               }
               .line2{
-                /*display: flex;*/
-                /*justify-content: space-between;*/
                 color: @subFontColor;
 
                 .fz20();
 
-                .rate{
+                .spec{
 
                 }
 
@@ -201,7 +199,7 @@
                 <view class="money">￥{{item.money}}</view>
               </view>
               <view class="line2">
-                <view class="rate">好评率:{{item.rate}}%</view>
+                <view class="spec">{{item.spec}}</view>
               </view>
               <view class="line3">
                 <block wx:if="{{item.shopNum}}">
