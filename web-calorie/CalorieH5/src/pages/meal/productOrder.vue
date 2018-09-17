@@ -34,7 +34,7 @@
       <div class="info-row">
         <div class="info-text">送餐时间：</div>
         <div class="row-right-two">
-          <div class="time-text info-text" @click="popupVisible = true">11:00-11:30</div>
+          <div class="time-text info-text" @click="popupVisible = true">{{time}}</div>
           <img class="drop-down-img" src="/static/images/purple/triangle.png" alt="">
         </div>
       </div>
@@ -76,6 +76,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import common from '../../common/js/common';
+
   export default {
     name: "productOrder",
     data() {
@@ -88,21 +90,28 @@
         slots: [
           { values: ["11:00 - 11:30", "11:30 - 12:00", "12:00 - 12:30", "12:30 - 13:00", "13:00 - 13:30"] }
         ],
+        time: "11:00-11:30",
+        timeTemp: ""
       }
     },
     components: {  },
     methods: {
       // 监听送餐时间段选择器
       onValuesChange(picker, values) {
-        console.log(values[0]);
+        this.timeTemp = values[0];
       },
       // 送餐时间-确定按钮
       timeDone() {
         this.popupVisible = false;
+        this.time = this.timeTemp;
       }
     },
     mounted() {
 
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("商品订单");
     }
   }
 </script>
@@ -292,7 +301,7 @@
       color: @white;
       white-space: normal;
       padding: 25px 90px;
-      background-image: linear-gradient(to right, @mainLef, @mainRight);
+      background-image: linear-gradient(to right, @mainLeft, @mainRight);
     }
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="product-detail" :class="cart_show || params_show? 'active':''">
     <mt-swipe class="mt-swipe-imgs" :auto="0" :show-indicators="false" @change="handleChange">
       <mt-swipe-item v-for="item in productImgs" :key="item.id">
         <img :src="item" class="product-img">
@@ -17,7 +17,7 @@
       <div class="sales-num m-text">月销：1526 笔</div>
       <div class="store-name m-text">健身器材1号店</div>
     </div>
-    <div class="detail-row shadow-bottom">
+    <div class="detail-row shadow-bottom" @click="params_show = true">
       <div class="m-text">规格</div>
       <div class="color-choose-text m-grey-color tl">选择    颜色分类 重量</div>
       <img class="row-right-img" src="/static/images/arrow.png" alt="">
@@ -37,12 +37,24 @@
       </li>
     </ul>
 
-    <add-cart-buy></add-cart-buy>
+    <div class="add-cart-buy">
+      <img class="cart-img" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
+      <div class="add-cart m-text" @click="toParams">加入购物车</div>
+      <div class="buy-now m-text" @click="submitOrder">立即购买</div>
+    </div>
+
+    <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></cart-choose>
+
+    <product-params :params_show="params_show" @toParams="toParams"></product-params>
+    <!--<add-cart-buy :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></add-cart-buy>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import addCartBuy from './components/addCartBuy'
+import cartChoose from './components/cartChoose'
+import productParams from './components/productParams'
+import common from '../../common/js/common';
 
   export default {
     name: "productDetail",
@@ -64,17 +76,16 @@ import addCartBuy from './components/addCartBuy'
           {img: "http://pic1.win4000.com/wallpaper/6/59bcc07478a17.jpg"},
           {img: "http://pic1.win4000.com/wallpaper/6/59bcc08474821.jpg"}
         ],
+        cart_show: false,
+        params_show: false,
       }
     },
-    components: { addCartBuy },
+    components: { addCartBuy, cartChoose, productParams },
     methods: {
       // 切换轮播图时的事件
       handleChange(index) {
         this.imgNum = index + 1;
       },
-
-
-
       // 处理分数的星星数目
       scoreDo() {
         for (let i = 0; i < this.score; i ++) {
@@ -83,22 +94,54 @@ import addCartBuy from './components/addCartBuy'
         for (let j = 0; j < (5 - this.score); j ++) {
           this.scoreList.push("/static/images/star.png");
         }
+      },
+      // 关闭modal
+      cartModal() {
+        if(this.cart_show) {
+          this.cart_show = false;
+        }else if(!this.cart_show) {
+          this.cart_show = true;
+        }
+      },
+      // 关闭params_show_modal
+      toParams() {
+        if(this.params_show) {
+          this.params_show = false;
+        }else if(!this.params_show) {
+          this.params_show = true;
+        }
+      },
+      // 去餐品详情页
+      toDetail(item) {
+        // let pid = item.pid;
+        this.cart_show = false;
+      },
+      // 立即购买
+      submitOrder() {
+        this.$router.push("/submitOrder");
       }
-
-
-
     },
     mounted() {
       let pid = this.$route.query.pid;
       // console.log(pid);
 
       this.scoreDo();
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("商品详情");
     }
   }
 </script>
 
 <style lang="less" rel="stylesheet/less" scoped>
   @import "../../common/css/index";
+
+  .product-detail {
+    &.active {
+      position: fixed;
+    }
+  }
 
   .mt-swipe-imgs {
     width: 750px;
@@ -180,6 +223,41 @@ import addCartBuy from './components/addCartBuy'
     height: auto;
     margin: auto;
     background: url("/static/images/loading.gif") no-repeat fixed center;
+  }
+
+  .add-cart-buy {
+    width: 100%;
+    height: 77px;
+    display: flex;
+    padding-top: 13px;
+    background-color: @white;
+    border-top: 1px @hex solid;
+    position: fixed;
+    bottom: 0;
+    .cart-img {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 10px;
+      bottom: 40px;
+    }
+    .add-cart {
+      padding: 12px 65px;
+      margin-left: 170px;
+      border-radius: 40px 0 0 40px;
+      background-image: linear-gradient(to right, @mainLeft, #5876E4);
+    }
+    .buy-now {
+      padding: 12px 65px;
+      border-radius: 0 40px 40px 0;
+      background-image: linear-gradient(to right, #314ad1, @mainRight);
+    }
+    .m-text {
+      width: 150px;
+      height: 40px;
+      font-size: 30px;
+      color: @white;
+    }
   }
 </style>
 

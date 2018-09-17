@@ -51,12 +51,7 @@
 
     <img class="cart-img" :class="cart_show? 'active':''" src="/static/images/purple/meal_shop_cart.png" @click="cartModal">
 
-    <div class="m-modal" v-if="cart_show">
-      <div class="m-modal-state">
-        <cart-choose></cart-choose>
-      </div>
-      <div class="overlay" @click="cart_show = false"></div>
-    </div>
+    <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal"></cart-choose>
 
   </div>
 </template>
@@ -132,6 +127,10 @@
     },
     mounted() {
 
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("健康周边");
     }
   }
 </script>
@@ -152,7 +151,7 @@
     display: flex;
     padding: 15px;
     line-height: 45px;
-    background-image: linear-gradient(to right, @mainLef, @mainRight);
+    background-image: linear-gradient(to right, @mainLeft, @mainRight);
   }
   .row-img {
     width: 40px;
@@ -235,7 +234,7 @@
     padding: 6px 28px;
     margin-right: 15px;
     border-radius: 30px;
-    background-image: linear-gradient(to right, @mainLef, @mainRight);
+    background-image: linear-gradient(to right, @mainLeft, @mainRight);
   }
   .surrounding-health {
     margin: 15px 0 0 30px;
@@ -279,29 +278,10 @@
     opacity: 0.5;
     position: fixed;
     left: 10px;
-    bottom: 40px;
+    bottom: 50px;
     &.active {
       opacity: 1;
       z-index: 1005;
-    }
-  }
-
-  .m-modal{
-    .overlay {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1003;
-    }
-    .m-modal-state{
-      top: 310px;
-      width: 620px;
-      min-height: 690px;
-      overflow: scroll;
-      overflow-x: hidden;
-      z-index: 1004;
     }
   }
   /*滚动条样式*/

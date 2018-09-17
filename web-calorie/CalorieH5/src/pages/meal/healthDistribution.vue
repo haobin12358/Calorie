@@ -136,6 +136,10 @@
       if(this.cart_total == 0) {
         this.cart_num_show = false;
       }
+    },
+    created() {
+      // 设置页面title
+      common.changeTitle("健康配送");
     }
   }
 </script>
