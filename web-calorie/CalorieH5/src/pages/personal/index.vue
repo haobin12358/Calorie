@@ -196,15 +196,16 @@
       }
     }
     .unlogin-text {
+      white-space: nowrap;
       margin: 103px 0 0 20px;
     }
     .login-btn {
       width: 60px;
       height: 45px;
-      padding: 2px 34px;
+      padding: 2px 35px;
       border-radius: 30px;
       white-space: nowrap;
-      margin: 185px 0 0 290px;
+      margin: 185px 0 0 280px;
       background-color: @white;
     }
   }
