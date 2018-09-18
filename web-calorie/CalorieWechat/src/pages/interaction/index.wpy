@@ -1,25 +1,60 @@
 <style scoped lang="less">
     @import "../../styles/base";
 
+  .container{
+
+  }
 </style>
 
 <template>
-  互动
+  <view class="container">
+    <tab :tabList="tabList" :currentIndex.sync="currentTabIndex"></tab>
+    <swiper class="swiper" current="{{currentTabIndex}}" bindchange="swiperPage">
+      <swiper-item class="swiper-item-tree-hole">
 
+      </swiper-item>
+      <swiper-item>
+        <view>吐槽</view>
+      </swiper-item>
+      <swiper-item>
+        <view>任务</view>
+      </swiper-item>
+      <swiper-item>
+        <view>游戏</view>
+      </swiper-item>
+    </swiper>
+  </view>
 </template>
 
 <script>
   import wepy from 'wepy';
+  import Tab from '@/components/common/tab';
 
   export default class Index extends wepy.page {
     config = {};
 
-    components = {};
+    components = {
+      tab: Tab,
+    };
 
-    data = {};
+    data = {
+      tabList: ['树洞', '吐槽', '任务','游戏'],
+      currentTabIndex: 0,  //  tabIndex
+
+    };
+
+    watch={
+      currentTabIndex(val){
+        console.log(val);
+      }
+    }
     computed = {};
 
-    methods = {};
+    methods = {
+      swiperPage(e){
+        this.currentTabIndex = e.detail.current;
+      }
+    };
 
     onLoad() {
 
