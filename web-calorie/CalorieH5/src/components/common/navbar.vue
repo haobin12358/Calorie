@@ -66,9 +66,9 @@
           background-color: @mainColor;
         }
         .nav-bottom {
-          width: 50px;
+          width: auto;
           height: 3px;
-          margin: 10px 0 0 40px;
+          margin-top: 10px;
         }
         &.active{
           .nav-bottom {
