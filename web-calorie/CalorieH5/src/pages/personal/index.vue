@@ -58,9 +58,9 @@
     data() {
       return {
         menuList: [
-          { icon: "/static/images/purple/personal_my_order.png", url: "onlineOrder", name: "商品订单" },
-          { icon: "/static/images/purple/personal_my_task.png", url: "healthDistribution", name: "我的发布" },
-          { icon: "/static/images/purple/personal_my_collec.png", url: "healthSurrounding", name: "我的收藏" }
+          { icon: "/static/images/purple/personal_my_order.png", url: "pProductOrder", name: "商品订单" },
+          { icon: "/static/images/purple/personal_my_task.png", url: "", name: "我的发布" },
+          { icon: "/static/images/purple/personal_my_collec.png", url: "", name: "我的收藏" }
         ],
         pageList: [
           { url: "", name: "地址管理" },
@@ -75,9 +75,9 @@
     methods: {
       // 页面跳转
       toPage(item) {
-        // this.$router.push('/' + item.url);
+        this.$router.push('/' + item.url);
         // 设置页面title
-        // common.changeTitle(item.name);
+        common.changeTitle(item.name);
       }
     },
     created() {

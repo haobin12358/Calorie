@@ -63,7 +63,6 @@ export const constantRouterMap = [
   /*餐配*/
   // 搜索页
   { path: '/search', component: () => import('../pages/meal/search'), hidden: true },
-
   // 在线点餐
   { path: '/onlineOrder', component: () => import('../pages/meal/onlineOrder'), hidden: true },
   // 餐品详情
@@ -82,6 +81,8 @@ export const constantRouterMap = [
   // 提交订单
   { path: '/submitOrder', component: () => import('../pages/meal/submitOrder'), hidden: true },
 
+  // 个人-商品订单
+  { path: '/pProductOrder', component: () => import('../pages/personal/productOrder'), hidden: true },
 ];
 
 export default new Router({
