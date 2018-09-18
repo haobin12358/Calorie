@@ -184,7 +184,8 @@
     }
   }
   .mt-swipe-box {
-    height: 460px;
+    height: 400px;
+    /*height: 460px;*/
   }
   .menu-label {
     position: absolute;
