@@ -2,59 +2,76 @@
   @import "../../styles/base";
   .container{
 
-  .container-search-bar {
-    height: 50rpx;
-    background-image: linear-gradient(to right, #2dd0ef, #8614d9);
-    padding-left: 43rpx;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
+    .container-search-bar {
+      background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+      padding: 10rpx 14rpx;
 
-    image{
-      width: 20rpx;
-      height: 20rpx;
-      margin-right: 23rpx;
+      .line1{
+        margin-bottom: 8rpx;
+
+        display: flex;
+        justify-content: space-between;
+        padding-left: 18rpx;
+        color: #ffffff;
+
+        .position{
+          display: flex;
+          align-items: center;
+
+          image{
+            height: 32rpx;
+            width: 32rpx;
+            margin-right: 16rpx;
+          }
+
+          .position-text{
+            line-height: 50rpx;
+
+            .fz21();
+          }
+        }
+        .weather{
+          display: flex;
+          align-items: center;
+
+          .weather-text {
+            margin-right: 6rpx;
+            .fz16();
+
+            .weather-type{}
+            .weather-temperature{}
+
+          }
+          .weather-icon {
+            width: 36rpx;
+            height: 36rpx;
+          }
+        }
+      }
+
+      .line2{
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        height: 40rpx;
+        padding-left: 18rpx;
+
+        image{
+          height: 32rpx;
+          width: 32rpx;
+          margin-right: 16rpx;
+        }
+
+        .search-bar-tip{
+          color: @subFontColor;
+          .fz21();
+        }
+      }
     }
-
-    .search-bar-tip{
-      color: #ffffff;
-      line-height: 50rpx;
-
-      .fz21();
-    }
-  }
 
   .container-hd {
     position: relative;
     margin-bottom: 134rpx;
-
-    .hd-position{
-      position: absolute;
-      top:  0;
-      left: 0;
-      width: 100%;
-      height: 50rpx;
-      opacity: 0.2;
-      z-index: 10;
-      padding-left: 43rpx;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      background: #000000;
-
-      image{
-        width: 20rpx;
-        height: 20rpx;
-        margin-right: 23rpx;
-      }
-
-      .hd-position-text{
-        color: #ffffff;
-        line-height: 50rpx;
-
-        .fz24();
-      }
-    }
 
     .hd-swiper{
       height: 330rpx;
@@ -67,34 +84,10 @@
       }
     }
 
-    .hd-tab-bar{
+    .hd-nav-bar {
       position: absolute;
-      bottom:  -104rpx;
+      bottom: -104rpx;
       left: 45rpx;
-      width: 660rpx;
-      z-index: 10;
-      padding: 27rpx 0 8rpx;
-      display: flex;
-      justify-content: space-around;
-      background: #ffffff;
-      border-radius: 20rpx;
-      box-shadow: 0 3rpx 6rpx 0 rgba(0, 0, 0, 0.16);
-      color: @mainFontColor;
-
-      .tab-bar-item{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .icon{
-          height: 70rpx;
-          width: 70rpx;
-        }
-
-        .name{
-          .fz20();
-        }
-      }
     }
   }
 
@@ -159,16 +152,33 @@
 <template>
   <view class="container">
     <view class="container-search-bar">
-      <image src="../../images/magnifier.png"></image>
-      <view class="search-bar-tip">请输入商家/商品名称</view>
-    </view>
-    <view class="container-hd">
-      <view class="hd-position">
-        <image src="../../images/position.png"></image>
-        <view class="hd-position-text">
-          浙江工业大学（屏峰校区）
+      <view class="line1">
+        <view class="position">
+          <image src="../../images/position.png"></image>
+          <view class="position-text">
+            浙江工业大学（屏峰校区）
+          </view>
+        </view>
+        <view class="weather">
+          <view class="weather-text">
+            <view class="weather-type">多云</view>
+            <view class="weather-temperature">31°C</view>
+          </view>
+          <image class="weather-icon" src="../../images/cloudy.png"></image>
+        </view>
+
+      </view>
+      <view class="line2" @tap="goSearch">
+        <image src="../../images/magnifier.png"></image>
+        <view class="search-bar-tip">
+          请输入商家/商品名称
         </view>
       </view>
+
+
+    </view>
+    <view class="container-hd">
+
       <swiper class="hd-swiper" autoplay="true" circular="true" indicator-dots="true">
         <swiper-item>
           <image src="http://dummyimage.com/1200x1000/9ad7db"></image>
@@ -178,25 +188,7 @@
         </swiper-item>
       </swiper>
 
-      <view class="hd-tab-bar">
-        <view class="tab-bar-item" @tap="goOrderOnline">
-          <image class="icon" src="../../images/purple/meal_order_online.png"></image>
-          <view class="name">在线点餐</view>
-        </view>
-        <view class="tab-bar-item" @tap="goHealthDeliver">
-          <image class="icon" src="../../images/purple/meal_health_deliver.png"></image>
-          <view class="name">健康配送</view>
-        </view>
-        <view class="tab-bar-item" @tap="goHealthCommodity">
-          <image class="icon" src="../../images/purple/meal_health_health_around.png"></image>
-          <view class="name">健康周边</view>
-        </view>
-        <view class="tab-bar-item" @tap="goFitnessCard">
-          <image class="icon" src="../../images/purple/meal_fitness_card.png"></image>
-          <view class="name">健康卡</view>
-        </view>
-
-      </view>
+      <nav-bar class="hd-nav-bar" :list="navBarList" @tapItem.user="goNavBarPage"></nav-bar>
     </view>
     <view class="container-bd">
       <view class="bd-meal">
@@ -248,9 +240,10 @@
 
 <script>
   import wepy from 'wepy';
-  import CommodityList from '@/components/commodityList'
-  import ActionCommodityList from '@/components/actionCommodityList'
-  import CommodityGridList from '@/components/commodityGridList'
+  import CommodityList from '@/components/commodityList';
+  import ActionCommodityList from '@/components/actionCommodityList';
+  import CommodityGridList from '@/components/commodityGridList';
+  import NavBar from '@/components/navBar';
 
   export default class Index extends wepy.page {
     config = {};
@@ -259,26 +252,41 @@
       'commodity-list': CommodityList,
       'action-commodity-list': ActionCommodityList,
       'commodity-grid-list': CommodityGridList,
+      'nav-bar': NavBar,
     };
 
     data = {
-      firstTitle: '在线点餐'
+      navBarList: [
+        {
+          title: '在线点餐',
+          icon: '../../images/purple/meal_order_online.png',
+          path: '/pages/meal/orderOnline'
+        },{
+          title: '健康配送',
+          icon: '../../images/purple/meal_health_deliver.png',
+          path: '/pages/meal/healthDeliver'
+
+        },{
+          title: '健康周边',
+          icon: '../../images/purple/meal_health_health_around.png',
+          path: '/pages/meal/healthCommodity'
+
+        },{
+          title: '健康卡',
+          icon: '../../images/purple/meal_fitness_card.png',
+          path: '/pages/meal/fitnessCard'
+
+        }
+      ]
     };
     computed = {};
 
     methods = {
-      goOrderOnline(){
-        this.$navigate('/pages/meal/orderOnline');
+      goSearch(){
+        this.$navigate('/pages/meal/search');
       },
-      goHealthDeliver(){
-        this.$navigate('/pages/meal/healthDeliver');
-
-      },
-      goHealthCommodity(){
-        this.$navigate('/pages/meal/healthCommodity');
-      },
-      goFitnessCard(){
-
+      goNavBarPage(page){
+        this.$navigate(page);
       }
     };
 

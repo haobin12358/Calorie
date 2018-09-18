@@ -1,22 +1,363 @@
 <style scoped lang="less">
     @import "../../styles/base";
 
+  .container{
+    .container-hd{
+      height: 600rpx;
+      position: relative;
+      margin-bottom: 125rpx;
+
+      &.container-hd-unlogin{
+        height: 300rpx;
+        background:  #d5d5d5;
+      }
+
+      .container-hd-background{
+        width: 100%;
+        height: 100%;
+      }
+
+      .container-hd-mask{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+        background-color: #000000;
+      }
+
+
+      .cover-block{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 450rpx;
+        padding-top: 11rpx;
+        box-sizing: border-box;
+        color: #ffffff;
+        .fz20();
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*align-items: center;*/
+
+        .line1{
+          display: flex;
+          justify-content: space-between;
+          padding: 0 24rpx;
+          margin-bottom: 20rpx;
+
+          image{
+            width: 40rpx;
+            height: 40rpx;
+          }
+        }
+
+        .line2{
+          position: relative;
+          text-align: center;
+          margin-bottom: 20rpx;
+
+          .user-img{
+            width: 180rpx;
+            height: 180rpx;
+            border-radius: 50%;
+            border: 4rpx solid #ffffff;
+          }
+          .user-gender-img{
+            position: absolute;
+            left: 414rpx;
+            bottom: 0;
+            width: 27rpx;
+            height: 27rpx;
+            border-radius: 50%;
+          }
+
+        }
+
+        .line3{
+          margin-bottom: 10rpx;
+          text-align: center;
+          .fz30();
+
+        }
+
+        .line4{
+          margin-bottom: 30rpx;
+          text-align: center;
+
+          text{
+            padding: 0 18rpx;
+            background: #676E6E;
+            border-radius: 30rpx;
+          }
+
+        }
+
+        .line5{
+          margin-bottom: 13rpx;
+          display: flex;
+          justify-content: center;
+
+          view{
+            padding: 0 30rpx;
+          }
+
+          .height{
+            border-left: 1rpx solid #ffffff;
+            border-right: 1rpx solid #ffffff;
+          }
+
+        }
+
+        .line6{
+          display: flex;
+          justify-content: center;
+
+          view{
+            display: flex;
+            align-items: center;
+          }
+          image{
+            width: 26rpx;
+            height: 26rpx;
+            margin-right: 10rpx;
+          }
+          .profession{
+            margin: 0 20rpx;
+            line-height: 26rpx;
+          }
+        }
+
+
+
+        .cover-block-hd{
+          margin-bottom: 49rpx;
+
+          display: flex;
+          justify-content: space-between;
+
+          .accumulate-points{}
+          .edit-person-info{}
+        }
+        .cover-block-bd{
+          display: flex;
+
+          .person-img{
+            width: 150rpx;
+            height: 150rpx;
+            margin-right: 17rpx;
+          }
+
+          .main-content{
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .line1{
+              margin-top: 18rpx;
+              display: flex;
+
+              .line1-left{
+                flex: 1;
+              }
+              .line1-right{
+                width: 178rpx;
+                height: 85rpx;
+                opacity: 0.2;
+                border-radius: 20px;
+                background-color: #000000;
+              }
+            }
+            .line2{
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 20rpx;
+
+              .department{
+                image{
+                  width: 25rpx;
+                  height: 25rpx;
+                }
+              }
+
+              .profession{
+                image{
+                  width: 25rpx;
+                  height: 25rpx;
+                }
+              }
+
+              .taste{
+                image{
+                  width: 25rpx;
+                  height: 25rpx;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .hd-nav-bar{
+        position: absolute;
+        bottom: -30rpx;
+        left: 25rpx;
+        width: 700rpx;
+      }
+    }
+    .container-bd{
+      .cells{
+        color: @mainFontColor;
+        .fz32();
+
+        .cell{
+          box-sizing: border-box;
+          padding: 33rpx 19rpx 33rpx 76rpx;
+          display: flex;
+          justify-content: space-between;
+          box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.16);
+          margin-bottom: 20rpx;
+
+          .cell-bd{
+            flex: 1;
+            .fz24();
+            .cell-image{
+              width: 56rpx;
+              height: 40rpx;
+            }
+          }
+          .cell-ft-access{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            image{
+              width: 24rpx;
+              height: 24rpx;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
 
 <template>
-  个人
+  <view class="container">
+    <view  class="container-hd {{isLogin?'container-hd-unlogin':''}}">
+      <block wx:if="{{isLogin}}">
+        <image class="container-hd-background" src="../../images/test_person_bg.jpg"></image>
+        <view class="container-hd-mask"></view>
+        <view class="cover-block">
+          <view class="line1">
+            <image src="../../images/gift.png"></image>
+            <image src="../../images/setting.png"></image>
+          </view>
+          <view class="line2">
+            <image class="user-img" src="https://dummyimage.com/600x400"></image>
+            <image class="user-gender-img" src="../../images/gender_female_fill.png"></image>
+          </view>
+          <view class="line3">
+            马云
+          </view>
+          <view class="line4">
+            <text>未认证</text>
+          </view>
+          <view class="line5">
+            <view class="age">23岁</view>
+            <view class="height">165cm</view>
+            <view class="weight">44kg</view>
+          </view>
+          <view class="line6">
+            <view class="department">
+              <image src="../../images/personal_department.png"></image>
+              浙江工业大学
+            </view>
+            <view class="profession">
+              <image src="../../images/personal_person.png"></image>
+              学生
+            </view>
+            <view class="taste">
+              <image src="../../images/personal_love.png"></image>
+              甜味、咸味
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+
+      </block>
+
+      <nav-bar class="hd-nav-bar" :list="navBarList" @tapItem.user="goNavBarPage"></nav-bar>
+    </view>
+    <view class="container-bd">
+      <view class="cells">
+        <navigator url="/pages/personal/address" class="cell">
+          <view class="cell-bd">地址管理</view>
+          <view class="cell-ft cell-ft-access">
+            <image src="../../images/arrow.png"></image>
+          </view>
+        </navigator>
+        <view class="cell">
+          <view class="cell-bd">招商加盟</view>
+          <view class="cell-ft cell-ft-access">
+            <image src="../../images/arrow.png"></image>
+          </view>
+        </view>
+        <view class="cell">
+          <view class="cell-bd">平台建议</view>
+          <view class="cell-ft cell-ft-access">
+            <image src="../../images/arrow.png"></image>
+          </view>
+        </view>
+        <view class="cell">
+          <view class="cell-bd">小程序说明</view>
+          <view class="cell-ft cell-ft-access">
+            <image src="../../images/arrow.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
 
 </template>
 
 <script>
   import wepy from 'wepy';
+  import NavBar from '@/components/navBar';
 
   export default class Index extends wepy.page {
     config = {};
 
-    components = {};
+    components = {
+      'nav-bar': NavBar
+    };
 
-    data = {};
+    data = {
+      isLogin: false,
+      navBarList: [
+        {
+          title: '商品订单',
+          icon: '../../images/purple/personal_my_order.png',
+          path: '/pages/meal/orderOnline'
+        },{
+          title: '我的发布',
+          icon: '../../images/purple/personal_my_task.png',
+          path: '/pages/meal/healthDeliver'
+
+        },{
+          title: '我的收藏',
+          icon: '../../images/purple/personal_my_collec.png',
+          path: '/pages/meal/healthCommodity'
+
+        }
+      ]
+    };
     computed = {};
 
     methods = {};

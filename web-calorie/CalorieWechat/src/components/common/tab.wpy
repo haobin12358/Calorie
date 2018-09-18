@@ -40,7 +40,7 @@
 <template>
   <view class="tab">
     <view class="tab-list">
-      <view wx:for="{{tabList}}" wx:key="*this" class="tab-item {{currentTab == index ? 'tab-item-active': ''}}"
+      <view wx:for="{{tabList}}" wx:key="*this" class="tab-item {{currentIndex == index ? 'tab-item-active': ''}}"
              @tap="switchTab({{index}})">
         {{item}}
       </view>
@@ -58,9 +58,10 @@
     export default class Tab extends wepy.component {
       props = {
         //  当前激活tab 索引
-        currentTab: {
+        currentIndex: {
           type: Number,
-          default: 0
+          default: 0,
+          twoWay: true
         },
         //  tab数组
         tabList: {
@@ -76,7 +77,7 @@
 
       computed = {
         sliderOffset() {
-          let res = this.windowWidth / this.tabList.length * this.currentTab
+          let res = this.windowWidth / this.tabList.length * this.currentIndex
 
           return res
         }
@@ -85,11 +86,8 @@
       methods = {
        switchTab(index,e) {
 
-          if (this.currentTab == index) {
-          } else {
-            this.currentTab = index;
-            this.$emit("switchTab", this.currentTab);
-          }
+            this.currentIndex = index;
+
         }
       }
 
