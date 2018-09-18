@@ -1,12 +1,19 @@
 <template>
   <div>
-    <div class="search-input m-ft-21 m-white tl">
-      <img class="row-img" src="/static/images/magnifier.png" alt="">
-      <div>请输入商家/商品名称</div>
-    </div>
-    <div class="address-choose m-ft-24 m-black tl">
-      <img class="row-img" src="/static/images/position.png" alt="">
-      <div>浙江工业大学（屏峰校区）</div>
+    <div class="meal-header">
+      <div class="row-one">
+        <img class="row-one-img" src="/static/images/position.png" alt="">
+        <div class="row-one-text m-ft-21 m-white tl">浙江工业大学(屏峰校区)</div>
+        <div class="row-one-weather">
+          <div class="weather-text">多云</div>
+          <div class="weather-text">32℃</div>
+        </div>
+        <img class="weather-img" src="/static/images/cloudy.png" alt="">
+      </div>
+      <div class="row-two" @click="toPage(searchPage)">
+        <img class="search-img" src="/static/images/magnifier.png" alt="">
+        <div class="row-two-text m-ft-21 m-hex">请输入商家/商品名称</div>
+      </div>
     </div>
     <div class="mt-swipe-box">
       <mt-swipe :auto="15000">
@@ -108,12 +115,13 @@
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" },
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" },
           { src: "/static/images/product1.png", name: "蒜泥娃娃菜", price: "8.0", from: "早安city" }
-        ]
+        ],
+        searchPage: { url: "search", name: "搜索" }
       }
     },
     components: { menuLabel },
     methods: {
-      // 顶部四个btn跳转
+      // 页面跳转跳转
       toPage(item) {
         this.$router.push('/' + item.url);
         // 设置页面title
@@ -133,29 +141,47 @@
 <style lang="less" rel="stylesheet/less" scoped>
   @import "../../common/css/index";
 
-  .search-input {
-    width: 720px;
-    height: 40px;
-    display: flex;
-    padding: 15px;
-    line-height: 45px;
+  .meal-header {
+    padding: 10px 15px;
     background-image: linear-gradient(to right, @mainLeft, @mainRight);
-  }
-  .address-choose {
-    position: absolute;
-    top: 70px;
-    z-index: 1000;
-    width: 730px;
-    display: flex;
-    opacity: 0.3;
-    padding: 10px;
-    line-height: 45px;
-    background-color: @white;
-  }
-  .row-img {
-    width: 40px;
-    height: 40px;
-    padding-right: 10px;
+    .row-one {
+      width: 720px;
+      display: flex;
+      .row-one-img {
+        width: 40px;
+        height: 40px;
+        padding-left: 10px;
+      }
+      .row-one-text {
+        flex: 1;
+        line-height: 43px;
+      }
+      .row-one-weather {
+        .weather-text {
+          color: @white;
+          font-size: 16px;
+          padding: 0 10px;
+        }
+      }
+      .weather-img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .row-two {
+      width: 100%;
+      display: flex;
+      margin-top: 5px;
+      background-color: @white;
+      .search-img {
+        width: 30px;
+        height: 30px;
+        padding: 8px 15px;
+      }
+      .row-two-text {
+        line-height: 50px;
+      }
+    }
   }
   .mt-swipe-box {
     height: 460px;

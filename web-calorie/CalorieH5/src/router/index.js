@@ -61,6 +61,9 @@ export const constantRouterMap = [
   },
 
   /*餐配*/
+  // 搜索页
+  { path: '/search', component: () => import('../pages/meal/search'), hidden: true },
+
   // 在线点餐
   { path: '/onlineOrder', component: () => import('../pages/meal/onlineOrder'), hidden: true },
   // 餐品详情
