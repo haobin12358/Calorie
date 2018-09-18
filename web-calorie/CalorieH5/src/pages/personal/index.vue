@@ -142,6 +142,7 @@
           padding: 2px 15px;
           margin-left: 320px;
           border-radius: 30px;
+          white-space: nowrap;
           background-color: #676E6E;
         }
         .user-num {
@@ -199,9 +200,10 @@
     }
     .login-btn {
       width: 60px;
-      height: 40px;
-      padding: 7px 34px;
+      height: 45px;
+      padding: 2px 34px;
       border-radius: 30px;
+      white-space: nowrap;
       margin: 185px 0 0 290px;
       background-color: @white;
     }
