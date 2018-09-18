@@ -3,7 +3,7 @@
     <navbar class="nav-bar" :list="nav_list" @navClick="navClick"></navbar>
 
     <div class="order-list">
-      <div class="order-box" v-for="item in orderList">
+      <div class="order-box" v-if="orderList.length" v-for="item in orderList">
         <img class="store-img" :src="item.storeImg" alt="">
 
         <div class="order-box-right">
@@ -26,6 +26,12 @@
             <div class="again-order-btn m-white">再来一单</div>
           </div>
         </div>
+      </div>
+
+      <div v-if="!orderList.length" class="no-order">
+        <img class="no-order-img" src="/static/images/purple/personal_order_placeholder.png" alt="">
+        <div class="m-ft-24 m-grey-color">还没有订单，去下单吧~</div>
+        <div class="to-order-btn m-ft-30 m-white">去下单</div>
       </div>
     </div>
   </div>
@@ -155,6 +161,21 @@
             background-image: linear-gradient(to right, @mainLeft, @mainRight);
           }
         }
+      }
+    }
+    .no-order {
+      .no-order-img {
+        width: 200px;
+        height: 200px;
+        margin: 40% 0 20px 0;
+      }
+      .to-order-btn {
+        width: 320px;
+        line-height: 60px;
+        margin: 100px 0 0 215px;
+        border-radius: 30px;
+        white-space: nowrap;
+        background-image: linear-gradient(to right, @mainLeft, @mainRight);
       }
     }
   }
