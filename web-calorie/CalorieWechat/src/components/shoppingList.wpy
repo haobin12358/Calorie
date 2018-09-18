@@ -118,7 +118,6 @@
     <view class="footer-right" @tap="tapGoPay">
       去下单
     </view>
-
     <view class="shopcart" @tap.stop="showShopList">
       <image src="../../images/purple/meal_shop_cart.png"></image>
       <view class="shopcart-num">12</view>

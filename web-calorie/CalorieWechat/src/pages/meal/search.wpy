@@ -1,0 +1,267 @@
+<style scoped lang="less">
+    @import "../../styles/base";
+
+  .container{
+    .container-hd{
+      /*height: 70rpx;*/
+      padding: 15rpx 36rpx 15rpx 15rpx;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      background-image: linear-gradient(to right, #2dd0ef, #8614d9);
+      .fz24();
+
+      .search-block{
+        flex: 1;
+        margin-right: 34rpx;
+
+        background: #ffffff;
+        padding:0 16rpx;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+
+        image{
+          height: 32rpx;
+          width: 32rpx;
+        }
+
+        .search-content-input{
+          flex: 1;
+          margin:0 16rpx;
+
+        }
+      }
+
+      .search-btn{
+        color: #ffffff;
+      }
+    }
+    .container-bd{
+
+
+      .search-recommend{
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        margin-bottom: 21rpx;
+        padding: 14rpx 25rpx 24rpx 25rpx;
+        color: @subFontColor;
+        .fz24();
+
+        .search-recommend-hd{
+          margin-bottom: 30rpx;
+
+          padding-bottom: 20rpx;
+          border-bottom: 1rpx solid @borderColor;
+          display: flex;
+          justify-content: space-between;
+
+          .title{}
+
+          .clear{
+            align-self: flex-end;
+            color: @violet;
+            .fz20();
+          }
+        }
+
+        .search-recommend-bd{
+          display: flex;
+          flex-wrap: wrap;
+
+          .search-item{
+            padding: 4rpx 19rpx;
+            border: 1rpx solid @borderColor;
+            margin-right: 35rpx;
+            margin-bottom: 20rpx;
+          }
+        }
+      }
+
+
+
+      .search-result-list{
+        padding-top: 10rpx;
+        .fz20();
+
+        .search-result-item{
+          margin-bottom: 20rpx;
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+          padding: 15rpx 30rpx 15rpx 15rpx;
+          display: flex;
+
+          .commodity-img{
+            width: 120rpx;
+            height: 120rpx;
+            margin-right: 45rpx;
+          }
+
+          .main-content{
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .top-block{
+              display: flex;
+              justify-content: space-between;
+
+              .name{
+                color: @mainFontColor;
+                .fz24();
+              }
+              .price-block{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                .price{
+                  color: @moneyColor;
+                }
+                .origin-price{
+                  color: @subFontColor;
+                  text-decoration: line-through;
+                  .fz20();
+                }
+              }
+
+            }
+            .bottom-block{
+              color: @subFontColor;
+            }
+          }
+        }
+
+      }
+    }
+  }
+</style>
+
+<template>
+  <view class="container">
+    <view class="container-hd">
+      <view class="search-block">
+        <image class="search-block-icon" src="../../images/magnifier.png"></image>
+        <input class="search-content-input" value="{{searchContent}}" @input="updateSearchContent" placeholder="请输入商家/商品名称"/>
+        <image class="clear-search-content" @tap="clearSearchContent" src="../../images/close.png"></image>
+      </view>
+      <view class="search-btn" @tap="doSearch">
+        搜索
+      </view>
+    </view>
+    <view class="container-bd">
+      <block wx:if="{{!showSearchResult}}">
+        <view class="search-recommend">
+          <view class="search-recommend-hd">
+            <view class="title">热门推荐</view>
+          </view>
+          <view class="search-recommend-bd">
+            <view wx:for="123456789" class="search-item">猪排饭</view>
+          </view>
+        </view>
+        <view class="search-recommend">
+          <view class="search-recommend-hd">
+            <view class="title">历史搜索</view>
+            <view class="clear">清空</view>
+          </view>
+          <view class="search-recommend-bd">
+            <view wx:for="123456789" class="search-item">猪排饭</view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="search-result-list">
+          <view wx:for="{{searchResult}}" class="search-result-item">
+            <image class="commodity-img" src="../../images/test-commodity-img.png"></image>
+            <view class="main-content">
+              <view class="top-block">
+                <view class="name">{{item.name}}</view>
+                <view class="price-block">
+                  <view class="price">￥{{item.price}}</view>
+                  <view class="origin-price">￥{{item.originPrice}}</view>
+                </view>
+              </view>
+              <view class="bottom-block">
+                好评率:{{item.rate}}%
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </block>
+    </view>
+  </view>
+
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class Search extends wepy.page {
+    config = {};
+
+    components = {};
+
+    data = {
+      searchContent: '',
+
+      showSearchResult: false,
+      searchResult: [
+        {
+          name: '鸡胸肉',
+          rate: '98',
+          price: '20.0',
+          originPrice: '25.0',
+        },{
+          name: '鸡胸肉',
+          rate: '98',
+          price: '20.0',
+          originPrice: '25.0',
+        },{
+          name: '鸡胸肉',
+          rate: '98',
+          price: '20.0',
+          originPrice: '25.0',
+        },{
+          name: '鸡胸肉',
+          rate: '98',
+          price: '20.0',
+          originPrice: '25.0',
+        },{
+          name: '鸡胸肉',
+          rate: '98',
+          price: '20.0',
+          originPrice: '25.0',
+        }
+      ]
+    };
+    computed = {};
+
+    methods = {
+      clearSearchContent(){
+        this.searchContent = '';
+        this.showSearchResult = false;
+      },
+      updateSearchContent(evt){
+        let {detail: {value}} = evt;
+
+        this.searchContent = value;
+        if(!value){
+          this.showSearchResult = false;
+        }
+      },
+      doSearch(){
+        if( this.searchContent){
+          this.showSearchResult = true;
+          console.log('[doSearch]',this.searchContent);
+        }
+      }
+    };
+
+    onLoad() {
+
+    }
+  }
+</script>
+
