@@ -121,7 +121,7 @@
     },
     components: { menuLabel },
     methods: {
-      // 页面跳转跳转
+      // 页面跳转
       toPage(item) {
         this.$router.push('/' + item.url);
         // 设置页面title
