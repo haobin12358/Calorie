@@ -46,12 +46,10 @@
     <cart-choose v-if="cart_show" :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></cart-choose>
 
     <product-params :params_show="params_show" @toParams="toParams"></product-params>
-    <!--<add-cart-buy :cart_show="cart_show" @cartModal="cartModal" @toDetail="toDetail"></add-cart-buy>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import addCartBuy from './components/addCartBuy'
 import cartChoose from './components/cartChoose'
 import productParams from './components/productParams'
 import common from '../../common/js/common';
@@ -80,7 +78,7 @@ import common from '../../common/js/common';
         params_show: false,
       }
     },
-    components: { addCartBuy, cartChoose, productParams },
+    components: { cartChoose, productParams },
     methods: {
       // 切换轮播图时的事件
       handleChange(index) {
